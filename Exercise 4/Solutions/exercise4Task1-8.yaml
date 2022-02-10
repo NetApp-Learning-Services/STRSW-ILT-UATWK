@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nfs-snap
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs-basic
+  dataSource:
+    name: nfs-snap
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io

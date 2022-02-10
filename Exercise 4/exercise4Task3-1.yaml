@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nfs-import
+  namespace: trident
+spec:
+  accessModes:
+    - ROX
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs-basic

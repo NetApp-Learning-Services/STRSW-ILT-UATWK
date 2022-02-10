@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir-pod
+spec:
+  containers:
+  - image: nginx
+    name: web
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    volumeMounts:
+    - mountPath: change_me
+      name: change_me
+  volumes:
+  - name: change_me
+    emptyDir: {change_me}

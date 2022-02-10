@@ -1,0 +1,12 @@
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  nodePluginTolerations:
+  - key: "trident"
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"

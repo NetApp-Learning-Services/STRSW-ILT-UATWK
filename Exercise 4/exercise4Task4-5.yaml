@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: topology
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zone1-pvc
+  namespace: topology
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: zone1-nas

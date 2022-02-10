@@ -1,0 +1,8 @@
+apiVersion: example.com/v1
+kind: VisitorApp
+metadata:
+  name: example2-visitorapp
+spec:
+  # Add fields here
+  size: 2
+  title: "Size 2 Dashboard"

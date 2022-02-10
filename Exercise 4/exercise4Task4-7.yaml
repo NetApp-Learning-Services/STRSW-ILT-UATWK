@@ -1,0 +1,36 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: zone1-alpine
+  namespace: topology
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+             - zone1
+  volumes:
+    - name: zone1storage
+      persistentVolumeClaim:
+       claimName: zone1-pvc
+  containers:
+    - name: linux
+      image: alpine
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      command:
+        - /bin/sh
+        - "-c"
+        - "sleep 60m"
+      volumeMounts:
+        - mountPath: "/data"
+          name: zone1storage

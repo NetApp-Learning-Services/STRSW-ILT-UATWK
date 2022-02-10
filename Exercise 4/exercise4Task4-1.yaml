@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nas-backend-secret
+type: kubernetes.io/basic-auth
+stringData:
+  username: admin
+  password: Netapp1!
+---
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: zone1-nas-backend
+spec:
+  version: 1
+  backendName: zone1-nas
+  storageDriverName: ontap-nas
+  managementLIF: 192.168.0.101
+  dataLIF: 192.168.0.31
+  storagePrefix: zone1_
+  credentials:
+    name: nas-backend-secret
+  supportedTopologies:
+    - topology.kubernetes.io/region: trident
+    - topology.kubernetes.io/zone: zone1

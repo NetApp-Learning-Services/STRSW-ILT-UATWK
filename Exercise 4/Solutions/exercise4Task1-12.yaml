@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: san-snap
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: san-basic
+  dataSource:
+    name: san-snap
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io

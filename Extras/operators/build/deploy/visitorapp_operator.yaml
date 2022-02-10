@@ -1,0 +1,207 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: visitorapps.example.com
+spec:
+  group: example.com
+  names:
+    kind: VisitorApp
+    listKind: VisitorAppList
+    plural: visitorapps
+    singular: visitorapp
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: VisitorApp is the Schema for the visitorapps API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: VisitorAppSpec defines the desired state of VisitorApp
+            properties:
+              size:
+                description: 'INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+                  Important: Run "operator-sdk generate k8s" to regenerate code after
+                  modifying this file Add custom validation using kubebuilder tags:
+                  https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html'
+                format: int32
+                type: integer
+              title:
+                type: string
+            required:
+            - size
+            type: object
+          status:
+            description: VisitorAppStatus defines the observed state of VisitorApp
+            properties:
+              backendImage:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "operator-sdk generate k8s" to regenerate
+                  code after modifying this file Add custom validation using kubebuilder
+                  tags: https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html'
+                type: string
+              frontendImage:
+                type: string
+            required:
+            - backendImage
+            - frontendImage
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: visitorapp-operator
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  - services/finalizers
+  - endpoints
+  - persistentvolumeclaims
+  - events
+  - configmaps
+  - secrets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - daemonsets
+  - replicasets
+  - statefulsets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - monitoring.coreos.com
+  resources:
+  - servicemonitors
+  verbs:
+  - get
+  - create
+- apiGroups:
+  - apps
+  resourceNames:
+  - visitorapp-operator
+  resources:
+  - deployments/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+- apiGroups:
+  - apps
+  resources:
+  - replicasets
+  - deployments
+  verbs:
+  - get
+- apiGroups:
+  - example.com
+  resources:
+  - '*'
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: visitorapp-operator
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: visitorapp-operator
+subjects:
+- kind: ServiceAccount
+  name: visitorapp-operator
+roleRef:
+  kind: Role
+  name: visitorapp-operator
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: regcred
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJjdXJ0aXNhYiIsInBhc3N3b3JkIjoibWlkM25pZ2h0IiwiZW1haWwiOiJjdXJ0aXNAYnVyY2hldHQubWUiLCJhdXRoIjoiWTNWeWRHbHpZV0k2Yldsa00yNXBaMmgwIn19fQ==
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visitorapp-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: visitorapp-operator
+  template:
+    metadata:
+      labels:
+        name: visitorapp-operator
+    spec:
+      serviceAccountName: visitorapp-operator
+      containers:
+        - name: visitorapp-operator
+          # Replace this with the built image name
+          image: curtisab/visitorapp-operator:v0.0.2
+          command:
+          - visitorapp-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "visitorapp-operator"
+      imagePullSecrets:
+        - name: regcred

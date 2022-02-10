@@ -1,0 +1,27 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: san-pod
+  labels:
+    app: san-web
+spec:
+  volumes:
+    - name: san-storage
+      persistentVolumeClaim:
+       claimName: san-basic
+  containers:
+    - name: san-container
+      image: nginx
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: san-storage

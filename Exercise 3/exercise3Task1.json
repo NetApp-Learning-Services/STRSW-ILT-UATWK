@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "storageDriverName": "change_me",
+    "backendName": "change_me",
+    "managementLIF": "change_me",
+    "dataLIF": "change_me",
+    "svm": "change_me",
+    "username": "change_me",
+    "password": "change_me"
+}

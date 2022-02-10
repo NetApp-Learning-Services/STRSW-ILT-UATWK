@@ -1,0 +1,8 @@
+apiVersion: example.com/v1
+kind: VisitorApp
+metadata:
+  name: example-visitorapp
+spec:
+  # Add fields here
+  size: 1
+  title: "My New Operator Dashboard"

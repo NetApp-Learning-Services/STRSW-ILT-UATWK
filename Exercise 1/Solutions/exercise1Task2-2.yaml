@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpath2-pod
+  namespace: default
+spec:
+  containers:
+  - image: alpine
+    name: linux
+    command:
+      - /bin/sh
+      - "-c"
+      - "sleep 60m"
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    volumeMounts:
+    - mountPath: /root/
+      name: local-vol
+  volumes:
+  - name: local-vol
+    hostPath:
+      path: /hostVol2
+      type: DirectoryOrCreate

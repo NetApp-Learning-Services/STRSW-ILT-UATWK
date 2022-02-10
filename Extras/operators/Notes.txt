@@ -1,0 +1,921 @@
+1. Install Go for Windows:  https://golang.org/dl/
+
+2. Install Go Extension for Visual Studio Code (and gopls extension)
+
+3. Install Go on Linux: 
+    
+    curl -LO https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz
+    tar -C /usr/local -xzf go1.14.4.linux-amd64.tar.gz
+    export PATH=$PATH:/usr/local/go/bin
+
+4. Install Operator SDK on Linux:
+   
+   RELEASE_VERSION=v0.18.0 # Set the release version variable
+   curl -LO https://github.com/operator-framework/operator-sdk/releases/download/${RELEASE_VERSION}/operator-sdk-${RELEASE_VERSION}-x86_64-linux-gnu 
+   chmod +x operator-sdk-${RELEASE_VERSION}-x86_64-linux-gnu && sudo mkdir -p /usr/local/bin/ && sudo cp operator-sdk-${RELEASE_VERSION}-x86_64-linux-gnu /usr/local/bin/operator-sdk && rm operator-sdk-${RELEASE_VERSION}-x86_64-linux-gnu
+
+5. Create the operator project:
+
+    [root@rhel3 projects]# operator-sdk new visitorapp-operator --repo=github.com/cburchett/visitorapp-operator
+    INFO[0000] Creating new Go operator 'visitorapp-operator'.
+    INFO[0000] Created go.mod
+    INFO[0000] Created tools.go
+    INFO[0000] Created cmd/manager/main.go
+    INFO[0000] Created build/Dockerfile
+    INFO[0000] Created build/bin/entrypoint
+    INFO[0000] Created build/bin/user_setup
+    INFO[0000] Created deploy/service_account.yaml
+    INFO[0000] Created deploy/role.yaml
+    INFO[0000] Created deploy/role_binding.yaml
+    INFO[0000] Created deploy/operator.yaml
+    INFO[0000] Created pkg/apis/apis.go
+    INFO[0000] Created pkg/controller/controller.go
+    INFO[0000] Created version/version.go
+    INFO[0000] Created .gitignore
+    INFO[0000] Validating project
+    go: downloading sigs.k8s.io/controller-runtime v0.6.0
+    go: downloading k8s.io/apimachinery v0.18.2
+    go: downloading github.com/operator-framework/operator-sdk v0.18.0
+    go: downloading github.com/spf13/pflag v1.0.5
+    go: downloading k8s.io/client-go v0.18.2
+    go: downloading k8s.io/api v0.18.2
+    go: downloading github.com/go-logr/logr v0.1.0
+    go: downloading k8s.io/klog v1.0.0
+    go: downloading golang.org/x/net v0.0.0-20200301022130-244492dfa37a
+    go: downloading sigs.k8s.io/structured-merge-diff v1.0.2
+    go: downloading gomodules.xyz/jsonpatch/v2 v2.0.1
+    go: downloading github.com/evanphx/json-patch v4.5.0+incompatible
+    go: downloading sigs.k8s.io/yaml v1.2.0
+    go: downloading sigs.k8s.io/structured-merge-diff/v3 v3.0.0
+    go: downloading github.com/gophercloud/gophercloud v0.6.0
+    go: downloading github.com/prometheus/client_golang v1.5.1
+    go: downloading github.com/gogo/protobuf v1.3.1
+    go: downloading github.com/prometheus/client_model v0.2.0
+    go: downloading github.com/prometheus/common v0.9.1
+    go: downloading gopkg.in/fsnotify.v1 v1.4.7
+    go: downloading github.com/golang/protobuf v1.3.2
+    go: downloading github.com/go-logr/zapr v0.1.1
+    go: downloading k8s.io/kube-openapi v0.0.0-20200121204235-bf4fb3bd569c
+    go: downloading golang.org/x/crypto v0.0.0-20200414173820-0848c9571904
+    go: downloading github.com/google/go-cmp v0.4.0
+    go: downloading github.com/google/gofuzz v1.1.0
+    go: downloading github.com/modern-go/reflect2 v1.0.1
+    go: downloading go.uber.org/zap v1.14.1
+    go: downloading github.com/prometheus/procfs v0.0.8
+    go: downloading github.com/golang/groupcache v0.0.0-20191027212112-611e8accdfc9
+    go: downloading github.com/imdario/mergo v0.3.8
+    go: downloading github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+    go: downloading go.uber.org/atomic v1.6.0
+    go: downloading gopkg.in/yaml.v2 v2.2.8
+    go: downloading github.com/coreos/prometheus-operator v0.38.1-0.20200424145508-7e176fda06cc
+    go: downloading github.com/Azure/go-autorest v13.3.2+incompatible
+    go: downloading github.com/json-iterator/go v1.1.9
+    go: downloading golang.org/x/sys v0.0.0-20200202164722-d101bd2416d5
+    go: downloading github.com/Azure/go-autorest/autorest v0.9.3-0.20191028180845-3492b2aff503
+    go: downloading github.com/beorn7/perks v1.0.1
+    go: downloading k8s.io/kube-state-metrics v1.7.2
+    go: downloading k8s.io/utils v0.0.0-20200324210504-a9aa75ae1b89
+    go: downloading github.com/google/uuid v1.1.1
+    go: downloading go.uber.org/multierr v1.5.0
+    go: downloading github.com/pkg/errors v0.9.1
+    go: downloading golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
+    go: downloading golang.org/x/text v0.3.2
+    go: downloading github.com/cespare/xxhash v1.1.0
+    go: downloading golang.org/x/time v0.0.0-20191024005414-555d28b269f0
+    go: downloading cloud.google.com/go v0.49.0
+    go: downloading github.com/Azure/go-autorest/logger v0.1.0
+    go: downloading github.com/matttproud/golang_protobuf_extensions v1.0.1
+    go: downloading github.com/hashicorp/golang-lru v0.5.3
+    go: downloading github.com/cespare/xxhash/v2 v2.1.1
+    go: downloading github.com/davecgh/go-spew v1.1.1
+    go: downloading github.com/Azure/go-autorest/tracing v0.5.0
+    go: downloading github.com/Azure/go-autorest/autorest/adal v0.8.1-0.20191028180845-3492b2aff503
+    go: downloading gopkg.in/inf.v0 v0.9.1
+    go: downloading github.com/googleapis/gnostic v0.3.1
+    go: downloading github.com/dgrijalva/jwt-go v3.2.0+incompatible
+    go: downloading github.com/Azure/go-autorest/autorest/date v0.2.0
+    INFO[0054] Project validation successful.
+    INFO[0054] Project creation complete.
+
+6. yum install tree
+
+7. tree
+
+    [root@rhel3 visitorapp-operator]# tree
+    .
+    ├── build
+    │   ├── bin
+    │   │   ├── entrypoint
+    │   │   └── user_setup
+    │   └── Dockerfile
+    ├── cmd
+    │   └── manager
+    │       └── main.go
+    ├── deploy
+    │   ├── operator.yaml
+    │   ├── role_binding.yaml
+    │   ├── role.yaml
+    │   └── service_account.yaml
+    ├── go.mod
+    ├── go.sum
+    ├── pkg
+    │   ├── apis
+    │   │   └── apis.go
+    │   └── controller
+    │       └── controller.go
+    ├── tools.go
+    └── version
+        └── version.go
+
+    9 directories, 14 files
+
+8. cd into project directory
+
+9. git add .
+
+10.  Update git info:
+
+    [root@rhel3 visitorapp-operator]# git config --global user.name "Curtis Burchett"
+    [root@rhel3 visitorapp-operator]# git config --global user.email "curtis@burchett.me"
+
+11. Push code to github:
+
+    [root@rhel3 visitorapp-operator]# git remote add origin https://github.com/cburchett/visitorapp-operator.git
+    [root@rhel3 visitorapp-operator]# git push -u origin master                     Username for 'https://github.com': curtis@burchett.me
+    Password for 'https://curtis@burchett.me@github.com':
+    Counting objects: 26, done.
+    Delta compression using up to 2 threads.
+    Compressing objects: 100% (19/19), done.
+    Writing objects: 100% (26/26), 51.56 KiB | 0 bytes/s, done.
+    Total 26 (delta 0), reused 0 (delta 0)
+    To https://github.com/cburchett/visitorapp-operator.git
+    * [new branch]      master -> master
+    Branch master set up to track remote branch master from origin.
+
+12. Now open Git repo in VSC 
+
+13. Create the API for the operator:
+
+    [root@rhel3 visitorapp-operator]# operator-sdk add api --api-version=example.com/v1 --kind=VisitorApp
+    INFO[0000] Generating api version example.com/v1 for kind VisitorApp.
+    INFO[0000] Created pkg/apis/example/group.go
+    INFO[0006] Created pkg/apis/example/v1/visitorapp_types.go
+    INFO[0007] Created pkg/apis/addtoscheme_example_v1.go
+    INFO[0007] Created pkg/apis/example/v1/register.go
+    INFO[0007] Created pkg/apis/example/v1/doc.go
+    INFO[0007] Created deploy/crds/example.com_v1_visitorapp_cr.yaml
+    INFO[0007] Running deepcopy code-generation for Custom Resource group versions: [example:[v1], ]
+    INFO[0021] Code-generation complete.
+    INFO[0021] Running CRD generator.
+    INFO[0023] CRD generation complete.
+    INFO[0023] API generation complete.
+    INFO[0023] API generation complete.
+
+14. Add Git commit:
+
+    [root@rhel3 visitorapp-operator]# git commit -m "Added API"
+    [master 04d57b4] Added API
+    9 files changed, 256 insertions(+), 6 deletions(-)
+    create mode 100644 deploy/crds/example.com_v1_visitorapp_cr.yaml
+    create mode 100644 deploy/crds/example.com_visitorapps_crd.yaml
+    create mode 100644 pkg/apis/addtoscheme_example_v1.go
+    create mode 100644 pkg/apis/example/group.go
+    create mode 100644 pkg/apis/example/v1/doc.go
+    create mode 100644 pkg/apis/example/v1/register.go
+    create mode 100644 pkg/apis/example/v1/visitorapp_types.go
+    create mode 100644 pkg/apis/example/v1/zz_generated.deepcopy.go
+    [root@rhel3 visitorapp-operator]# git push origin master
+    Username for 'https://github.com': curtis@burchett.me
+    Password for 'https://curtis@burchett.me@github.com':
+    Counting objects: 22, done.
+    Delta compression using up to 2 threads.
+    Compressing objects: 100% (17/17), done.
+    Writing objects: 100% (17/17), 3.70 KiB | 0 bytes/s, done.
+    Total 17 (delta 4), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (4/4), completed with 3 local objects.
+    To https://github.com/cburchett/visitorapp-operator.git
+      2b77a8a..04d57b4  master -> master
+
+15. Update API files in VSC and push
+
+16.  On linux, get new updates:
+
+    [root@rhel3 visitorapp-operator]# git pull
+    Username for 'https://github.com': curtis@burchett.me
+    Password for 'https://curtis@burchett.me@github.com':
+    remote: Enumerating objects: 19, done.
+    remote: Counting objects: 100% (19/19), done.
+    remote: Compressing objects: 100% (3/3), done.
+    remote: Total 10 (delta 7), reused 10 (delta 7), pack-reused 0
+    Unpacking objects: 100% (10/10), done.
+    From https://github.com/cburchett/visitorapp-operator
+      04d57b4..1808e89  master     -> origin/master
+    Updating 04d57b4..1808e89
+    Fast-forward
+    deploy/crds/example.com_visitorapps_crd.yaml | 12 ++++++++++++
+    pkg/apis/example/v1/visitorapp_types.go      |  6 ++++++
+    2 files changed, 18 insertions(+)
+
+17. Generate API code:
+
+    [root@rhel3 visitorapp-operator]# operator-sdk generate crds
+    INFO[0000] Running CRD generator.
+    INFO[0000] CRD generation complete.
+
+18. Add to git, Commit to git, and push:
+
+    [root@rhel3 visitorapp-operator]# git add .
+    [root@rhel3 visitorapp-operator]# git commit -m "Generated APIs"
+    [master 84df416] Generated APIs
+    1 file changed, 16 insertions(+), 3 deletions(-)
+    [root@rhel3 visitorapp-operator]#
+    [root@rhel3 visitorapp-operator]# git push
+    warning: push.default is unset; its implicit value is changing in
+    Git 2.0 from 'matching' to 'simple'. To squelch this message
+    and maintain the current behavior after the default changes, use:
+
+      git config --global push.default matching
+
+    To squelch this message and adopt the new behavior now, use:
+
+      git config --global push.default simple
+
+    See 'git help config' and search for 'push.default' for further information.
+    (the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+    'current' instead of 'simple' if you sometimes use older versions of Git)
+
+    Username for 'https://github.com': curtis@burchett.me
+    Password for 'https://curtis@burchett.me@github.com':
+    Counting objects: 9, done.
+    Delta compression using up to 2 threads.
+    Compressing objects: 100% (5/5), done.
+    Writing objects: 100% (5/5), 796 bytes | 0 bytes/s, done.
+    Total 5 (delta 4), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+    To https://github.com/cburchett/visitorapp-operator.git
+      1808e89..84df416  master -> master
+    [root@rhel3 visitorapp-operator]#
+
+19. Automatically made Title as required... fix it in the CRD yaml and push/pulled
+
+20.  Added controller scaffold code:
+
+    [root@rhel3 visitorapp-operator]# operator-sdk add controller --api-version=example.com/v1 --kind=VisitorApp
+    INFO[0000] Generating controller version example.com/v1 for kind VisitorApp.
+    INFO[0000] Created pkg/controller/visitorapp/visitorapp_controller.go
+    INFO[0000] Created pkg/controller/add_visitorapp.go
+    INFO[0000] Controller generation complete.
+
+21.  Add to git, Commit to git, and push:
+
+    [root@rhel3 visitorapp-operator]# git add .
+    [root@rhel3 visitorapp-operator]# git commit -m "Added controller"
+    [master 4d07d4f] Added controller
+    2 files changed, 163 insertions(+)
+    create mode 100644 pkg/controller/add_visitorapp.go
+    create mode 100644 pkg/controller/visitorapp/visitorapp_controller.go
+    [root@rhel3 visitorapp-operator]# git push
+    warning: push.default is unset; its implicit value is changing in
+    Git 2.0 from 'matching' to 'simple'. To squelch this message
+    and maintain the current behavior after the default changes, use:
+
+      git config --global push.default matching
+
+    To squelch this message and adopt the new behavior now, use:
+
+      git config --global push.default simple
+
+    See 'git help config' and search for 'push.default' for further information.
+    (the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+    'current' instead of 'simple' if you sometimes use older versions of Git)
+
+    Username for 'https://github.com': curtis@burchett.me
+    Password for 'https://curtis@burchett.me@github.com':
+    Counting objects: 10, done.
+    Delta compression using up to 2 threads.
+    Compressing objects: 100% (7/7), done.
+    Writing objects: 100% (7/7), 2.55 KiB | 0 bytes/s, done.
+    Total 7 (delta 1), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+    To https://github.com/cburchett/visitorapp-operator.git
+      23a5611..4d07d4f  master -> master
+    [root@rhel3 visitorapp-operator]#
+
+22.  Added custom code and check in
+
+23. On Linux, pull new files
+
+24. Upgrade k8s cluster to v1.16.10 (need at least v1.16.0)
+
+    [root@rhel3 visitorapp-operator]# kubectl get nodes
+    NAME    STATUS   ROLES    AGE    VERSION
+    rhel1   Ready    <none>   271d   v1.16.10
+    rhel2   Ready    <none>   271d   v1.16.10
+    rhel3   Ready    master   271d   v1.16.10
+
+25. Create CRDs and review:
+
+    [root@rhel3 visitorapp-operator]# kubectl apply -f deploy/crds/*_crd.yaml
+    customresourcedefinition.apiextensions.k8s.io/visitorapps.example.com created
+    [root@rhel3 visitorapp-operator]# kubectl get crds
+    NAME                                             CREATED AT
+    tridentbackends.trident.netapp.io                2019-09-09T04:25:30Z
+    tridentnodes.trident.netapp.io                   2019-09-09T04:25:30Z
+    tridentsnapshots.trident.netapp.io               2019-09-09T04:25:30Z
+    tridentstorageclasses.trident.netapp.io          2019-09-09T04:25:30Z
+    tridenttransactions.trident.netapp.io            2019-09-09T04:25:30Z
+    tridentversions.trident.netapp.io                2019-09-09T04:25:30Z
+    tridentvolumes.trident.netapp.io                 2019-09-09T04:25:30Z
+    visitorapps.example.com                          2020-06-06T23:36:02Z
+    volumesnapshotclasses.snapshot.storage.k8s.io    2019-09-09T04:25:33Z
+    volumesnapshotcontents.snapshot.storage.k8s.io   2019-09-09T04:25:33Z
+    volumesnapshots.snapshot.storage.k8s.io          2019-09-09T04:25:33Z
+    [root@rhel3 visitorapp-operator]# kubectl describe crds visitorapps.example.com
+    Name:         visitorapps.example.com
+    Namespace:
+    Labels:       <none>
+    Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                    {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{},"name":"visitorapps.example.com"},"...
+    API Version:  apiextensions.k8s.io/v1
+    Kind:         CustomResourceDefinition
+    Metadata:
+      Creation Timestamp:  2020-06-06T23:36:02Z
+      Generation:          1
+      Resource Version:    634915
+      Self Link:           /apis/apiextensions.k8s.io/v1/customresourcedefinitions/visitorapps.example.com
+      UID:                 f7825800-b557-447f-b584-24e95d66ac4e
+    Spec:
+      Conversion:
+        Strategy:  None
+      Group:       example.com
+      Names:
+        Kind:       VisitorApp
+        List Kind:  VisitorAppList
+        Plural:     visitorapps
+        Singular:   visitorapp
+      Scope:        Namespaced
+      Versions:
+        Name:  v1
+        Schema:
+          openAPIV3Schema:
+            Description:  VisitorApp is the Schema for the visitorapps API
+            Properties:
+              API Version:
+                Description:  APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+                Type:         string
+              Kind:
+                Description:  Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+                Type:         string
+              Metadata:
+                Type:  object
+              Spec:
+                Description:  VisitorAppSpec defines the desired state of VisitorApp
+                Properties:
+                  Size:
+                    Description:  INSERT ADDITIONAL SPEC FIELDS - desired state of cluster Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file Add custom validation using kubebuilder tags: https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html
+                    Format:       int32
+                    Type:         integer
+                  Title:
+                    Type:  string
+                Required:
+                  size
+                Type:  object
+              Status:
+                Description:  VisitorAppStatus defines the observed state of VisitorApp
+                Properties:
+                  Backend Image:
+                    Description:  INSERT ADDITIONAL STATUS FIELD - define observed state of cluster Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file Add custom validation using kubebuilder tags: https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html
+                    Type:         string
+                  Frontend Image:
+                    Type:  string
+                Required:
+                  backendImage
+                  frontendImage
+                Type:  object
+            Type:      object
+        Served:        true
+        Storage:       true
+        Subresources:
+          Status:
+    Status:
+      Accepted Names:
+        Kind:       VisitorApp
+        List Kind:  VisitorAppList
+        Plural:     visitorapps
+        Singular:   visitorapp
+      Conditions:
+        Last Transition Time:  2020-06-06T23:36:02Z
+        Message:               no conflicts found
+        Reason:                NoConflicts
+        Status:                True
+        Type:                  NamesAccepted
+        Last Transition Time:  2020-06-06T23:36:02Z
+        Message:               the initial names have been accepted
+        Reason:                InitialNamesAccepted
+        Status:                True
+        Type:                  Established
+      Stored Versions:
+        v1
+    Events:  <none>
+    [root@rhel3 visitorapp-operator]#
+
+26. Test run the operator:
+
+    [root@rhel3 visitorapp-operator]# operator-sdk run local --watch-namespace=default
+    INFO[0000] Running the operator locally; watching namespace "default"
+    {"level":"info","ts":1591486768.915666,"logger":"cmd","msg":"Operator Version: 0.0.1"}
+    {"level":"info","ts":1591486768.9157171,"logger":"cmd","msg":"Go Version: go1.14.4"}
+    {"level":"info","ts":1591486768.9157271,"logger":"cmd","msg":"Go OS/Arch: linux/amd64"}
+    {"level":"info","ts":1591486768.9157379,"logger":"cmd","msg":"Version of operator-sdk: v0.18.0"}
+    {"level":"info","ts":1591486768.9216905,"logger":"leader","msg":"Trying to become the leader."}
+    {"level":"info","ts":1591486768.921712,"logger":"leader","msg":"Skipping leader election; not running in a cluster."}
+    {"level":"info","ts":1591486769.2747808,"logger":"controller-runtime.metrics","msg":"metrics server is starting to listen","addr":"0.0.0.0:8383"}
+    {"level":"info","ts":1591486769.2749891,"logger":"cmd","msg":"Registering Components."}
+    {"level":"info","ts":1591486769.2751045,"logger":"cmd","msg":"Skipping CR metrics server creation; not running in a cluster."}
+    {"level":"info","ts":1591486769.2751107,"logger":"cmd","msg":"Starting the Cmd."}
+    {"level":"info","ts":1591486769.2753808,"logger":"controller-runtime.manager","msg":"starting metrics server","path":"/metrics"}
+    {"level":"info","ts":1591486769.275452,"logger":"controller-runtime.controller","msg":"Starting EventSource","controller":"visitorapp-controller","source":"kind source: /, Kind="}
+    {"level":"info","ts":1591486769.3758385,"logger":"controller-runtime.controller","msg":"Starting EventSource","controller":"visitorapp-controller","source":"kind source: /, Kind="}
+    {"level":"info","ts":1591486769.4762466,"logger":"controller-runtime.controller","msg":"Starting EventSource","controller":"visitorapp-controller","source":"kind source: /, Kind="}
+    {"level":"info","ts":1591486769.5766647,"logger":"controller-runtime.controller","msg":"Starting Controller","controller":"visitorapp-controller"}
+    {"level":"info","ts":1591486769.5767033,"logger":"controller-runtime.controller","msg":"Starting workers","controller":"visitorapp-controller","worker count":1}
+    {"level":"info","ts":1591487063.4016979,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487063.5020998,"logger":"controller_visitorapp","msg":"Creating a new secret","Secret.Namespace":"default","Secret.Name":"mysql-auth"}
+    {"level":"info","ts":1591487063.5077982,"logger":"controller_visitorapp","msg":"Creating a new Deployment","Deployment.Namespace":"default","Deployment.Name":"mysql"}
+    {"level":"info","ts":1591487063.536069,"logger":"controller_visitorapp","msg":"Creating a new Service","Service.Namespace":"default","Service.Name":"mysql-service"}
+    {"level":"info","ts":1591487063.5738614,"logger":"controller_visitorapp","msg":"MySQL isn't running, waiting for 5s"}
+    {"level":"info","ts":1591487063.5739167,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487063.57398,"logger":"controller_visitorapp","msg":"MySQL isn't running, waiting for 5s"}
+    {"level":"info","ts":1591487063.5846195,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487063.5847027,"logger":"controller_visitorapp","msg":"MySQL isn't running, waiting for 5s"}
+    {"level":"info","ts":1591487068.5740561,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487068.5743728,"logger":"controller_visitorapp","msg":"MySQL isn't running, waiting for 5s"}
+    {"level":"info","ts":1591487073.5745447,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487073.5746849,"logger":"controller_visitorapp","msg":"MySQL isn't running, waiting for 5s"}
+    {"level":"info","ts":1591487077.4055967,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487077.4057078,"logger":"controller_visitorapp","msg":"Creating a new Deployment","Deployment.Namespace":"default","Deployment.Name":"example-visitorapp-backend"}
+    {"level":"info","ts":1591487077.4086397,"logger":"controller_visitorapp","msg":"Creating a new Service","Service.Namespace":"default","Service.Name":"example-visitorapp-backend-service"}
+    {"level":"info","ts":1591487077.4493806,"logger":"controller_visitorapp","msg":"Creating a new Deployment","Deployment.Namespace":"default","Deployment.Name":"example-visitorapp-frontend"}
+    {"level":"info","ts":1591487077.4525712,"logger":"controller_visitorapp","msg":"Service Spec","Service.Name":"example-visitorapp-frontend-service"}
+    {"level":"info","ts":1591487077.4525979,"logger":"controller_visitorapp","msg":"Creating a new Service","Service.Namespace":"default","Service.Name":"example-visitorapp-frontend-service"}
+    {"level":"info","ts":1591487077.5123742,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487077.5159853,"logger":"controller_visitorapp","msg":"Service Spec","Service.Name":"example-visitorapp-frontend-service"}
+    {"level":"info","ts":1591487078.5748503,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487078.5779333,"logger":"controller_visitorapp","msg":"Service Spec","Service.Name":"example-visitorapp-frontend-service"}
+    {"level":"info","ts":1591487109.214013,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487109.2183652,"logger":"controller_visitorapp","msg":"Service Spec","Service.Name":"example-visitorapp-frontend-service"}
+    {"level":"info","ts":1591487143.806719,"logger":"controller_visitorapp","msg":"Reconciling VisitorApp","Request.Namespace":"default","Request.Name":"example-visitorapp"}
+    {"level":"info","ts":1591487143.811016,"logger":"controller_visitorapp","msg":"Service Spec","Service.Name":"example-visitorapp-frontend-service"}
+
+27.  Create a CR:
+
+    [root@rhel3 visitorapp-operator]# cat deploy/crds/*_cr.yaml
+    apiVersion: example.com/v1
+    kind: VisitorApp
+    metadata:
+      name: example-visitorapp
+    spec:
+      # Add fields here
+      size: 1
+      title: "My New Operator Dashboard"
+    [root@rhel3 visitorapp-operator]# kubectl get deployments
+    No resources found in default namespace.
+    [root@rhel3 visitorapp-operator]# kubectl get deployments --all-namespaces
+    NAMESPACE     NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+    kube-system   coredns       2/2     2            2           271d
+    trident       trident-csi   1/1     1            1           253d
+    [root@rhel3 visitorapp-operator]# kubectl apply -f deploy/crds/*_cr.yaml
+    visitorapp.example.com/example-visitorapp created
+
+28.  MySQL image becomes available:
+
+    [root@rhel3 visitorapp-operator]# kubectl get deployments --all-namespaces
+    NAMESPACE     NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
+    default       example-visitorapp-backend    0/1     1            0           6s
+    default       example-visitorapp-frontend   0/1     1            0           6s
+    default       mysql                         1/1     1            1           20s
+    kube-system   coredns                       2/2     2            2           271d
+
+29.  Backend image becomes available:
+
+    [root@rhel3 visitorapp-operator]# kubectl get deployments --all-namespaces
+    NAMESPACE     NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
+    default       example-visitorapp-backend    1/1     1            1           34s
+    default       example-visitorapp-frontend   0/1     1            0           34s
+    default       mysql                         1/1     1            1           48s
+    kube-system   coredns                       2/2     2            2           271d
+    trident       trident-csi                   1/1     1            1           253d
+
+30.  Fronend image becomes available:
+
+    [root@rhel3 visitorapp-operator]# kubectl get deployments --all-namespaces
+    NAMESPACE     NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
+    default       example-visitorapp-backend    1/1     1            1           68s
+    default       example-visitorapp-frontend   1/1     1            1           68s
+    default       mysql                         1/1     1            1           82s
+    kube-system   coredns                       2/2     2            2           271d
+    trident       trident-csi                   1/1     1            1           253d
+
+31. Review CR:
+
+    [root@rhel3 visitorapp-operator]# kubectl get visitorapp
+    NAME                 AGE
+    example-visitorapp   2m
+
+32.  Remove the CR:
+
+    [root@rhel3 visitorapp-operator]# kubectl delete -f deploy/crds/*_cr.yaml
+    visitorapp.example.com "example-visitorapp" deleted
+    [root@rhel3 visitorapp-operator]# kubectl get deployments --all-namespaces
+    NAMESPACE     NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+    kube-system   coredns       2/2     2            2           271d
+    trident       trident-csi   1/1     1            1           253d
+
+33.  Stop operator: Ctrl-C  or closed PuTTY
+
+34.  Build operator:
+
+    [root@rhel3 visitorapp-operator]# go version
+    go version go1.14.4 linux/amd64
+    [root@rhel3 visitorapp-operator]# operator-sdk build curtisab/visitorapp-operator:v0.0.1
+    INFO[0071] Building OCI image curtisab/visitorapp-operator:v0.0.1
+    Sending build context to Docker daemon  210.7MB
+    Step 1/7 : FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
+    latest: Pulling from ubi8/ubi-minimal
+    e96e3a1df3b2: Pull complete
+    1b99828eddf5: Pull complete
+    Digest: sha256:326c94ab44d1472a30d47c49c2f896df687184830fc66a66de00c416885125b0
+    Status: Downloaded newer image for registry.access.redhat.com/ubi8/ubi-minimal:latest
+    ---> 401e359e0f45
+    Step 2/7 : ENV OPERATOR=/usr/local/bin/visitorapp-operator     USER_UID=1001     USER_NAME=visitorapp-operator
+    ---> Running in cf441aea0eaf
+    Removing intermediate container cf441aea0eaf
+    ---> 75490ed5e6f6
+    Step 3/7 : COPY build/_output/bin/visitorapp-operator ${OPERATOR}
+    ---> 91b8dcd056d0
+    Step 4/7 : COPY build/bin /usr/local/bin
+    ---> 426f1116e67f
+    Step 5/7 : RUN  /usr/local/bin/user_setup
+    ---> Running in e047d5a84c02
+    + echo 'visitorapp-operator:x:1001:0:visitorapp-operator user:/root:/sbin/nologin'
+    + mkdir -p /root
+    + chown 1001:0 /root
+    + chmod ug+rwx /root
+    + rm /usr/local/bin/user_setup
+    Removing intermediate container e047d5a84c02
+    ---> e9c811270081
+    Step 6/7 : ENTRYPOINT ["/usr/local/bin/entrypoint"]
+    ---> Running in f4aa9bd74a99
+    Removing intermediate container f4aa9bd74a99
+    ---> 744240e2f138
+    Step 7/7 : USER ${USER_UID}
+    ---> Running in dcc2f52c8454
+    Removing intermediate container dcc2f52c8454
+    ---> 8cfd90f255f8
+    Successfully built 8cfd90f255f8
+    Successfully tagged curtisab/visitorapp-operator:v0.0.1
+    INFO[0081] Operator build complete.
+    [root@rhel3 visitorapp-operator]#
+
+    35. Docker push image to Docker Hub:
+    [root@rhel3 visitorapp-operator]# docker login
+    Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+    Username: curtisab
+    Password:
+    WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+    Configure a credential helper to remove this warning. See
+    https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+    Login Succeeded
+    [root@rhel3 visitorapp-operator]# docker push curtisab/visitorapp-operator:v0.0.1
+    The push refers to repository [docker.io/curtisab/visitorapp-operator]
+    73dc88843020: Pushed
+    32e7e76c915c: Pushed
+    3151778fa03c: Pushed
+    133b5003f6eb: Pushed
+    1776c40df06e: Pushed
+    v0.0.1: digest: sha256:2315dc0f3ed4f2167b0e00a01076ff4d135ee1c51ce00ed795a5dc3003ba1612 size: 1363
+    [root@rhel3 visitorapp-operator]#
+
+36.  Update the image in the deploy/operator.yaml file
+
+37.  Create a secret to read a private repo
+
+    kubectl create secret docker-registry regcred --docker-username=curtisab --docker-password=[password] --docker-email=curtis@burchett.me
+
+38.  Create a master yaml file (CRD, service account, role, rolebinding, secret, deployment) to deploy the operator and git push
+
+39.  On linux, git pull
+
+40.  Create the operator: 
+
+    [root@rhel3 visitorapp-operator]# kubectl apply -f deploy/visitorapp_operator.yaml
+    customresourcedefinition.apiextensions.k8s.io/visitorapps.example.com created
+    role.rbac.authorization.k8s.io/visitorapp-operator created
+    serviceaccount/visitorapp-operator created
+    rolebinding.rbac.authorization.k8s.io/visitorapp-operator created
+    secret/regcred created
+    deployment.apps/visitorapp-operator created
+
+41.  Verify everything:
+
+    [root@rhel3 visitorapp-operator]# kubectl describe role visitorapp-operator
+    Name:         visitorapp-operator
+    Labels:       <none>
+    Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                    {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"annotations":{},"name":"visitorapp-operator","namespace":"default"...
+    PolicyRule:
+      Resources                              Non-Resource URLs  Resource Names         Verbs
+      ---------                              -----------------  --------------         -----
+      pods                                   []                 []                     [create delete get list patch update watch get]
+      deployments.apps                       []                 []                     [create delete get list patch update watch get]
+      replicasets.apps                       []                 []                     [create delete get list patch update watch get]
+      configmaps                             []                 []                     [create delete get list patch update watch]
+      endpoints                              []                 []                     [create delete get list patch update watch]
+      events                                 []                 []                     [create delete get list patch update watch]
+      persistentvolumeclaims                 []                 []                     [create delete get list patch update watch]
+      secrets                                []                 []                     [create delete get list patch update watch]
+      services/finalizers                    []                 []                     [create delete get list patch update watch]
+      services                               []                 []                     [create delete get list patch update watch]
+      daemonsets.apps                        []                 []                     [create delete get list patch update watch]
+      statefulsets.apps                      []                 []                     [create delete get list patch update watch]
+      *.example.com                          []                 []                     [create delete get list patch update watch]
+      servicemonitors.monitoring.coreos.com  []                 []                     [get create]
+      deployments.apps/finalizers            []                 [visitorapp-operator]  [update]
+    [root@rhel3 visitorapp-operator]#
+
+    [root@rhel3 visitorapp-operator]# kubectl get sa
+    NAME                  SECRETS   AGE
+    default               1         271d
+    visitorapp-operator   1         3m51s
+    [root@rhel3 visitorapp-operator]# kubectl describe sa visitorapp-operator
+    Name:                visitorapp-operator
+    Namespace:           default
+    Labels:              <none>
+    Annotations:         kubectl.kubernetes.io/last-applied-configuration:
+                          {"apiVersion":"v1","kind":"ServiceAccount","metadata":{"annotations":{},"name":"visitorapp-operator","namespace":"default"}}
+    Image pull secrets:  <none>
+    Mountable secrets:   visitorapp-operator-token-7dr6x
+    Tokens:              visitorapp-operator-token-7dr6x
+    Events:              <none>
+
+    [root@rhel3 visitorapp-operator]# kubectl get rolebinding
+    NAME                  AGE
+    visitorapp-operator   4m22s
+    [root@rhel3 visitorapp-operator]# kubectl describe rolebinding visitorapp-operator
+    Name:         visitorapp-operator
+    Labels:       <none>
+    Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                    {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"RoleBinding","metadata":{"annotations":{},"name":"visitorapp-operator","namespace":"d...
+    Role:
+      Kind:  Role
+      Name:  visitorapp-operator
+    Subjects:
+      Kind            Name                 Namespace
+      ----            ----                 ---------
+      ServiceAccount  visitorapp-operator
+
+    [root@rhel3 visitorapp-operator]# kubectl get secret
+    NAME                              TYPE                                  DATA   AGE
+    default-token-dbq27               kubernetes.io/service-account-token   3      271d
+    regcred                           kubernetes.io/dockerconfigjson        1      5m4s
+    shared-bootstrap-data             Opaque                                1      238d
+    visitorapp-operator-token-7dr6x   kubernetes.io/service-account-token   3      5m4s
+    [root@rhel3 visitorapp-operator]# kubectl describe secret regcred
+    Name:         regcred
+    Namespace:    default
+    Labels:       <none>
+    Annotations:
+    Type:         kubernetes.io/dockerconfigjson
+
+    Data
+    ====
+    .dockerconfigjson:  151 bytes
+    [root@rhel3 visitorapp-operator]# kubectl describe secret visitorapp-operator-token-7dr6x
+    Name:         visitorapp-operator-token-7dr6x
+    Namespace:    default
+    Labels:       <none>
+    Annotations:  kubernetes.io/service-account.name: visitorapp-operator
+                  kubernetes.io/service-account.uid: 74eb4bcb-3889-49c3-bb91-d2665aa33be9
+
+    Type:  kubernetes.io/service-account-token
+
+    Data
+    ====
+    ca.crt:     1025 bytes
+    namespace:  7 bytes
+    token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Img2c2RKNlRMa1JPdi1Rd2t3anVOeVVJUVRkX21tMUFocWZ3Y0NIUW1rS3cifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InZpc2l0b3JhcHAtb3BlcmF0b3ItdG9rZW4tN2RyNngiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoidmlzaXRvcmFwcC1vcGVyYXRvciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6Ijc0ZWI0YmNiLTM4ODktNDljMy1iYjkxLWQyNjY1YWEzM2JlOSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OnZpc2l0b3JhcHAtb3BlcmF0b3IifQ.OEyoH8P5xkQKmUnep6b6lxrQCNKCamrbMRXx-BEL1QysvEhLCWz61r4VTpp1Wm42EG-1E-V07ROYgNz2FMxSKczwbbstFwx5_UshpjYS3-S4_P2quTbKMX1BSaMqWkNXWWcOiucZL019Hc7lom9BMkJJlTQmfKRK3AmVh3zKvHiKsvhn9fW3vlAp4nOQI8sO59NRJWfV3H444ZAtxtfebQee7aDjlxp0gpEbWB3F5oqVGMgjmZMDn2UQqk8DqagartFT8_o3Zlv_ys4wT2by9YxTeFJgxVnP4bFl39POhaaq2nUjyDv6SUg6PdRmlnjd6gNc5i4bAcyOy7QROVaYSQ
+    [root@rhel3 visitorapp-operator]#
+
+    [root@rhel3 visitorapp-operator]# kubectl get deployments
+    NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+    visitorapp-operator   1/1     1            1           6m38s
+    [root@rhel3 visitorapp-operator]# kubectl describe deployments visitorapp-operator
+    Name:                   visitorapp-operator
+    Namespace:              default
+    CreationTimestamp:      Sun, 07 Jun 2020 01:34:24 +0000
+    Labels:                 <none>
+    Annotations:            deployment.kubernetes.io/revision: 1
+                            kubectl.kubernetes.io/last-applied-configuration:
+                              {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"visitorapp-operator","namespace":"default"},"spec":{"repl...
+    Selector:               name=visitorapp-operator
+    Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+    StrategyType:           RollingUpdate
+    MinReadySeconds:        0
+    RollingUpdateStrategy:  25% max unavailable, 25% max surge
+    Pod Template:
+      Labels:           name=visitorapp-operator
+      Service Account:  visitorapp-operator
+      Containers:
+      visitorapp-operator:
+        Image:      curtisab/visitorapp-operator:v0.0.1
+        Port:       <none>
+        Host Port:  <none>
+        Command:
+          visitorapp-operator
+        Environment:
+          WATCH_NAMESPACE:   (v1:metadata.namespace)
+          POD_NAME:          (v1:metadata.name)
+          OPERATOR_NAME:    visitorapp-operator
+        Mounts:             <none>
+      Volumes:              <none>
+    Conditions:
+      Type           Status  Reason
+      ----           ------  ------
+      Available      True    MinimumReplicasAvailable
+      Progressing    True    NewReplicaSetAvailable
+    OldReplicaSets:  <none>
+    NewReplicaSet:   visitorapp-operator-5b975856f5 (1/1 replicas created)
+    Events:
+      Type    Reason             Age    From                   Message
+      ----    ------             ----   ----                   -------
+      Normal  ScalingReplicaSet  6m57s  deployment-controller  Scaled up replica set visitorapp-operator-5b975856f5 to 1
+
+    [root@rhel3 visitorapp-operator]# kubectl get replicaset
+    NAME                             DESIRED   CURRENT   READY   AGE
+    visitorapp-operator-5b975856f5   1         1         1       7m59s
+    [root@rhel3 visitorapp-operator]# kubectl describe rs visitorapp-operator-5b975856f5
+    Name:           visitorapp-operator-5b975856f5
+    Namespace:      default
+    Selector:       name=visitorapp-operator,pod-template-hash=5b975856f5
+    Labels:         name=visitorapp-operator
+                    pod-template-hash=5b975856f5
+    Annotations:    deployment.kubernetes.io/desired-replicas: 1
+                    deployment.kubernetes.io/max-replicas: 2
+                    deployment.kubernetes.io/revision: 1
+    Controlled By:  Deployment/visitorapp-operator
+    Replicas:       1 current / 1 desired
+    Pods Status:    1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+    Pod Template:
+      Labels:           name=visitorapp-operator
+                        pod-template-hash=5b975856f5
+      Service Account:  visitorapp-operator
+      Containers:
+      visitorapp-operator:
+        Image:      curtisab/visitorapp-operator:v0.0.1
+        Port:       <none>
+        Host Port:  <none>
+        Command:
+          visitorapp-operator
+        Environment:
+          WATCH_NAMESPACE:   (v1:metadata.namespace)
+          POD_NAME:          (v1:metadata.name)
+          OPERATOR_NAME:    visitorapp-operator
+        Mounts:             <none>
+      Volumes:              <none>
+    Events:
+      Type    Reason            Age    From                   Message
+      ----    ------            ----   ----                   -------
+      Normal  SuccessfulCreate  8m11s  replicaset-controller  Created pod: visitorapp-operator-5b975856f5-fgc5q
+
+
+    [root@rhel3 visitorapp-operator]# kubectl get pods
+    NAME                                   READY   STATUS    RESTARTS   AGE
+    visitorapp-operator-5b975856f5-fgc5q   1/1     Running   0          7m20s
+    [root@rhel3 visitorapp-operator]# kubectl describe pods visitorapp-operator-5b975856f5-fgc5q
+    Name:         visitorapp-operator-5b975856f5-fgc5q
+    Namespace:    default
+    Priority:     0
+    Node:         rhel2/192.168.0.62
+    Start Time:   Sun, 07 Jun 2020 01:34:24 +0000
+    Labels:       name=visitorapp-operator
+                  pod-template-hash=5b975856f5
+    Annotations:  <none>
+    Status:       Running
+    IP:           10.44.0.1
+    IPs:
+      IP:           10.44.0.1
+    Controlled By:  ReplicaSet/visitorapp-operator-5b975856f5
+    Containers:
+      visitorapp-operator:
+        Container ID:  docker://ef74ff92bbbbd4ebf4b1dce0f7a9391b26118765d1419dd02fb887d1677b2c7e
+        Image:         curtisab/visitorapp-operator:v0.0.1
+        Image ID:      docker-pullable://curtisab/visitorapp-operator@sha256:2315dc0f3ed4f2167b0e00a01076ff4d135ee1c51ce00ed795a5dc3003ba1612
+        Port:          <none>
+        Host Port:     <none>
+        Command:
+          visitorapp-operator
+        State:          Running
+          Started:      Sun, 07 Jun 2020 01:34:25 +0000
+        Ready:          True
+        Restart Count:  0
+        Environment:
+          WATCH_NAMESPACE:  default (v1:metadata.namespace)
+          POD_NAME:         visitorapp-operator-5b975856f5-fgc5q (v1:metadata.name)
+          OPERATOR_NAME:    visitorapp-operator
+        Mounts:
+          /var/run/secrets/kubernetes.io/serviceaccount from visitorapp-operator-token-7dr6x (ro)
+    Conditions:
+      Type              Status
+      Initialized       True
+      Ready             True
+      ContainersReady   True
+      PodScheduled      True
+    Volumes:
+      visitorapp-operator-token-7dr6x:
+        Type:        Secret (a volume populated by a Secret)
+        SecretName:  visitorapp-operator-token-7dr6x
+        Optional:    false
+    QoS Class:       BestEffort
+    Node-Selectors:  <none>
+    Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                    node.kubernetes.io/unreachable:NoExecute for 300s
+    Events:
+      Type    Reason     Age    From               Message
+      ----    ------     ----   ----               -------
+      Normal  Scheduled  7m32s  default-scheduler  Successfully assigned default/visitorapp-operator-5b975856f5-fgc5q to rhel2
+      Normal  Pulling    7m31s  kubelet, rhel2     Pulling image "curtisab/visitorapp-operator:v0.0.1"
+      Normal  Pulled     7m31s  kubelet, rhel2     Successfully pulled image "curtisab/visitorapp-operator:v0.0.1"
+      Normal  Created    7m31s  kubelet, rhel2     Created container visitorapp-operator
+      Normal  Started    7m31s  kubelet, rhel2     Started container visitorapp-operator
+    [root@rhel3 visitorapp-operator]#
+
+    [root@rhel3 visitorapp-operator]# kubectl get crds
+    NAME                                             CREATED AT
+    tridentbackends.trident.netapp.io                2019-09-09T04:25:30Z
+    tridentnodes.trident.netapp.io                   2019-09-09T04:25:30Z
+    tridentsnapshots.trident.netapp.io               2019-09-09T04:25:30Z
+    tridentstorageclasses.trident.netapp.io          2019-09-09T04:25:30Z
+    tridenttransactions.trident.netapp.io            2019-09-09T04:25:30Z
+    tridentversions.trident.netapp.io                2019-09-09T04:25:30Z
+    tridentvolumes.trident.netapp.io                 2019-09-09T04:25:30Z
+    visitorapps.example.com                          2020-06-07T01:34:24Z
+    volumesnapshotclasses.snapshot.storage.k8s.io    2019-09-09T04:25:33Z
+    volumesnapshotcontents.snapshot.storage.k8s.io   2019-09-09T04:25:33Z
+    volumesnapshots.snapshot.storage.k8s.io          2019-09-09T04:25:33Z
+
+    [root@rhel3 visitorapp-operator]# kubectl get visitorapp
+    No resources found in default namespace.
+
+42.  Create a CR and verify:
+
+    [root@rhel3 visitorapp-operator]# kubectl apply -f deploy/crds/*_cr.yaml
+    visitorapp.example.com/example-visitorapp created
+    [root@rhel3 visitorapp-operator]# kubectl get visitorapp
+    NAME                 AGE
+    example-visitorapp   3s
+    [root@rhel3 visitorapp-operator]# kubectl describe visitorapp example-visitorapp
+    Name:         example-visitorapp
+    Namespace:    default
+    Labels:       <none>
+    Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                    {"apiVersion":"example.com/v1","kind":"VisitorApp","metadata":{"annotations":{},"name":"example-visitorapp","namespace":"default"},"spec":...
+    API Version:  example.com/v1
+    Kind:         VisitorApp
+    Metadata:
+      Creation Timestamp:  2020-06-07T01:44:33Z
+      Generation:          1
+      Resource Version:    646726
+      Self Link:           /apis/example.com/v1/namespaces/default/visitorapps/example-visitorapp
+      UID:                 420f9371-a621-495d-902e-ed9756575efe
+    Spec:
+      Size:   1
+      Title:  My New Operator Dashboard
+    Status:
+      Backend Image:   jdob/visitors-service:1.0.0
+      Frontend Image:  jdob/visitors-webui:1.0.0
+    Events:            <none>
+
+    [root@rhel3 crds]# kubectl get deployments
+    NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
+    example-visitorapp-backend    1/1     1            1           5m
+    example-visitorapp-frontend   1/1     1            1           5m
+    mysql                         1/1     1            1           5m
+    visitorapp-operator           1/1     1            1           5m
+
+
+    [root@rhel3 visitorapp-operator]# kubectl get pods
+    NAME                                           READY   STATUS    RESTARTS   AGE
+    example-visitorapp-backend-748745cb84-89c5z    1/1     Running   0          53s
+    example-visitorapp-frontend-75d6d7c674-6g7gl   1/1     Running   0          53s
+    mysql-6f978d75b8-kc4jw                         1/1     Running   0          55s
+    visitorapp-operator-5b975856f5-fgc5q           1/1     Running   0          11m
+    [root@rhel3 visitorapp-operator]# kubectl get services
+    NAME                                  TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+    example-visitorapp-backend-service    NodePort    10.104.164.255   <none>        8000:30685/TCP      68s
+    example-visitorapp-frontend-service   NodePort    10.107.28.229    <none>        3000:30686/TCP      68s
+    kubernetes                            ClusterIP   10.96.0.1        <none>        443/TCP             271d
+    mysql-service                         ClusterIP   None             <none>        3306/TCP            70s
+    visitorapp-operator-metrics           ClusterIP   10.103.18.72     <none>        8383/TCP,8686/TCP   11m
+    [root@rhel3 visitorapp-operator]#
+

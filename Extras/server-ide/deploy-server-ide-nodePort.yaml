@@ -1,0 +1,45 @@
+# Found here:  https://www.digitalocean.com/community/tutorials/how-to-set-up-the-code-server-cloud-ide-platform-on-digitalocean-kubernetes
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: code-server
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: code-server
+ namespace: code-server
+spec:
+ type: NodePort
+ ports:
+ - port: 80
+   targetPort: 8080
+   nodePort: 30007
+ selector:
+   app: code-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: code-server
+  name: code-server
+  namespace: code-server
+spec:
+  selector:
+    matchLabels:
+      app: code-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: code-server
+    spec:
+      containers:
+      - image: codercom/code-server:latest
+        imagePullPolicy: Always
+        name: code-server
+        env:
+        - name: PASSWORD
+          value: "Netapp1!"

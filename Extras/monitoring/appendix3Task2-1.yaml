@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example-app
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+      - name: example-app
+        image: fabxc/instrumented_app
+        ports:
+        - name: web
+          containerPort: 8080
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: example-app
+  labels:
+    app: example-app
+spec:
+  selector:
+    app: example-app
+  ports:
+  - name: web
+    port: 8080
