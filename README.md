@@ -1,4 +1,4 @@
-# STRWS-ILT-UATWK
+# STRSW-ILT-UATWK
 Using Astra Trident with Kubernetes <br />
 Version 1.0 (March 2022) <br />
 Kubernetes v1.23  <br />
