@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: san-backend-secret
+  namespace: trident
 type: kubernetes.io/basic-auth
 stringData:
   username: vsadmin
@@ -11,6 +12,7 @@ apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
   name: san-backend
+  namespace: trident
 spec:
   version: 1
   backendName: ontap-san-backend
