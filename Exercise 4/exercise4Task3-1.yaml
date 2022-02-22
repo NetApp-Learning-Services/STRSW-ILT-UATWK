@@ -2,10 +2,10 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: nfs-import
-  namespace: trident
+  namespace: default
 spec:
   accessModes:
-    - ROX
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
