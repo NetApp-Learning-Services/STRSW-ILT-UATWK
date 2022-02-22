@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: two-pod
+  labels:
+    app: web
 spec:
   volumes:
   - name: change_me
