@@ -3,6 +3,7 @@ kind: StorageClass
 metadata:
   name: zone1-nas
 provisioner: csi.trident.netapp.io
+volumeBindingMode: WaitForFirstConsumer
 allowedTopologies:
 - matchLabelExpressions:
   - key: topology.kubernetes.io/zone
