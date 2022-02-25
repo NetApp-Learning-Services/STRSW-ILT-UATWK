@@ -9,7 +9,7 @@ metadata:
   name: grafana
   namespace: monitoring
 spec:
-  replicas: 1
+  replicas: 1 
   selector:
     matchLabels:
       app.kubernetes.io/component: grafana
@@ -28,7 +28,9 @@ spec:
         app.kubernetes.io/version: 8.3.4
     spec:
       containers:
-      - env: []
+      - env: 
+        - name: GF_INSTALL_PLUGINS       #CURTIS ADDED
+          value: grafana-piechart-panel  #CURTIS ADDED
         image: grafana/grafana:8.3.4
         name: grafana
         ports:
@@ -136,6 +138,9 @@ spec:
         - mountPath: /etc/grafana
           name: grafana-config
           readOnly: false
+        - mountPath: /tmp       #CURTIS ADDED
+          name: grafana-temp    #CURTIS ADDED
+          readOnly: false       #CURTIS ADDED
       nodeSelector:
         kubernetes.io/os: linux
       securityContext:
@@ -144,6 +149,8 @@ spec:
         runAsUser: 65534
       serviceAccountName: grafana
       volumes:
+      - emptyDir: {}       #CURTIS ADDED
+        name: grafana-temp #CURTIS ADDED
       - emptyDir: {}
         name: grafana-storage
       - name: grafana-datasources
