@@ -39,7 +39,6 @@ spec:
       - >
         while true; do
           date >> /pod-data/index.html;
-
-          echo Hello from the second container >> /pod-data/index.html;
+          printf 'Hello from the second container<br>' >> /pod-data/index.html;
           sleep 1;
         done
