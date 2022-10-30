@@ -37,7 +37,7 @@ spec:
         app: code-server
     spec:
       containers:
-      - image: codercom/code-server:latest
+      - image: codercom/code-server:4.8.1
         imagePullPolicy: Always
         name: code-server
         env:

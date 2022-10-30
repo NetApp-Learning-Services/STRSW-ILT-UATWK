@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: example-app
-        image: fabxc/instrumented_app
+        image: fabxc/instrumented_app:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - name: web
           containerPort: 8080

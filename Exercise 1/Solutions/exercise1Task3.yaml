@@ -23,7 +23,8 @@ spec:
     - name: shared-data
       mountPath: /usr/share/nginx/html
   - name: second
-    image: debian
+    image: debian:10.10
+    imagePullPolicy: IfNotPresent
     resources:
       requests:
         memory: "64Mi"
