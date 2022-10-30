@@ -4,7 +4,8 @@ metadata:
   name: direct-nfs-pod
 spec:
   containers:
-  - image: debian
+  - image: debian:10.10
+    imagePullPolicy: IfNotPresent
     name: linux
     command:
       - /bin/sh

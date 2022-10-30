@@ -4,7 +4,8 @@ metadata:
   name: emptydir-pod
 spec:
   containers:
-  - image: nginx
+  - image: nginx:1.14.2
+    imagePullPolicy: IfNotPresent
     name: web
     resources:
       requests:

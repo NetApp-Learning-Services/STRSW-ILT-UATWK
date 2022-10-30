@@ -5,7 +5,8 @@ metadata:
   namespace: default
 spec:
   containers:
-  - image: alpine
+  - image: alpine:3.15.4
+    imagePullPolicy: IfNotPresent
     name: linux
     command:
       - /bin/sh

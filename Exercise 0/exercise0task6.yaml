@@ -6,6 +6,7 @@ spec:
   containers:
   - name: app
     image: nginx:1.14.2
+    imagePullPolicy: IfNotPresent
     ports:
     - containerPort: 80
     resources:

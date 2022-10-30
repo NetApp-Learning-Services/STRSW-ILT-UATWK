@@ -7,7 +7,8 @@ metadata:
 spec:
   containers:
     - name: nfs-container
-      image: nginx
+      image: nginx:1.14.2
+      imagePullPolicy: IfNotPresent
       resources:
         requests:
           memory: "64Mi"
