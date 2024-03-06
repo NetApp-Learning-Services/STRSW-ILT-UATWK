@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nvme-basic
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: nvme-backend
+  fsType: "ext4"

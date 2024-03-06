@@ -11,7 +11,7 @@ spec:
        claimName: change_me
   containers:
     - name: san-container
-      image: nginx
+      image: nginx:1.25-alpine-slim
       resources:
         requests:
           memory: "64Mi"

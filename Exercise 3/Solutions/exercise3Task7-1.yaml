@@ -1,0 +1,16 @@
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: nvme-backend
+  namespace: trident
+spec:
+  version: 1
+  backendName: ontap-nvme-backend
+  storageDriverName: ontap-san
+  managementLIF: 192.168.0.40
+  dataLIF: 192.168.0.51
+  svm: svm1
+  sanType: nvme
+  useREST: true
+  credentials:
+    name: san-backend-secret

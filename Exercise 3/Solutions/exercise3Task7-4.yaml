@@ -1,18 +1,17 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: nfs-pod
+  name: nvme-pod
   labels:
-    app: nfs-web
+    app: nvme-web
 spec:
   volumes:
-    - name: nfs-storage
+    - name: nvme-storage
       persistentVolumeClaim:
-       claimName: change_me
+       claimName: nvme-basic
   containers:
-    - name: nfs-container
+    - name: nvme-container
       image: nginx:1.25-alpine-slim
-      imagePullPolicy: IfNotPresent
       resources:
         requests:
           memory: "64Mi"
@@ -25,4 +24,4 @@ spec:
           name: "http-server"
       volumeMounts:
         - mountPath: "/usr/share/nginx/html"
-          name: nfs-storage
+          name: nvme-storage
