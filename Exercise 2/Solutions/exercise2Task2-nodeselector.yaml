@@ -5,8 +5,8 @@ metadata:
 spec:
   debug: true
   namespace: trident
-  nodePluginTolerations:
-  - key: "trident"
-    operator: "Equal"
-    value: "true"
-    effect: "NoSchedule"
+  imagePullPolicy: IfNotPresent
+  windows: false
+  cloudProvider: ""
+  nodePluginNodeSelector:
+    storage: trident
