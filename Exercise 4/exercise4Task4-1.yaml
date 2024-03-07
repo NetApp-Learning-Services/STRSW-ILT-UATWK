@@ -5,7 +5,7 @@ metadata:
   namespace: trident
 type: kubernetes.io/basic-auth
 stringData:
-  username: admin
+  username: vsadmin
   password: Netapp1!
 ---
 apiVersion: trident.netapp.io/v1
@@ -17,7 +17,7 @@ spec:
   version: 1
   backendName: zone1-nas
   storageDriverName: ontap-nas
-  managementLIF: 192.168.0.101
+  managementLIF: 192.168.0.30
   dataLIF: 192.168.0.31
   storagePrefix: zone1_
   credentials:

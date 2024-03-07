@@ -5,4 +5,3 @@ metadata:
 provisioner: csi.trident.netapp.io
 parameters:
   backendType: nvme-backend
-  fsType: "ext4"
