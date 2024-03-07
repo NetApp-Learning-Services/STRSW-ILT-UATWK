@@ -4,4 +4,4 @@ metadata:
   name: nvme-basic
 provisioner: csi.trident.netapp.io
 parameters:
-  backendType: nvme-backend
+  backendType: ontap-san
