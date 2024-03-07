@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: change_me
+spec:
+  accessModes:
+    - change_me
+  resources:
+    requests:
+      storage: change_me
+  storageClassName: change_me
+  dataSource:
+    name: change_me
+    kind: change_me
+    apiGroup: change_mes

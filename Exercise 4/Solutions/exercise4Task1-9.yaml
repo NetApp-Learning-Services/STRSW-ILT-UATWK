@@ -11,7 +11,7 @@ spec:
        claimName: nfs-snap
   containers:
     - name: nfs-container
-      image: nginx:1.14.2
+      image: nginx:1.25-alpine-slim
       imagePullPolicy: IfNotPresent
       resources:
         requests:
