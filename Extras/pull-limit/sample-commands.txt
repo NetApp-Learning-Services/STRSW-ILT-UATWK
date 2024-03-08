@@ -1,0 +1,32 @@
+Checking the anonomyous pull limit:
+
+step 1: sudo apt install -y jq
+step 2: TOKEN=$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
+step 3: curl --head -H "Authorization: Bearer $TOKEN" https://registry-1.docker.io/v2/ratelimitpreview/test/manifests/latest
+
+Create a secret for an authenticated user:
+                                            kubectl create secret docker-registry dockerhubkey \
+                                                    --docker-username=[USERNAME] \ 
+                                                    --docker-password=[PASSWORD] \  
+                                                    --docker-email=[EMAIL OF THE FREE ACCOUNT]
+
+Edit the service account to add the imagePullSecrets:
+                                            kubectl -n default edit serviceaccount default 
+
+                                            apiVersion: v1
+                                            kind: ServiceAccount
+                                            metadata:
+                                            creationTimestamp: 2015-08-07T22:02:39Z
+                                            name: default
+                                            namespace: default
+                                            uid: 052fb0f4-3d50-11e5-b066-42010af0d7b6
+                                            secrets:
+                                            - name: default-token-uudge
+                                            imagePullSecrets:
+                                            - name: dockerhubkey
+
+
+Checking an authenticated user pull limit:
+step 1: sudo apt install -y jq
+step 2: MYTOKEN=$(curl --user 'username:password' "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
+step 3: curl --head -H "Authorization: Bearer $MYTOKEN" https://registry-1.docker.io/v2/ratelimitpreview/test/manifests/latest
