@@ -18,13 +18,14 @@ stringData:
   username: vsadmin
   password: Netapp1!
 ---
-apiVersion: gateway.netapp.com/v1alpha2
+apiVersion: gateway.netapp.com/v1beta1
 kind: StorageVirtualMachine
 metadata:
   name: svm0
   namespace: gateway
 spec:
   svmName: svm0
+  svmDeletionPolicy: Retain
   clusterHost: 192.168.0.101
   debug: false
   aggregates:
