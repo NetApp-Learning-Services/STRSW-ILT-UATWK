@@ -12,4 +12,4 @@ if [ ! -d "$DIR" ]; then
 fi
 echo "$konfig" > $DIR/config
 #echo "$konfig" > config
-$KUBECONFIG=$DIR/configs
+$KUBECONFIG=$DIR/config
