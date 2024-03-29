@@ -1,11 +1,7 @@
-kind: PersistentVolumeClaim
-apiVersion: v1
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
   name: san-basic
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: change_me
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: change_me
