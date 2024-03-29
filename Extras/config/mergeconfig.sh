@@ -1,3 +1,5 @@
+# This script has been written for this exercise environment 
+# and is not intented to be used in a production enviroment
 # execute by: ./mergeconfig.sh
 
 #!/bin/bash
