@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: ontap-cluster1-admin
-  namespace: gateway
+  namespace: gateway-system
 type: kubernetes.io/basic-auth
 stringData:
   username: admin
@@ -12,7 +12,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: ontap-svm0-admin
-  namespace: gateway
+  namespace: gateway-system
 type: kubernetes.io/basic-auth
 stringData:
   username: vsadmin
@@ -22,26 +22,26 @@ apiVersion: gateway.netapp.com/v1beta1
 kind: StorageVirtualMachine
 metadata:
   name: svm0
-  namespace: gateway
+  namespace: gateway-system
 spec:
   svmName: svm0
-  svmDeletionPolicy: Retain
+  svmDeletionPolicy: Delete
   clusterHost: 192.168.0.101
   debug: false
   aggregates:
   - name: Cluster1_01_FC_1
   management:
     name: manage1
-    ip: 192.168.0.70
+    ip: 192.168.0.30
     netmask: 255.255.255.0
     broadcastDomain: Default
     homeNode: Cluster1-01
   vsadminCredentials:
     name: ontap-svm0-admin
-    namespace: gateway
+    namespace: gateway-system
   clusterCredentials:
     name: ontap-cluster1-admin
-    namespace: gateway
+    namespace: gateway-system
   nfs:
     enabled: true
     v3: true
