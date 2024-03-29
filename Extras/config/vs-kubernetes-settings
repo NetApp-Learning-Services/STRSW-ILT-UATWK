@@ -5,6 +5,5 @@
         "vscode-kubernetes.minikube-path-linux": "/home/user/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube",
         "vscode-kubernetes.helm-path-linux": "/home/user/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm"
     },
-    "git.confirmSync": false,
     "git.autofetch": true
 }
