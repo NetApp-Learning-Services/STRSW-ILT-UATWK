@@ -6,7 +6,7 @@ metadata:
 spec:
   version: 1
   backendName: ontap-nvme-backend
-  storageDriverName: ontap-san-economy
+  storageDriverName: ontap-san
   managementLIF: change_me
   dataLIF: change_me
   svm: change_me
