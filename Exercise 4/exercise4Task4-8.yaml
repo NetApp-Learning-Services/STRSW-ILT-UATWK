@@ -1,7 +1,7 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: zone2-alpine
+  name: zone2-pod
   namespace: topology
 spec:
   affinity:
@@ -19,7 +19,7 @@ spec:
        claimName: zone2-pvc
   containers:
     - name: linux
-      image: alpine:3.15.4
+      image: debian:11.8-slim
       imagePullPolicy: IfNotPresent
       resources:
         requests:

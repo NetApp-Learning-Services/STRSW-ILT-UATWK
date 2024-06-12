@@ -10,7 +10,7 @@ spec:
     # add here
   containers:
   - name: first
-    image: nginx:1.14.2
+    image: nginx:1.25-alpine-slim
     imagePullPolicy: IfNotPresent
     resources:
       requests:
@@ -23,7 +23,7 @@ spec:
     - name: change_me
       mountPath: /usr/share/nginx/html
   - name: second
-    image: debian:10.10
+    image: debian:11.8-slim
     imagePullPolicy: IfNotPresent
     resources:
       requests:

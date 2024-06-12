@@ -6,7 +6,8 @@ metadata:
 spec:
   containers:
   - name: app
-    image: nginx:1.14.2
+    image: nginx:1.25-alpine-slim
+    imagePullPolicy: IfNotPresent
     ports:
     - containerPort: 80
     resources:

@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: example-app
-  namespace: default
 spec:
   replicas: 3
   selector:
@@ -32,7 +31,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: example-app
-  namespace: default
   labels:
     app: example-app
 spec:
