@@ -1,27 +1,12 @@
+kind: PersistentVolumeClaim
 apiVersion: v1
-kind: Secret
 metadata:
-  name: nas-backend-secret
-  namespace: trident
-type: kubernetes.io/basic-auth
-stringData:
-  username: vsadmin
-  password: Netapp1!
----
-apiVersion: trident.netapp.io/v1
-kind: TridentBackendConfig
-metadata:
-  name: zone1-nas-backend
-  namespace: trident
+  name: nfs-import
+  namespace: default
 spec:
-  version: 1
-  backendName: zone1-nas
-  storageDriverName: ontap-nas
-  managementLIF: 192.168.0.30
-  dataLIF: 192.168.0.31
-  storagePrefix: zone1_
-  credentials:
-    name: nas-backend-secret
-  supportedTopologies:
-    - topology.kubernetes.io/region: trident
-    - topology.kubernetes.io/zone: zone1
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: nfs-basic

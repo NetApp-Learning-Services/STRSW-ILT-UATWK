@@ -1,30 +1,28 @@
-# apiVersion: v1
-# kind: Secret
-# metadata:
-#   name: san-backend-secret
-#   namespace: trident
-# type: kubernetes.io/basic-auth
-# stringData:
-#   username: vsadmin
-#   password: Netapp1!
-# ---
-apiVersion: trident.netapp.io/v1
-kind: TridentBackendConfig
+kind: Pod
+apiVersion: v1
 metadata:
-  name: zone2-san-backend
-  namespace: trident
+  name: nfs-import-pod
+  labels:
+    app: nfs-import-web
 spec:
-  version: 1
-  backendName: zone2-san
-  storageDriverName: ontap-san
-  managementLIF: 192.168.0.40
-  dataLIF: 192.168.0.41
-  svm: svm1
-  storagePrefix: zone2_
-  credentials:
-    name: san-backend-secret
-  supportedTopologies:
-    - topology.kubernetes.io/region: trident
-    - topology.kubernetes.io/zone: zone2
-
-
+  volumes:
+    - name: nfs-storage
+      persistentVolumeClaim:
+       claimName: nfs-import
+  containers:
+    - name: nfs-container
+      image: nginx:1.25-alpine-slim
+      imagePullPolicy: IfNotPresent
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: nfs-storage

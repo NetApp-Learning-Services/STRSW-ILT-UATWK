@@ -1,16 +1,11 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: v1
+kind: Service
 metadata:
-  name: zone1-nas
-provisioner: csi.trident.netapp.io
-volumeBindingMode: WaitForFirstConsumer
-allowedTopologies:
-- matchLabelExpressions:
-  - key: topology.kubernetes.io/zone
-    values:
-    - zone1
-  - key: topology.kubernetes.io/region
-    values:
-    - trident
-parameters:
-  backendType: "ontap-nas"
+  name: nfs-import-web
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: nfs-import-web
