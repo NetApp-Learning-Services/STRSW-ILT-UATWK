@@ -2,6 +2,7 @@ kind: Pod
 apiVersion: v1
 metadata:
   name: san-pod
+  namespace: default
   labels:
     app: san-web
 spec:
