@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: san-backend-secret
+  name: c1-svm1-backend-secret
   namespace: trident
 type: kubernetes.io/basic-auth
 stringData:
@@ -11,7 +11,7 @@ stringData:
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
-  name: san-backend
+  name: c1-svm1-san-backend
   namespace: trident
 spec:
   version: 1
@@ -21,4 +21,4 @@ spec:
   dataLIF: change_me
   svm: change_me
   credentials:
-    name: san-backend-secret
+    name: c1-svm1-backend-secret
