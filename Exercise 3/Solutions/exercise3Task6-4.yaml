@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: san-basic
+  name: c1-svm1-san-basic
   namespace: default
 spec:
   accessModes:
@@ -9,4 +9,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: san-basic
+  storageClassName: c1-svm1-san-basic

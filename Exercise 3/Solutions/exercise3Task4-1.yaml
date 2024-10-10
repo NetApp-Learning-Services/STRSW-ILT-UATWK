@@ -8,7 +8,7 @@ spec:
   volumes:
     - name: nfs-storage
       persistentVolumeClaim:
-       claimName: nfs-basic
+       claimName: c1-svm0-nfs-basic
   containers:
     - name: nfs-container
       image: nginx:1.25-alpine-slim
