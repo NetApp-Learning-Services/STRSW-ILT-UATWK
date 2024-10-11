@@ -1,5 +1,5 @@
 echo "############################################"
-echo "### Trident Protect install"
+echo "###      Trident Protect install         ###"
 echo "############################################"
 
 kubectl create ns trident-protect
