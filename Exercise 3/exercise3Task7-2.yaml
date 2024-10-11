@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: c1-svm0-nfs-pvc-tbc
+  name: c1-svm0-nas-pvc
   namespace: default
 spec:
   accessModes:

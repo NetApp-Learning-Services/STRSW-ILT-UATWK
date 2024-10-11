@@ -21,6 +21,7 @@ spec:
   managementLIF: 192.168.0.101
   dataLIF: 192.168.0.31
   svm: svm0
+  storagePrefix: nas_
   credentials:
     name: c1-svm0-backend-secret
   storage:
