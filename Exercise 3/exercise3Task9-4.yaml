@@ -2,6 +2,7 @@ kind: Pod
 apiVersion: v1
 metadata:
   name: nvme-pod
+  namespace: default
   labels:
     app: nvme-web
 spec:

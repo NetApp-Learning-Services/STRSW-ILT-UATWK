@@ -1,7 +1,7 @@
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
-  name: nvme-backend
+  name: c1-svm1-nvme-backend
   namespace: trident
 spec:
   version: 1
