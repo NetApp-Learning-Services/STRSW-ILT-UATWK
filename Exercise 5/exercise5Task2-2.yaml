@@ -1,0 +1,29 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: AppVault
+metadata:
+  name: ontap-s3-appvault
+  namespace: trident-protect
+spec:
+  providerConfig:
+    azure:
+      accountName: ""
+      bucketName: ""
+      endpoint: ""
+    gcp:
+      bucketName: ""
+      projectID: ""
+    s3:
+      bucketName: tp-store
+      endpoint: 192.168.0.31
+      skipCertValidation: "true"
+  providerCredentials:
+    accessKeyID:
+      valueFromSecret:
+        key: accessKeyID
+        name: s3-creds
+    secretAccessKey:
+      valueFromSecret:
+        key: secretAccessKey
+        name: s3-creds
+  providerType: ontap-s3
+
