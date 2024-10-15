@@ -1,0 +1,8 @@
+wordpressUsername: admin
+wordpressPassword: Netapp1!
+wordpressEmail: admin@demo.netapp.com
+wordpressFirstName: Trident
+wordpressLastName: Protect
+wordpressBlogName: NetAppTridentProtectIsAwesome
+service: 
+  type: LoadBalancer
