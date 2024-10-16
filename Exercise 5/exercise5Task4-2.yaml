@@ -1,0 +1,11 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: Snapshot
+metadata:
+  name: mysqlapp-snap-1
+  namespace: trident-protect
+spec:
+  appVaultRef: ontap-s3-appvault
+  applicationRef: mysqlapp
+  completionTimeout: 0s
+  volumeSnapshotsCreatedTimeout: 0s
+  volumeSnapshotsReadyToUseTimeout: 0s

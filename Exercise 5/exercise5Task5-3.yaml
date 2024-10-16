@@ -1,0 +1,21 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: BackupRestore
+metadata:
+  name: mysqlapp-backuprestore1
+  namespace: trident-protect
+spec:
+  appArchivePath: mysqlapp_2314ca3c-9fff-45fd-8da7-96e7541e04a0/backups/mysqlapp-bkup-1_c19c9975-fce3-470a-b348-b2fcd1b6827d
+  appVaultRef: ontap-s3-appvault
+  namespaceMapping:
+  - destination: mysqlapp2
+    source: mysqlapp
+---
+apiVersion: protect.trident.netapp.io/v1
+kind: Application
+metadata:
+  name: mysqlapp2
+  namespace: trident-protect
+spec:
+  includedNamespaces:
+  - labelSelector: {}
+    namespace: mysqlapp2
