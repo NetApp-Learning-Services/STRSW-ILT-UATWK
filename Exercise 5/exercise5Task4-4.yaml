@@ -13,5 +13,4 @@ spec:
   granularity: daily
   hour: "17"
   minute: "30"
-  recurrenceRule: daily
   snapshotRetention: "3"
