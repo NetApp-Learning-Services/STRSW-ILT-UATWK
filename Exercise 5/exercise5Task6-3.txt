@@ -1,0 +1,1 @@
+kubectl -n trident-protect get backup mysqlapp-bkup-1 -o "jsonpath={.status.appArchivePath}"
