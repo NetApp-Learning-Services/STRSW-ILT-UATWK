@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    {{- include "tridentprotect.labels" . | nindent 4 }}
+  name: resourcedelete
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: resourcedelete
+subjects:
+- kind: ServiceAccount
+  name: trident-protect-resourcedelete
+  namespace: {{ .Release.Namespace }}

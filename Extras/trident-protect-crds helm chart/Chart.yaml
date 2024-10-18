@@ -1,0 +1,3 @@
+apiVersion: v2
+name: trident-protect-crds
+version: 24.10.0-preview.1

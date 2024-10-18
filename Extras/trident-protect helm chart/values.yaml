@@ -1,0 +1,50 @@
+autoSupport:
+  enabled: true
+  url: "https://support.netapp.com/put/AsupPut"
+
+clusterName: ""
+
+controller:
+  image:
+    registry: "cr.demo.astra.netapp.io"
+    repository: "controller"
+    pullPolicy: IfNotPresent
+    tag: ""
+  resources:
+    limits:
+      cpu: "1"
+      memory: 1280Mi
+    requests:
+      cpu: 100m
+      memory: 640Mi
+  securityContext:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+
+customLabels: { }
+
+imagePullSecrets: []
+
+nameOverride: "trident-protect"
+
+rbacProxy:
+  image:
+    registry: gcr.io
+    repository: kubebuilder/kube-rbac-proxy
+    tag: "v0.14.1"
+  resources:
+    limits:
+      cpu: "1000m"
+      memory: 256Mi
+    requests:
+      cpu: "10m"
+      memory: 128Mi
+  securityContext:
+    allowPrivilegeEscalation: false
+
+scc:
+  create: false
+  name: trident-protect-job
+  priority: 1
+
+tridentProtectSecret: "regcred"

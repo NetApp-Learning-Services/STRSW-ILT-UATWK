@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: bb8e834
+description: Trident Protect Helm Chart
+name: trident-protect
+type: application
+version: 24.10.0-preview.1
