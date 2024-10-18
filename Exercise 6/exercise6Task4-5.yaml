@@ -1,7 +1,7 @@
 apiVersion: protect.trident.netapp.io/v1
 kind: AppVault
 metadata:
-  name: ontap-s3-src-appvault
+  name: ontap-s3-dst-appvault
   namespace: trident-protect
 spec:
   providerConfig:
@@ -20,10 +20,10 @@ spec:
     accessKeyID:
       valueFromSecret:
         key: accessKeyID
-        name: s3-src-creds
+        name: s3-dst-creds
     secretAccessKey:
       valueFromSecret:
         key: secretAccessKey
-        name: s3-src-creds
+        name: s3-dst-creds
   providerType: ontap-s3
 
