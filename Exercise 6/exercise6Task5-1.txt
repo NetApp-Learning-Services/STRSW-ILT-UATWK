@@ -1,0 +1,1 @@
+kubectl patch amr -n trident-protect amr-mywordpressapp-dst -p '[{"op": "replace", "path": "/spec/desiredState", "value":"promoted"}]'
