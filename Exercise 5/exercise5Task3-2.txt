@@ -1,0 +1,1 @@
+helm install mysqlapp bitnami/mysql --version 9.2.6 --namespace mysqlapp --create-namespace
