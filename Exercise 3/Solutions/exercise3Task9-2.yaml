@@ -1,7 +1,7 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: c1-svm1-nvme
+  name: c1-svm1-nvme-sc
 provisioner: csi.trident.netapp.io
 parameters:
   backendType: ontap-san

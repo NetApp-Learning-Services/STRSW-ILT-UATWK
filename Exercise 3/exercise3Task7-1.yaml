@@ -11,11 +11,11 @@ stringData:
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
-  name: c1-svm0-nas-backend-tbc
+  name: c1-svm0-nfs-custom-tbc
   namespace: trident
 spec:
   version: 1
-  backendName: c1-svm0-ontap-nas-backend-tbc
+  backendName: c1-svm0-nfs-custom-tbc
   storageDriverName: ontap-nas
   replicationPolicy: MirrorAllSnapshots
   managementLIF: 192.168.0.101
@@ -33,10 +33,10 @@ spec:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: c1-svm0-nas-tbc
+  name: c1-svm0-nfs-custom-sc
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: csi.trident.netapp.io
 parameters:
-  storagePools: "c1-svm0-ontap-nas-backend-tbc:.*"
+  storagePools: "c1-svm0-nfs-custom-tbc:.*"
   fsType: nfs 

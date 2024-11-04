@@ -9,4 +9,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: c1-svm1-nvme
+  storageClassName: c1-svm1-nvme-sc

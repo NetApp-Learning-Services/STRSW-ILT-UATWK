@@ -2,13 +2,14 @@ kind: Pod
 apiVersion: v1
 metadata:
   name: nfs-pod
+  namespace: default
   labels:
     app: nfs-web
 spec:
   volumes:
     - name: nfs-storage
       persistentVolumeClaim:
-       claimName: c1-svm0-nfs-basic
+       claimName: c1-svm0-nfs-pvc-1
   containers:
     - name: nfs-container
       image: nginx:1.25-alpine-slim

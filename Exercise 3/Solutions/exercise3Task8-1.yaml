@@ -1,11 +1,11 @@
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
-  name: c1-svm0-nas-eco-backend-tbc
+  name: c1-svm0-nfs-eco-tbc
   namespace: trident
 spec:
   version: 1
-  backendName: c1-svm0-ontap-nas-eco-backend-tbc
+  backendName: c1-svm0-nfs-eco-tbc
   storageDriverName: ontap-nas-economy
   managementLIF: 192.168.0.101
   dataLIF: 192.168.0.31
@@ -20,11 +20,11 @@ spec:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: c1-svm0-nas-eco
+  name: c1-svm0-nfs-eco-sc
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: csi.trident.netapp.io
 parameters:
   backendType: "ontap-nas-economy"
-  storagePools: "c1-svm0-ontap-nas-eco-backend-tbc:.*"
+  storagePools: "c1-svm0-nfs-eco-tbc:.*"
   fsType: nfs 
