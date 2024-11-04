@@ -1,0 +1,1 @@
+kubectl label node kubwor1-2 topology.kubernetes.io/region=trident topology.kubernetes.io/zone=zone2
