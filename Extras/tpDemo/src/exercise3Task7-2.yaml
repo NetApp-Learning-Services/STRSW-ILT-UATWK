@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: c2-svmdest-backend-secret
+  namespace: trident
+type: kubernetes.io/basic-auth
+stringData:
+  username: admin
+  password: Netapp1!
+---
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: c2-svmdest-nfs-custom-tbc
+  namespace: trident
+spec:
+  version: 1
+  backendName: c2-svmdest-nas-custom-tbc
+  storageDriverName: ontap-nas
+  replicationPolicy: MirrorAllSnapshots
+  managementLIF: 192.168.0.101
+  dataLIF: 192.168.0.61
+  svm: svmdest
+  credentials:
+    name: c2-svmdest-backend-secret
+  storage:
+  - defaults:
+      nameTemplate: '{{.labels.cluster}}_{{.volume.Namespace}}_{{.volume.RequestName}}_{{ .config.BackendName }}'
+    labels:
+      cluster: Cluster1
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: c2-svmdest-nfs-custom-sc
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: csi.trident.netapp.io
+parameters:
+  storagePools: "c2-svmdest-nfs-custom-tbc:.*"
+  fsType: nfs 
