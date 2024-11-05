@@ -18,8 +18,8 @@ spec:
   backendName: c2-svmdest-nas-custom-tbc
   storageDriverName: ontap-nas
   replicationPolicy: MirrorAllSnapshots
-  managementLIF: 192.168.0.101
-  dataLIF: 192.168.0.61
+  managementLIF: 192.168.0.102
+  dataLIF: 192.168.0.56
   svm: svmdest
   credentials:
     name: c2-svmdest-backend-secret
@@ -27,14 +27,14 @@ spec:
   - defaults:
       nameTemplate: '{{.labels.cluster}}_{{.volume.Namespace}}_{{.volume.RequestName}}_{{ .config.BackendName }}'
     labels:
-      cluster: Cluster1
+      cluster: Cluster2
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: c2-svmdest-nfs-custom-sc
-  # annotations:
-  #   storageclass.kubernetes.io/is-default-class: "true"
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
 provisioner: csi.trident.netapp.io
 parameters:
   storagePools: "c2-svmdest-nfs-custom-tbc:.*"

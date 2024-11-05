@@ -33,8 +33,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: c1-svmsrc-nfs-custom-sc
-  annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
+  # annotations:
+  #   storageclass.kubernetes.io/is-default-class: "true"
 provisioner: csi.trident.netapp.io
 parameters:
   storagePools: "c1-svmsrc-nfs-custom-tbc:.*"

@@ -18,8 +18,8 @@ spec:
   backendName: c2-svmdest-nas-custom-tbc
   storageDriverName: ontap-nas
   replicationPolicy: MirrorAllSnapshots
-  managementLIF: 192.168.0.101
-  dataLIF: 192.168.0.61
+  managementLIF: 192.168.0.102
+  dataLIF: 192.168.0.56
   svm: svmdest
   credentials:
     name: c2-svmdest-backend-secret

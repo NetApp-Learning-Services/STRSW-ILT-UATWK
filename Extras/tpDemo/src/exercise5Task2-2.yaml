@@ -1,7 +1,7 @@
 apiVersion: protect.trident.netapp.io/v1
 kind: AppVault
 metadata:
-  name: ontap-s3-src-appvault
+  name: c1-s3-src-appvault
   namespace: trident-protect
 spec:
   providerConfig:
