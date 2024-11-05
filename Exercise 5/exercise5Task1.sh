@@ -15,7 +15,8 @@ helm install trident-protect-crds oci://cr.astra.netapp.io/trident-protect-crds 
   --version $PROTECTVERSION \
   --set controller.image.registry=cr.astra.netapp.io 
 
-helm install trident-protect -n trident-protect oci://cr.astra.netapp.io/trident-protect --version $PROTECTVERSION \
+helm install trident-protect -n trident-protect oci://cr.astra.netapp.io/trident-protect \
+  --version $PROTECTVERSION \
   --set controller.image.registry=cr.astra.netapp.io \
   --set 'imagePullSecrets[0].name=regcred' \
   --set clusterName=lod1
