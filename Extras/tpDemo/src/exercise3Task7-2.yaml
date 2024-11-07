@@ -15,7 +15,7 @@ metadata:
   namespace: trident
 spec:
   version: 1
-  backendName: c2-svmdest-nas-custom-tbc
+  backendName: c2-svmdest-nfs-custom-tbc
   storageDriverName: ontap-nas
   replicationPolicy: MirrorAllSnapshots
   managementLIF: 192.168.0.102
