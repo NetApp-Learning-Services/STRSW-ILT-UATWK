@@ -1,0 +1,16 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: Schedule
+metadata:
+  name: mysqlapp-sched1-daily
+  namespace: trident-protect
+spec:
+  appVaultRef: c1-s3-src-appvault
+  applicationRef: mysqlapp
+  backupRetention: "3"
+  dayOfMonth: ""
+  dayOfWeek: ""
+  enabled: true
+  granularity: daily
+  hour: "17"
+  minute: "30"
+  snapshotRetention: "3"

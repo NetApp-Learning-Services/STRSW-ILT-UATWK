@@ -1,0 +1,11 @@
+protectctl get appvault
+
+protectctl get app
+
+protectctl get snapshot
+
+protectctl get backup
+
+protectctl wait backup mysqlapp-bkup-1
+
+protectctl get schedule
