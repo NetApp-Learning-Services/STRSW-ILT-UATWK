@@ -1,11 +1,64 @@
+protectctl
+
+Show:  ~/.trident-protect/protectctl.yaml
+
 protectctl get appvault
+
+Extras/tpDemo/run/exercise5Task4-1.yaml
 
 protectctl get app
 
+Extras/tpDemo/run/exercise5Task4-2.yaml
+
 protectctl get snapshot
+
+Extras/tpDemo/run/exercise5Task4-3.yaml
 
 protectctl get backup
 
 protectctl wait backup mysqlapp-bkup-1
 
+Extras/tpDemo/run/exercise5Task4-4.yaml
+
 protectctl get schedule
+
+Extras/tpDemo/run/exercise5Task5-1.txt
+
+Extras/tpDemo/run/exercise5Task5-2.yaml
+
+protectctl get snaprestore
+
+kubectl -n mysqlapp1 get all,pvc
+
+protectctl get app
+
+can do the same thing with a backup
+
+Inplace:
+Extras/tpDemo/run/exercise5Task6-1.txt
+
+Extras/tpDemo/run/exercise5Task6-2.yaml
+
+kubectl -n trident-protect get snapshotinplacerestores -w
+
+kubectl -n mysqlapp get all,pvc
+
+Using only protectctl:
+
+protectctl get all
+
+protectctl create application mywordpressapp --namespaces mywordpressapp
+
+protectctl get app mywordpressapp
+
+protectctl get appvault
+
+protectctl create snapshot mywordpressapp-snap-1 --appvault c1-s3-src-appvault --app mywordpressapp
+
+protectctl get snapshots
+
+protectctl create backup mywordpressapp-bkup-1 --appvault c1-s3-src-appvault --app mywordpressapp
+
+protectctl get backup
+Temp snap:  protectctl get snapshots
+
