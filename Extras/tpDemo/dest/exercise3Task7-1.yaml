@@ -39,3 +39,4 @@ provisioner: csi.trident.netapp.io
 parameters:
   storagePools: "c1-svmsrc-nfs-custom-tbc:.*"
   fsType: nfs 
+  backendType: ontap-nas #required for trident-protect restore
