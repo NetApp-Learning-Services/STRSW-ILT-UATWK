@@ -25,5 +25,5 @@ spec:
       valueFromSecret:
         key: secretAccessKey
         name: s3-src-creds
-  providerType: ontap-s3
+  providerType: OntapS3
 
