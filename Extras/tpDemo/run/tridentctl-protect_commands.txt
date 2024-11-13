@@ -1,0 +1,70 @@
+tridentctl-protect
+
+echo 'namespace: mysqlapp' > ~/.trident-protect/protectctl.yaml
+Show:  ~/.trident-protect/protectctl.yaml
+
+tridentctl-protect -n trident-protect get appvault
+
+Extras/tpDemo/run/exercise5Task4-1.yaml
+
+tridentctl-protect get app 
+
+Extras/tpDemo/run/exercise5Task4-2.yaml
+
+tridentctl-protect get snapshot
+
+Extras/tpDemo/run/exercise5Task4-3.yaml
+
+tridentctl-protect get backup
+
+watch tridentctl-protect backup mysqlapp-bkup-1
+tridentctl-protect wait backup mysqlapp-bkup-1
+
+Extras/tpDemo/run/exercise5Task4-4.yaml
+
+tridentctl-protect get schedule
+
+kubectl create ns mysqlapp1
+
+Extras/tpDemo/run/exercise5Task5-1.txt
+
+Extras/tpDemo/run/exercise5Task5-2.yaml
+
+tridentctl-protect create snapshotrestore mysqlapp-snaprestore1 --snapshot mysqlapp/mysqlapp-snap-1 --namespace-mapping mysqlapp:mysqlapp1
+
+tridentctl-protect get snaprestore
+
+kubectl -n mysqlapp1 get all,pvc,application
+
+tridentctl-protect -n mysqlapp1 get app
+
+can do the same thing with a backup
+
+Inplace:
+Extras/tpDemo/run/exercise5Task6-1.txt
+
+Extras/tpDemo/run/exercise5Task6-2.yaml
+
+kubectl -n trident-protect get snapshotinplacerestores -w
+
+kubectl -n mysqlapp get all,pvc
+
+Using only tridentctl-protect:
+
+tridentctl-protect get all
+
+tridentctl-protect create application mywordpressapp --namespaces mywordpressapp
+
+tridentctl-protect get app mywordpressapp
+
+tridentctl-protect get appvault
+
+tridentctl-protect create snapshot mywordpressapp-snap-1 --appvault c1-s3-src-appvault --app mywordpressapp
+
+tridentctl-protect get snapshots
+
+tridentctl-protect create backup mywordpressapp-bkup-1 --appvault c1-s3-src-appvault --app mywordpressapp
+
+tridentctl-protect get backup
+Temp snap:  tridentctl-protect get snapshots
+

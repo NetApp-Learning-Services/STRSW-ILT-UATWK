@@ -7,7 +7,7 @@ chmod +x tridentctl-protect
 sudo mv ./tridentctl-protect /usr/local/bin/
 
 mkdir -p ~/.trident-protect
-echo 'namespace: trident-protect' > ~/.trident-protect/protectctl.yaml
+
 
 curl -L -O https://github.com/NetApp/tridentctl-protect/releases/download/24.10.0/tridentctl-completion.bash
 mkdir -p ~/.bash/completions
