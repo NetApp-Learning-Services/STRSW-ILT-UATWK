@@ -9,7 +9,7 @@ sudo mv ./tridentctl-protect /usr/local/bin/
 mkdir -p ~/.trident-protect
 echo 'namespace: trident-protect' > ~/.trident-protect/protectctl.yaml
 
-cat <<EOT >> ~/.bashrc
-source <(protectctl completion bash)
-EOT
-source ~/.bashrc
+curl -L -O https://github.com/NetApp/tridentctl-protect/releases/download/24.10.0/tridentctl-completion.bash
+mkdir -p ~/.bash/completions
+mv tridentctl-completion.bash ~/.bash/completions/
+source ~/.bash/completions/tridentctl-completion.bash
