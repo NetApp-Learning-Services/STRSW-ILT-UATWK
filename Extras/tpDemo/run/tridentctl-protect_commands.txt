@@ -45,7 +45,7 @@ Extras/tpDemo/run/exercise5Task6-1.txt
 
 Extras/tpDemo/run/exercise5Task6-2.yaml
 
-kubectl -n trident-protect get snapshotinplacerestores -w
+kubectl -n mysqlapp get snapshotinplacerestores -w
 
 kubectl -n mysqlapp get all,pvc
 
