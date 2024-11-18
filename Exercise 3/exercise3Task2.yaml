@@ -6,5 +6,5 @@ metadata:
 provisioner: csi.trident.netapp.io
 parameters:
   backendType: "change_me"
-
+  storagePools: "change_me"
 
