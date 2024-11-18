@@ -1,0 +1,1 @@
+kubectl create -f deploy/bundle_post_1_25.yaml
