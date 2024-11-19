@@ -11,11 +11,11 @@ stringData:
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
-  name: c1-svm1-san-backend
+  name: c1-svm1-iscsi-backend
   namespace: trident
 spec:
   version: 1
-  backendName: ontap-san-backend
+  backendName: c1-svm1-iscsi-tb
   storageDriverName: ontap-san
   managementLIF: change_me
   dataLIF: change_me
