@@ -15,7 +15,7 @@ metadata:
   namespace: trident
 spec:
   version: 1
-  backendName: c1-svm0-nas-custom-tbc
+  backendName: c1-svm0-nfs-custom-tbe
   storageDriverName: ontap-nas
   replicationPolicy: MirrorAllSnapshots
   managementLIF: 192.168.0.101
@@ -25,7 +25,7 @@ spec:
     name: c1-svm0-backend-secret
   storage:
   - defaults:
-      nameTemplate: '{{.labels.cluster}}_{{.volume.Namespace}}_{{.volume.RequestName}}_{{ .config.BackendName }}'
+      nameTemplate: '{{ .labels.cluster }}_{{ .volume.Namespace }}_{{ .volume.RequestName }}_{{ .config.BackendName }}'
     labels:
       cluster: Cluster1
 ---
@@ -37,5 +37,4 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: csi.trident.netapp.io
 parameters:
-  storagePools: "c1-svm0-nfs-custom-tbc:.*"
-  fsType: nfs 
+  storagePools: "c1-svm0-nfs-custom-tbe:.*"

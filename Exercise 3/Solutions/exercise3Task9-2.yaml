@@ -5,3 +5,4 @@ metadata:
 provisioner: csi.trident.netapp.io
 parameters:
   backendType: ontap-san
+  storagePools: "c1-svm1-nvme-tbe:.*"

@@ -15,7 +15,7 @@ metadata:
   namespace: trident
 spec:
   version: 1
-  backendName: c1-svm0-nfs-custom-tbc
+  backendName: c1-svm0-nfs-custom-tbe
   storageDriverName: ontap-nas
   replicationPolicy: MirrorAllSnapshots
   managementLIF: 192.168.0.101
@@ -38,5 +38,5 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: csi.trident.netapp.io
 parameters:
-  storagePools: "c1-svm0-nfs-custom-tbc:.*"
+  storagePools: "c1-svm0-nfs-custom-tb"
   fsType: nfs 

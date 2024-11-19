@@ -5,7 +5,7 @@ metadata:
   namespace: trident
 spec:
   version: 1
-  backendName: ontap-nvme-tbc
+  backendName: c1-svm1-nvme-tbe
   storageDriverName: ontap-san
   managementLIF: change_me
   dataLIF: change_me
@@ -13,4 +13,4 @@ spec:
   sanType: change_me
   useREST: change_me
   credentials:
-    name: san-backend-secret
+    name: c1-svm1-backend-secret

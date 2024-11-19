@@ -1,7 +1,7 @@
 {
     "version": 1,
     "storageDriverName": "ontap-nas",
-    "backendName": "c1-svm0-nfs-tb",
+    "backendName": "c1-svm0-nfs-tbe",
     "managementLIF": "192.168.0.101",
     "dataLIF": "192.168.0.31",
     "svm": "svm0",
