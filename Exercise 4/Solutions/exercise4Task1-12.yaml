@@ -1,15 +1,16 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: san-snap
+  name: c1-svm1-iscsi-pvcsnap-1
+  namespace: default
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  storageClassName: san-basic
+  storageClassName: c1-svm1-iscsi-sc
   dataSource:
-    name: san-snap
+    name: c1-svm1-iscsi-pvc-1-snap-1
     kind: VolumeSnapshot
     apiGroup: snapshot.storage.k8s.io

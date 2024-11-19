@@ -1,8 +1,9 @@
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
-  name: nfs-snap
+  name: c1-svm0-nfs-pvc-1-snap-1
+  namespace: default
 spec:
-  volumeSnapshotClassName: trident-snapshotclass
+  volumeSnapshotClassName: csi-snap-class
   source:
-    persistentVolumeClaimName: nfs-basic
+    persistentVolumeClaimName: c1-svm0-nfs-pvc-1

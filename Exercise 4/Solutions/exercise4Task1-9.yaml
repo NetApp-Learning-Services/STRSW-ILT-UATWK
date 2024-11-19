@@ -2,13 +2,14 @@ kind: Pod
 apiVersion: v1
 metadata:
   name: nfs-snap-pod
+  namespace: default
   labels:
     app: nfs-snap-web
 spec:
   volumes:
     - name: nfs-storage
       persistentVolumeClaim:
-       claimName: nfs-snap
+       claimName: c1-svm0-nfs-pvcsnap-1
   containers:
     - name: nfs-container
       image: nginx:1.25-alpine-slim
