@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: san-import
+  name: c1-svm0-iscsi-import-pvc-1
   namespace: default
 spec:
   accessModes:
@@ -9,4 +9,4 @@ spec:
   resources:
     requests:
       storage: 2Gi
-  storageClassName: san-basic
+  storageClassName: c1-svm1-iscsi-sc

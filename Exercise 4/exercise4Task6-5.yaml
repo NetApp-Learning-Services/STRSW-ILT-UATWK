@@ -6,12 +6,12 @@ metadata:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: zone1-pvc
+  name: c1-svm0-nfs-zone1-pvc-1
   namespace: topology
 spec:
   accessModes:
-  - ReadWriteMany
+  - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  storageClassName: zone1-nas
+  storageClassName: c1-svm0-nfs-zone1-sc

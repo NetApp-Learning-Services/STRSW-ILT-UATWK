@@ -16,7 +16,7 @@ spec:
   volumes:
     - name: zone1storage
       persistentVolumeClaim:
-       claimName: zone1-pvc
+       claimName: c1-svm0-nfs-zone1-pvc-1
   containers:
     - name: linux
       image: debian:11.8-slim

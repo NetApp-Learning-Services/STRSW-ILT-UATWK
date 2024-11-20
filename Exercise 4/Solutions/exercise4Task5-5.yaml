@@ -8,7 +8,7 @@ spec:
   volumes:
     - name: san-storage
       persistentVolumeClaim:
-       claimName: san-import
+       claimName: c1-svm0-iscsi-import-pvc-1
   containers:
     - name: san-container
       image: nginx:1.25-alpine-slim

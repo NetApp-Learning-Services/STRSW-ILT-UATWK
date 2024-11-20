@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: nfs-import
+  name: c1-svm0-nfs-import-pvc-1
   namespace: default
 spec:
   accessModes:
@@ -9,4 +9,4 @@ spec:
   resources:
     requests:
       storage: 2Gi
-  storageClassName: nfs-basic
+  storageClassName: c1-svm0-nfs-sc

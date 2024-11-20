@@ -1,7 +1,7 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: zone1-nas
+  name: c1-svm0-nfs-zone1-sc
 provisioner: csi.trident.netapp.io
 volumeBindingMode: WaitForFirstConsumer
 allowedTopologies:
@@ -13,4 +13,5 @@ allowedTopologies:
     values:
     - trident
 parameters:
-  backendType: "ontap-nas"
+  backendType: ontap-nas
+  storagePools: c1-svm0-nfs-zone1-tbe:.*
