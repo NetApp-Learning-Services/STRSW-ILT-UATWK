@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: c1-svm1-iscsi-sc
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: ontap-san
+  storagePools: "c1-svm1-iscsi-tbe:.*"
