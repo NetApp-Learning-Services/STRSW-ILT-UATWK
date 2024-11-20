@@ -136,7 +136,7 @@ status:
   storedVersions: []
 ---
 # https://github.com/kubernetes-csi/external-snapshotter/releases/tag/v7.0.1/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
----
+
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
@@ -540,7 +540,7 @@ status:
   storedVersions: []
 ---
 # https://github.com/kubernetes-csi/external-snapshotter/releases/tag/v7.0.1/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
----
+
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
@@ -854,6 +854,7 @@ status:
   conditions: []
   storedVersions: []
 ---
+
 # https://github.com/kubernetes-csi/external-snapshotter/releases/tag/v7.0.1/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
 
 # RBAC file for the snapshot controller.
@@ -863,7 +864,6 @@ status:
 # namespace for components implementing base system functionality. For installing with
 # Vanilla Kubernetes, kube-system makes sense for the namespace.
 
----
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -922,6 +922,7 @@ rules:
   #   resources: ["nodes"]
   #   verbs: ["get", "list", "watch"]
 ---
+
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -969,7 +970,6 @@ roleRef:
 # namespace for components implementing base system functionality. For installing with
 # Vanilla Kubernetes, kube-system makes sense for the namespace.
 
----
 kind: Deployment
 apiVersion: apps/v1
 metadata:
