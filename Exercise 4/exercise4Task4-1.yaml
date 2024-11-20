@@ -1,12 +1,8 @@
-kind: PersistentVolumeClaim
-apiVersion: v1
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
-  name: nfs-import
-  namespace: default
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
-  storageClassName: nfs-basic
+  name: c1-svm0-nfs-sc
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: ontap-nas
+  storagePools: "c1-svm0-nfs-tbe:.*"

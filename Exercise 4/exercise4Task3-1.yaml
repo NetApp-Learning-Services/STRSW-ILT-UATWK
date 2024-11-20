@@ -1,7 +1,17 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotContent
 metadata:
-  name: nfs-basic
-provisioner: csi.trident.netapp.io
-parameters:
-  backendType: "ontap-nas"
+  name: snapcontent-c1-svm0-nfs-custom-pvc-1-snapimport-1
+  annotations: 
+    trident.netapp.io/internalSnapshotName: snap.1
+spec:
+  deletionPolicy: Delete
+  driver: csi.trident.netapp.io
+  source:
+    snapshotHandle: change_me/snapcontent-c1-svm0-nfs-custom-pvc-1-snapimport-1
+  volumeSnapshotRef:
+    apiVersion: snapshot.storage.k8s.io/v1
+    kind: VolumeSnapshot
+    name: c1-svm0-nfs-custom-pvc-1-snapimport-1
+    namespace: default

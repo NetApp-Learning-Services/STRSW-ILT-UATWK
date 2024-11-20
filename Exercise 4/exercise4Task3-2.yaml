@@ -1,11 +1,10 @@
-kind: PersistentVolumeClaim
-apiVersion: v1
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
 metadata:
-  name: nfs-basic
+  name: c1-svm0-nfs-custom-pvc-1-snapimport-1
+  namespace: default
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: nfs-basic
+  # volumeSnapshotClassName: csi-snapclass (not required for pre-provisioned or imported snapshots)
+  source:
+    volumeSnapshotContentName: snapcontent-c1-svm0-nfs-custom-pvc-1-snapimport-1
