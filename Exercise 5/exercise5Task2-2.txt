@@ -1,0 +1,1 @@
+aws --endpoint-url https://192.168.0.31 s3api list-objects-v2 --bucket tp-src --no-verify-ssl
