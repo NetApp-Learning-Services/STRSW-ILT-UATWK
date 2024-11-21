@@ -7,8 +7,8 @@ spec:
   appArchivePath: change_me
   appVaultRef: c1-svm0-s3-av
   namespaceMapping:
-  - destination: mysqlapp1
-    source: mysqlapp
+  - source: mysqlapp
+    destination: mysqlapp1
 ---
 apiVersion: protect.trident.netapp.io/v1
 kind: Application
