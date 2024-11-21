@@ -38,3 +38,4 @@ metadata:
 provisioner: csi.trident.netapp.io
 parameters:
   storagePools: "c1-svm0-nfs-custom-tbe:.*"
+  backendType: ontap-nas
