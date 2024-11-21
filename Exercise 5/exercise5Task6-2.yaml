@@ -1,8 +1,8 @@
 apiVersion: protect.trident.netapp.io/v1
 kind: SnapshotInplaceRestore
 metadata:
-  name: snapshotipr-mysql
-  namespace: trident-protect
+  name: mysqlapp-snapshotipr-1
+  namespace: mysqlapp
 spec:
-  appVaultRef: ontap-s3-appvault
+  appVaultRef: c1-svm0-s3-av
   appArchivePath: change_me

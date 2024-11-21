@@ -1,1 +1,1 @@
-kubectl -n trident-protect get snapshots mysqlapp-snap-1 -o "jsonpath={.status.appArchivePath}"
+kubectl -n mysqlapp get snapshots mysqlapp-snap-1 -o "jsonpath={.status.appArchivePath}" ; echo
