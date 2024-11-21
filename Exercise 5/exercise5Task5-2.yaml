@@ -2,10 +2,10 @@ apiVersion: protect.trident.netapp.io/v1
 kind: SnapshotRestore
 metadata:
   name: mysqlapp-snaprestore1
-  namespace: trident-protect
+  namespace: mysqlapp
 spec:
   appArchivePath: change_me
-  appVaultRef: ontap-s3-appvault
+  appVaultRef: c1-svm0-s3-avs
   namespaceMapping:
   - destination: mysqlapp1
     source: mysqlapp
@@ -14,7 +14,7 @@ apiVersion: protect.trident.netapp.io/v1
 kind: Application
 metadata:
   name: mysqlapp1
-  namespace: trident-protect
+  namespace: mysqlapp1
 spec:
   includedNamespaces:
   - labelSelector: {}
