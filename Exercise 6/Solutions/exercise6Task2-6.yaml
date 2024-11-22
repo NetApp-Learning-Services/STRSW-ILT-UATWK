@@ -1,0 +1,21 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: c2-svmdst-nfs-custom-sc
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: csi.trident.netapp.io
+parameters:
+  storagePools: "c2-svmdst-nfs-custom-tbe:.*"
+  backendType: ontap-nas
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: c2-svmdst-iscsi-custom-sc
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: ontap-san
+  storagePools: "c2-svmdst-iscsi-custom-tbe:.*"
