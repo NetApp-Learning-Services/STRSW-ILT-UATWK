@@ -1,0 +1,3 @@
+tridentctl-protect completion bash > ~/.bash/completions/tridentctl-protect.completion.bash 
+
+source ~/.bash/completions/tridentctl-protect.completion.bash
