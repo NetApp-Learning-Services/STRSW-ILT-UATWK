@@ -64,7 +64,7 @@ spec:
         anon:  "65534"
   iscsi:
     enabled: true
-    alias: testVs
+    alias: svmdst
     interfaces:
     - name: iscsi1
       ip: 192.168.0.52
