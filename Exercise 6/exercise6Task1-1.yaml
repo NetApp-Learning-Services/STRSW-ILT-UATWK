@@ -1,1 +1,1 @@
-# INSTALL TRIDENT OPERATOR
+ kubectl config use-context destination-admin@destination
