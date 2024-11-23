@@ -1,8 +1,0 @@
-apiVersion: protect.trident.netapp.io/v1
-kind: Backup
-metadata:
-  name: mysqlapp-bkup-1
-  namespace: mysqlapp
-spec:
-  appVaultRef: c1-s3-src-appvault
-  applicationRef: mysqlapp

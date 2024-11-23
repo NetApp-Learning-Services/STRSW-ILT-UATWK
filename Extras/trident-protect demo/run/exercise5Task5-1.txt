@@ -1,1 +1,0 @@
-kubectl -n mysqlapp get snapshots mysqlapp-snap-1 -o "jsonpath={.status.appArchivePath}"
