@@ -1,9 +1,0 @@
-apiVersion: protect.trident.netapp.io/v1
-kind: Application
-metadata:
-  name: mywordpressapp
-  namespace: trident-protect
-spec:
-  includedNamespaces:
-  - labelSelector: {}
-    namespace: mywordpressapp

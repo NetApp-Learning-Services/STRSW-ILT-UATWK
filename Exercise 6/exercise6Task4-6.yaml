@@ -1,4 +1,9 @@
-apiVersion: v1
-kind: Namespace
+apiVersion: protect.trident.netapp.io/v1
+kind: Application
 metadata:
-  name: mywordpress-dst
+  name: mywordpressapp-dst
+  namespace: mywordpressapp-dst
+spec:
+  includedNamespaces:
+  - labelSelector: {}
+    namespace: mywordpressapp-dst

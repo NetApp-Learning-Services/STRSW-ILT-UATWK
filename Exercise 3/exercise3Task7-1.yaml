@@ -38,5 +38,5 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: csi.trident.netapp.io
 parameters:
-  storagePools: "c1-svm0-nfs-custom-tb"
+  storagePools: "c1-svm0-nfs-custom-tbe:.*"
   backendType: ontap-nas
