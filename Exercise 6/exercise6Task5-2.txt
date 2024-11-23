@@ -1,1 +1,0 @@
-kubectl -n trident-protect get amr amr-mywordpressapp-dst -w

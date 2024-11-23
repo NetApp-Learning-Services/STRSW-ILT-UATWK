@@ -6,7 +6,6 @@ metadata:
 spec:
   desiredState: Established
   destinationAppVaultRef: c2-svmdst-s3-av
-  destinationApplicationRef: mywordpressapp-dst
   namespaceMapping:
   - destination: mywordpressapp-dst
     source: mywordpressapp
