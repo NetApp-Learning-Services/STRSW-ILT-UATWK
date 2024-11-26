@@ -5,7 +5,7 @@ metadata:
   namespace: trident
 type: kubernetes.io/basic-auth
 stringData:
-  username: vsadmin
+  username: admin
   password: Netapp1!
 ---
 apiVersion: trident.netapp.io/v1
