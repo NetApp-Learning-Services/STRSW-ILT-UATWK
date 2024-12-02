@@ -11,7 +11,7 @@ sudo mv ./tridentctl-protect /usr/local/bin/
 mkdir -p ~/.trident-protect
 
 
-#curl -L -O https://github.com/NetApp/tridentctl-protect/releases/download/$VERSION/tridentctl-completion.bash
+curl -L -O https://github.com/NetApp/tridentctl-protect/releases/download/$VERSION/tridentctl-completion.bash
 mkdir -p ~/.bash/completions
-#mv tridentctl-completion.bash ~/.bash/completions/
-#source ~/.bash/completions/tridentctl-protect-completion.bash
+mv tridentctl-completion.bash ~/.bash/completions/
+source ~/.bash/completions/tridentctl-completion.bash
