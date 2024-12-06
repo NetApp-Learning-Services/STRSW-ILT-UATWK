@@ -1,3 +1,3 @@
 kubectl -n mywordpressapp-dst get amr mywordpressapp-dst-amr -w
 
-tridentctl-protect -n mywordpressapp-dst get amr 
+tridentctl protect -n mywordpressapp-dst get amr 
