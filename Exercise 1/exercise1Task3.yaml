@@ -6,8 +6,7 @@ metadata:
     app: web
 spec:
   volumes:
-  - name: change_me
-    # add here
+  - name: change_me  # add here
   containers:
   - name: first
     image: nginx:1.25-alpine-slim
