@@ -2,7 +2,7 @@ apiVersion: protect.trident.netapp.io/v1
 kind: SnapshotRestore
 metadata:
   name: mysqlapp-snaprestore1
-  namespace: mysqlapp
+  namespace: mysqlapp1
 spec:
   appArchivePath: change_me
   appVaultRef: c1-svm0-s3-av
