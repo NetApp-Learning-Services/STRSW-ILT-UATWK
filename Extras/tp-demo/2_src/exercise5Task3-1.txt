@@ -1,3 +1,1 @@
-sudo snap install helm --classic
-
 helm repo add bitnami https://charts.bitnami.com/bitnami

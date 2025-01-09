@@ -25,7 +25,7 @@ metadata:
   namespace: gateway-system
 spec:
   svmName: svmdst
-  svmDeletionPolicy: Delete # For training only
+  svmDeletionPolicy: Delete
   clusterHost: 192.168.0.102
   debug: false
   aggregates:
@@ -33,7 +33,7 @@ spec:
   - name: Cluster2_01_FC_2
   management:
     name: manage1
-    ip: 192.168.0.50
+    ip: 192.168.0.60
     netmask: 255.255.255.0
     broadcastDomain: Default
     homeNode: Cluster2-01
@@ -43,6 +43,49 @@ spec:
   clusterCredentials:
     name: ontap-cluster2-admin
     namespace: gateway-system
+  s3:
+    enabled: true
+    name: svmdst
+    http:
+      enabled: true
+      port: 80
+    https:
+      enabled: false
+      port: 443
+      caCertificate:
+        commonName: svmdst-ca
+        type: root-ca
+        expiryTime: P725DT
+    users:
+    - name: gateway-s3-dst
+      namespace: gateway-system
+    interfaces:
+    - name: s31
+      ip: 192.168.0.64   
+      netmask: 255.255.255.0
+      broadcastDomain: Default
+      homeNode: Cluster2-01
+    buckets:
+    - name: tp-dst
+      size: 102005473280
+      type: s3
+  iscsi:
+    enabled: true
+    alias: svmdst
+    interfaces:
+    - name: iscsi1
+      ip: 192.168.0.62
+      netmask: 255.255.255.0
+      broadcastDomain: Default
+      homeNode: Cluster2-01
+  nvme:
+    enabled: true
+    interfaces:
+    - name: nvme1
+      ip: 192.168.0.63
+      netmask: 255.255.255.0
+      broadcastDomain: Default
+      homeNode: Cluster2-01
   nfs:
     enabled: true
     v3: true
@@ -50,7 +93,7 @@ spec:
     v41: true
     interfaces:
     - name: nfs1
-      ip: 192.168.0.51
+      ip: 192.168.0.61
       netmask: 255.255.255.0
       broadcastDomain: Default
       homeNode: Cluster2-01
@@ -63,17 +106,25 @@ spec:
         ro: any
         superuser: any
         anon:  "65534"
-  iscsi:
-    enabled: true
-    alias: svmdst
+  peer:
+    name: c1
+    passphrase: specialphrase
+    encryption: tls-psk
+    applications: 
+    - app: snapmirror
+    remote:
+      ipAddress: 192.168.0.131
+      svmName: svmsrc
     interfaces:
-    - name: iscsi1
-      ip: 192.168.0.52
+    - name: intercluster1
+      ip: 192.168.0.135
       netmask: 255.255.255.0
       broadcastDomain: Default
       homeNode: Cluster2-01
-    - name: iscsi2
-      ip: 192.168.0.53
+      ipspace: Default
+    - name: intercluster2
+      ip: 192.168.0.136
       netmask: 255.255.255.0
       broadcastDomain: Default
       homeNode: Cluster2-01
+      ipspace: Default
