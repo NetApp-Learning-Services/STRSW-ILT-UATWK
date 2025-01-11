@@ -1,0 +1,1 @@
+helm install mywordpressapp oci://registry-1.docker.io/bitnamicharts/wordpress --version 24.0.6 --namespace mywordpressapp --values='9.yaml' --create-namespace

@@ -1,1 +1,0 @@
-helm install mywordpressapp bitnami/wordpress --version 24.0.6 --namespace mywordpressapp --values='exercise5Task3-4.yaml' --create-namespace
