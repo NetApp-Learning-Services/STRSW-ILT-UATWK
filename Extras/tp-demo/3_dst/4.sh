@@ -1,4 +1,6 @@
 #!/bin/bash
+# Set the context to the source cluster
+kubectl config use-context source-admin@source
 
 # Define the namespace and secret name
 NAMESPACE="trident-protect"
@@ -14,3 +16,10 @@ SECRET_ACCESS_KEY=$(echo $SECRET | jq -r '.data.secretAccessKey' | base64 --deco
 # Print the keys
 echo "Access Key ID: $ACCESS_KEY_ID"
 echo "Secret Access Key: $SECRET_ACCESS_KEY"
+
+# Set the context to the destination cluster
+kubectl config use-context destination-admin@destination
+
+kubectl create secret generic -n trident-protect gateway-s3-src \
+  --from-literal=accessKeyID=$ACCESS_KEY_ID \
+  --from-literal=secretAccessKey=$SECRET_ACCESS_KEY

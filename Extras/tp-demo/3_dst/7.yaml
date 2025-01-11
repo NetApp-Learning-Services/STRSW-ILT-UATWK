@@ -1,7 +1,7 @@
 apiVersion: protect.trident.netapp.io/v1
 kind: AppVault
 metadata:
-  name: c1-svm0-s3-av
+  name: c2-svmdst-s3-av
   namespace: trident-protect
 spec:
   providerConfig:
@@ -13,17 +13,16 @@ spec:
       bucketName: ""
       projectID: ""
     s3:
-      bucketName: tp-src
-      endpoint: 192.168.0.31
+      bucketName: tp-dst
+      endpoint: 192.168.0.84
       skipCertValidation: "true"
   providerCredentials:
     accessKeyID:
       valueFromSecret:
         key: accessKeyID
-        name: s3-src-creds
+        name: gateway-s3-dst
     secretAccessKey:
       valueFromSecret:
         key: secretAccessKey
-        name: s3-src-creds
+        name: gateway-s3-dst
   providerType: OntapS3
-
