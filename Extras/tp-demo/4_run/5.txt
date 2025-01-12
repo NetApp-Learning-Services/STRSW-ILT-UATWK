@@ -35,6 +35,8 @@ tridentctl protect -n trident-protect get appvaultcontent c1-svmsrc-s3-av --show
 
 kubectl create namespace mywordpressapp3
 
-tridentctl protect -n mywordpressapp3 create backuprestore mywordpressapp-bkupr2 --namespace-mapping mywordpressapp:mywordpressapp3 --appvault c1-svmsrc-s3-av --path
+tridentctl protect -n mywordpressapp3 create backuprestore mywordpressapp-bkupr2 --namespace-mapping mywordpressapp:mywordpressapp3 --appvault c1-svmsrc-s3-av --path 
+
+tridentctl protect -n mywordpressapp3 get backuprestore 
 
 tridentctl protect wait backuprestore mywordpressapp-bkupr2
