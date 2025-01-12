@@ -20,6 +20,11 @@ echo "Secret Access Key: $SECRET_ACCESS_KEY"
 # Set the context to the source cluster
 kubectl config use-context source-admin@source
 
-kubectl create secret generic -n trident-protect s3-dst-creds \
+kubectl create secret generic -n trident-protect gateway-s3-dst \
   --from-literal=accessKeyID=$ACCESS_KEY_ID \
   --from-literal=secretAccessKey=$SECRET_ACCESS_KEY
+
+# Set aws-cli credentials
+aws configure set aws_access_key_id $ACCESS_KEY_ID --profile dst
+aws configure set aws_secret_access_key $SECRET_ACCESS_KEY --profile dst
+aws configure set output text --profile dst

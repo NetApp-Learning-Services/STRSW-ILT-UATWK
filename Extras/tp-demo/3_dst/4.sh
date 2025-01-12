@@ -23,3 +23,8 @@ kubectl config use-context destination-admin@destination
 kubectl create secret generic -n trident-protect gateway-s3-src \
   --from-literal=accessKeyID=$ACCESS_KEY_ID \
   --from-literal=secretAccessKey=$SECRET_ACCESS_KEY
+
+# Set aws-cli credentials
+aws configure set aws_access_key_id $ACCESS_KEY_ID --profile src
+aws configure set aws_secret_access_key $SECRET_ACCESS_KEY --profile src
+aws configure set output text --profile src

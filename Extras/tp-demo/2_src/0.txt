@@ -1,1 +1,3 @@
 kubectl create ns trident-protect
+
+snap install aws-cli --channel=2.22.33/stable
