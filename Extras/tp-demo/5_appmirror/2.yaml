@@ -1,0 +1,15 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: Schedule
+metadata:
+  name: mywordpressapp-sched2-5min
+  namespace: mywordpressapp
+spec:
+  appVaultRef: c1-svm0-s3-av
+  applicationRef: mywordpressapp
+  backupRetention: "0"
+  enabled: true
+  granularity: Custom
+  recurrenceRule: |-
+    DTSTART:20220101T000200Z
+    RRULE:FREQ=MINUTELY;INTERVAL=5
+  snapshotRetention: "5"

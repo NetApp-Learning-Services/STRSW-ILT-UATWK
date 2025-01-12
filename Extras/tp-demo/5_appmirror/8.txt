@@ -1,0 +1,7 @@
+kubectl -n trident-protect get amr mywordpressapp-dst-amr -w
+
+tridentctl protect -n mywordpressapp-dst get amr
+
+kubectl patch amr -n mywordpressapp-dst mywordpressapp-dst-amr --type='json' -p '[{"op": "replace", "path": "/spec/desiredState", "value":"Promoted"}]'
+
+kubectl patch amr -n mywordpressapp-dst mywordpressapp-dst-amr --type='json' -p '[{"op": "replace", "path": "/spec/desiredState", "value":"Established"}]'
