@@ -2,7 +2,7 @@ echo "############################################"
 echo "###      Trident Protect install         ###"
 echo "############################################"
 
-PROTECTVERSION=100.2410.0
+PROTECTVERSION=100.2410.1
 
 helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
 

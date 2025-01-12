@@ -2,7 +2,7 @@ echo "############################################"
 echo "###     tridentctl-protect install       ###"
 echo "############################################"
 
-VERSION=24.10.0
+VERSION=24.10.1
 
 curl -L -o tridentctl-protect https://github.com/NetApp/tridentctl-protect/releases/download/$VERSION/tridentctl-protect-linux-amd64
 chmod +x tridentctl-protect
