@@ -1,4 +1,4 @@
-snap install aws-cli --channel=2.22.33/stable
+snap install aws-cli --channel=v2 --classic
 
 SRC BUCKET:
 aws --endpoint-url https://192.168.0.74 s3api list-objects-v2 --bucket tp-src --no-verify-ssl --profile src
