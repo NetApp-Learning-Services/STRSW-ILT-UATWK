@@ -5,7 +5,7 @@ metadata:
   namespace: trident
 type: kubernetes.io/basic-auth
 stringData:
-  username: admin
+  username: vsadmin
   password: Netapp1!
 ---
 apiVersion: trident.netapp.io/v1
@@ -17,7 +17,7 @@ spec:
   version: 1
   backendName: c1-svm0-nfs-eco-tbe
   storageDriverName: ontap-nas-economy
-  managementLIF: 192.168.0.101
+  managementLIF: 192.168.0.30
   dataLIF: 192.168.0.31
   svm: svm0
   storagePrefix: nas_eco_
