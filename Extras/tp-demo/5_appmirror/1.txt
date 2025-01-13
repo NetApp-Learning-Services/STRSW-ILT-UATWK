@@ -1,1 +1,1 @@
- kubectl config use-context source-admin@source
+kubectl config use-context source-admin@source
