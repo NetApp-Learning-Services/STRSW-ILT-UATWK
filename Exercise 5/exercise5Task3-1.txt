@@ -1,1 +1,1 @@
-helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install mysqlapp oci://registry-1.docker.io/bitnamicharts/mysql --version 12.0.0 --namespace mysqlapp --create-namespaces

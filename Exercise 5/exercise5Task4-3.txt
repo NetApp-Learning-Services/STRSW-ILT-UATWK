@@ -1,4 +1,1 @@
-aws --endpoint-url https://192.168.0.31 s3api list-objects-v2 --bucket tp-src --no-verify-ssl --query "Contents[].{Key: Key}" | more
-
-aws --endpoint-url https://192.168.0.31 s3api get-object --key appVault.json --bucket tp-src --no-verify-ssl appVau
-lt.jsons
+aws --endpoint-url https://192.168.0.74 s3api list-objects-v2 --bucket tp-src --no-verify-ssl --profile src | more
