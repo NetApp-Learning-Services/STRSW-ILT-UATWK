@@ -12,7 +12,7 @@ spec:
   recurrenceRule: |-
     DTSTART:20220101T000200Z
     RRULE:FREQ=MINUTELY;INTERVAL=5
-  sourceAppVaultRef: c1-svm0-s3-av
+  sourceAppVaultRef: c1-svmsrc-s3-av
   sourceApplicationName: mywordpressapp
-  sourceApplicationUID: e2e6d6d0-00ac-4f36-b63e-b4288556eefb
+  sourceApplicationUID: change_me
   storageClassName: nfs-custom-sc

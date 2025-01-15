@@ -1,1 +1,0 @@
-kubectl patch amr -n mywordpressapp-dst mywordpressapp-dst-amr --type='json' -p '[{"op": "replace", "path": "/spec/desiredState", "value":"Established"}]'
