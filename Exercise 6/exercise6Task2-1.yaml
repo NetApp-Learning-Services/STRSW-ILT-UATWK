@@ -5,8 +5,8 @@ metadata:
   namespace: trident
 type: kubernetes.io/basic-auth
 stringData:
-  username: vsadmin
-  password: Netapp1!
+  username: change_me
+  password: change_me
 ---
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
@@ -18,9 +18,9 @@ spec:
   backendName: c2-svmdst-nfs-custom-tbe
   storageDriverName: ontap-nas
   replicationPolicy: MirrorAllSnapshots
-  managementLIF: 192.168.0.80
-  dataLIF: 192.168.0.81
-  svm: svmdst
+  managementLIF: change_me
+  dataLIF: change_me
+  svm: change_me
   credentials:
     name: c2-svmdst-backend-secret
   storage:
@@ -37,5 +37,5 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: csi.trident.netapp.io
 parameters:
-  storagePools: "c2-svmdst-nfs-custom-tbe:.*"
+  storagePools: change_me
   backendType: ontap-nas
