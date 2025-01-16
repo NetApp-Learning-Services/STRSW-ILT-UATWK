@@ -4,5 +4,5 @@ metadata:
   name: mysqlapp-snapshotipr-1
   namespace: mysqlapp
 spec:
-  appVaultRef: c1-svm0-s3-av
+  appVaultRef: c1-svmsrc-s3-av
   appArchivePath: change_me

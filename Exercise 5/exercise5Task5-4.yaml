@@ -5,7 +5,7 @@ metadata:
   namespace: mysqlapp2
 spec:
   appArchivePath: change_me
-  appVaultRef: c1-svm0-s3-av
+  appVaultRef: c1-svmsrc-s3-av
   namespaceMapping:
   - source: mysqlapp
     destination: mysqlapp2
