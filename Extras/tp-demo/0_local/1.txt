@@ -1,3 +1,3 @@
-kubectl create ns trident-protect
+sudo snap install helm --classic
 sudo apt install -y jq
 snap install aws-cli --channel=v2 --classic

@@ -1,3 +1,4 @@
+# tridentctl protect -n mywordpressapp-dst get app
 apiVersion: protect.trident.netapp.io/v1
 kind: Application
 metadata:
@@ -7,4 +8,3 @@ spec:
   includedNamespaces:
   - labelSelector: {}
     namespace: mywordpressapp-dst
-# tridentctl protect -n mywordpressapp-dst get app
