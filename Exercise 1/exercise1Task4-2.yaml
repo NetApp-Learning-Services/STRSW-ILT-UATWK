@@ -5,7 +5,7 @@ metadata:
   namespace: gateway-system
 type: kubernetes.io/basic-auth
 stringData:
-  username: vsadmin
+  username: admin
   password: Netapp1!
 ---
 apiVersion: v1
