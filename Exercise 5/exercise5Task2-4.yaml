@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: ontap-cluster1-admin
+  name: ontap-cluster1-admin3
   namespace: gateway-system
 type: kubernetes.io/basic-auth
 stringData:
@@ -41,7 +41,7 @@ spec:
     name: ontap-svmsrc-admin
     namespace: gateway-system
   clusterCredentials:
-    name: ontap-cluster1-admin
+    name: ontap-cluster1-admin3
     namespace: gateway-system
   s3:
     enabled: true
@@ -69,23 +69,6 @@ spec:
     - name: tp-src
       size: 102005473280
       type: s3
-  iscsi:
-    enabled: true
-    alias: svmsrc
-    interfaces:
-    - name: iscsi1
-      ip: 192.168.0.72
-      netmask: 255.255.255.0
-      broadcastDomain: Default
-      homeNode: Cluster1-01
-  nvme:
-    enabled: true
-    interfaces:
-    - name: nvme1
-      ip: 192.168.0.73
-      netmask: 255.255.255.0
-      broadcastDomain: Default
-      homeNode: Cluster1-01
   nfs:
     enabled: true
     v3: true

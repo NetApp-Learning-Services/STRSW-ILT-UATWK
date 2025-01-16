@@ -69,23 +69,6 @@ spec:
     - name: tp-dst
       size: 102005473280
       type: s3
-  iscsi:
-    enabled: true
-    alias: svmdst
-    interfaces:
-    - name: iscsi1
-      ip: 192.168.0.82
-      netmask: 255.255.255.0
-      broadcastDomain: Default
-      homeNode: Cluster2-01
-  nvme:
-    enabled: true
-    interfaces:
-    - name: nvme1
-      ip: 192.168.0.83
-      netmask: 255.255.255.0
-      broadcastDomain: Default
-      homeNode: Cluster2-01
   nfs:
     enabled: true
     v3: true
