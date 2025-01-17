@@ -18,7 +18,7 @@ spec:
   backendName: c1-svm0-nfs-custom-tbe
   storageDriverName: ontap-nas
   replicationPolicy: MirrorAllSnapshots
-  managementLIF: 192.168.0.101
+  managementLIF: 192.168.0.30
   dataLIF: 192.168.0.31
   svm: svm0
   credentials:
