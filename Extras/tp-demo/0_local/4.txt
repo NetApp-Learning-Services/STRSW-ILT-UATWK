@@ -1,2 +1,2 @@
-https://192.168.0.101
-https://192.168.0.102
+System manager for cluster1: https://192.168.0.101
+System manager for cluster2: https://192.168.0.102
