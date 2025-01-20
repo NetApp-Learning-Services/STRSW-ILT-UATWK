@@ -1,0 +1,6 @@
+global:
+  hubPullSecret:
+    registry: 'https://registry-1.docker.io'
+    #secretName: ''
+    username: ''
+    password: ''
