@@ -8,7 +8,6 @@ spec:
   backendName: c1-svm1-nvme-tbe
   storageDriverName: ontap-san
   managementLIF: change_me
-  dataLIF: change_me
   svm: change_me
   sanType: change_me
   useREST: change_me
