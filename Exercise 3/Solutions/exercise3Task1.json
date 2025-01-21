@@ -6,5 +6,6 @@
     "dataLIF": "192.168.0.31",
     "svm": "svm0",
     "username": "vsadmin",
-    "password": "Netapp1!"
+    "password": "Netapp1!",
+    "snapshotDir": "true"
 }
