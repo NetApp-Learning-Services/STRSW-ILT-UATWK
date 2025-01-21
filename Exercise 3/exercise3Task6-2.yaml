@@ -18,7 +18,6 @@ spec:
   backendName: c1-svm1-iscsi-tb
   storageDriverName: ontap-san
   managementLIF: change_me
-  dataLIF: change_me
   svm: change_me
   credentials:
     name: c1-svm1-backend-secret
