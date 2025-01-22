@@ -7,5 +7,6 @@
     "svm": "svm0",
     "username": "vsadmin",
     "password": "Netapp1!",
-    "snapshotDir": "true"
+    "snapshotDir": "true",
+    "nfsMountOptions": "nfsvers=3"
 }

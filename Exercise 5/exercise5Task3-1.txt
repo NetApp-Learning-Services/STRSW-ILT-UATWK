@@ -1,1 +1,1 @@
-helm install mysqlapp oci://registry-1.docker.io/bitnamicharts/mysql --version 12.0.0 --namespace mysqlapp --create-namespaces
+helm install mysqlapp oci://registry-1.docker.io/bitnamicharts/mysql --version 12.0.0 --namespace mysqlapp --create-namespace
