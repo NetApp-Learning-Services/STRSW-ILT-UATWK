@@ -6,7 +6,5 @@
     "dataLIF": "change_me",
     "svm": "change_me",
     "username": "change_me",
-    "password": "change_me",
-    "snapshotDir": "change_me",
-    "nfsMountOptions": "change_me"
+    "password": "change_me"
 }
