@@ -14,5 +14,7 @@ if [ ! -d "$DIR" ]; then
     mkdir -p $DIR;
 fi
 echo "$konfig" > $DIR/config
+rm config1
+rm config2
 #echo "$konfig" > config
 #$KUBECONFIG=$DIR/config
