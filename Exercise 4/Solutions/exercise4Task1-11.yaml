@@ -1,8 +1,8 @@
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
-  name: san-snap
+  name: c1-svm1-iscsi-pvc-1-snap-1
 spec:
-  volumeSnapshotClassName: trident-snapshotclass
+  volumeSnapshotClassName: csi-snap-class
   source:
-    persistentVolumeClaimName: san-basic
+    persistentVolumeClaimName: c1-svm1-iscsi-pvc-1

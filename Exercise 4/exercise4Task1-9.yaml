@@ -2,6 +2,7 @@ kind: Pod
 apiVersion: v1
 metadata:
   name: nfs-snap-pod
+  namespace: default
   labels:
     app: nfs-snap-web
 spec:

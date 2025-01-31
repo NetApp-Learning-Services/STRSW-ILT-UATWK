@@ -1,7 +1,12 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
-  name: nvme-basic
-provisioner: csi.trident.netapp.io
-parameters:
-  backendType: change_me
+  name: c1-svm0-nfs-custom-pvc-1
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: change_me

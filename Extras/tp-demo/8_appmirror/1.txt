@@ -1,0 +1,3 @@
+kubectl config use-context source-admin@source
+
+tridentctl protect -n mywordpressapp create app mywordpressapp --namespaces mywordpressapp

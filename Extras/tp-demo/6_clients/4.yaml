@@ -1,0 +1,14 @@
+global:
+  hubPullSecret:
+    registry: 'https://registry-1.docker.io'
+    #secretName: ''
+    username: ''
+    password: ''
+wordpressUsername: admin
+wordpressPassword: Netapp1!
+wordpressEmail: admin@demo.netapp.com
+wordpressFirstName: Trident
+wordpressLastName: Protect
+wordpressBlogName: NetAppTridentProtectIsAwesome
+service: 
+  type: LoadBalancer

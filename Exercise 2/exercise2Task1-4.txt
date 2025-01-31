@@ -1,0 +1,1 @@
+cp deploy/kustomization_post_1_25.yaml deploy/kustomization.yaml

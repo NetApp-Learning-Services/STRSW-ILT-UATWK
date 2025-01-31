@@ -1,0 +1,18 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: AppMirrorRelationship
+metadata:
+  name: mywordpressapp-dst-amr
+  namespace: mywordpressapp-dst
+spec:
+  desiredState: Established
+  destinationAppVaultRef: c2-svmdst-s3-av
+  namespaceMapping:
+  - destination: mywordpressapp-dst
+    source: mywordpressapp
+  recurrenceRule: |-
+    DTSTART:20220101T000200Z
+    RRULE:FREQ=MINUTELY;INTERVAL=5
+  sourceAppVaultRef: c1-svmsrc-s3-av
+  sourceApplicationName: mywordpressapp
+  sourceApplicationUID: change_me
+  storageClassName: nfs-custom-sc

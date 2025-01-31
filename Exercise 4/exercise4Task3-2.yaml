@@ -1,28 +1,10 @@
-kind: Pod
-apiVersion: v1
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
 metadata:
-  name: nfs-import-pod
-  labels:
-    app: nfs-import-web
+  name: c1-svm0-nfs-custom-pvc-1-snapimport-1
+  namespace: default
 spec:
-  volumes:
-    - name: nfs-storage
-      persistentVolumeClaim:
-       claimName: nfs-import
-  containers:
-    - name: nfs-container
-      image: nginx:1.25-alpine-slim
-      imagePullPolicy: IfNotPresent
-      resources:
-        requests:
-          memory: "64Mi"
-          cpu: "250m"
-        limits:
-          memory: "128Mi"
-          cpu: "500m"
-      ports:
-        - containerPort: 80
-          name: "http-server"
-      volumeMounts:
-        - mountPath: "/usr/share/nginx/html"
-          name: nfs-storage
+  # volumeSnapshotClassName: csi-snapclass (not required for pre-provisioned or imported snapshots)
+  source:
+    volumeSnapshotContentName: snapcontent-c1-svm0-nfs-custom-pvc-1-snapimport-1

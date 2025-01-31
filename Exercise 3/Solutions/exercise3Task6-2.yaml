@@ -1,7 +1,23 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: v1
+kind: Secret
 metadata:
-  name: san-basic
-provisioner: csi.trident.netapp.io
-parameters:
-  backendType: ontap-san
+  name: c1-svm1-backend-secret
+  namespace: trident
+type: kubernetes.io/basic-auth
+stringData:
+  username: vsadmin
+  password: Netapp1!
+---
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: c1-svm1-iscsi-tbc
+  namespace: trident
+spec:
+  version: 1
+  backendName: c1-svm1-iscsi-tbe 
+  storageDriverName: ontap-san
+  managementLIF: 192.168.0.40
+  svm: svm1
+  credentials:
+    name: c1-svm1-backend-secret

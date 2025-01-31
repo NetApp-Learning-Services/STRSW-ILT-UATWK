@@ -2,13 +2,14 @@ kind: Pod
 apiVersion: v1
 metadata:
   name: san-snap-pod
+  namespace: default
   labels:
     app: san-snap-web
 spec:
   volumes:
     - name: san-storage
       persistentVolumeClaim:
-       claimName: san-snap
+       claimName: c1-svm1-iscsi-pvcsnap-1
   containers:
     - name: san-container
       image: nginx:1.25-alpine-slim

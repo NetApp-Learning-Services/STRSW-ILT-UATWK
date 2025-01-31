@@ -1,7 +1,8 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: san-basic
+  name: c1-svm1-iscsi-pvc-1
+  namespace: default
 spec:
   accessModes:
     - ReadWriteOnce

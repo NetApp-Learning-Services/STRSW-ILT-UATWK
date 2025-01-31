@@ -1,0 +1,29 @@
+# tridentctl protect -n trident-protect get appvault
+apiVersion: protect.trident.netapp.io/v1
+kind: AppVault
+metadata:
+  name: c2-svmdst-s3-av
+  namespace: trident-protect
+spec:
+  providerConfig:
+    azure:
+      accountName: ""
+      bucketName: ""
+      endpoint: ""
+    gcp:
+      bucketName: ""
+      projectID: ""
+    s3:
+      bucketName: tp-dst
+      endpoint: 192.168.0.84
+      skipCertValidation: "true"
+  providerCredentials:
+    accessKeyID:
+      valueFromSecret:
+        key: accessKeyID
+        name: gateway-s3-dst
+    secretAccessKey:
+      valueFromSecret:
+        key: secretAccessKey
+        name: gateway-s3-dst
+  providerType: OntapS3

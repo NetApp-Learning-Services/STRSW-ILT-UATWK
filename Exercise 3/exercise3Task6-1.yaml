@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: ontap-cluster1-admin
+  name: ontap-cluster1-admin2
   namespace: gateway-system
 type: kubernetes.io/basic-auth
 stringData:
@@ -18,7 +18,7 @@ stringData:
   username: vsadmin
   password: Netapp1!
 ---
-apiVersion: gateway.netapp.com/v1beta1
+apiVersion: gateway.netapp.com/v1beta2
 kind: StorageVirtualMachine
 metadata:
   name: svm1
@@ -40,7 +40,7 @@ spec:
     name: ontap-svm1-admin
     namespace: gateway-system
   clusterCredentials:
-    name: ontap-cluster1-admin
+    name: ontap-cluster1-admin2
     namespace: gateway-system
   iscsi:
     enabled: true

@@ -6,7 +6,7 @@ metadata:
     app: web
 spec:
   volumes:
-  - name: shared-data
+  - name: shared-vol
     emptyDir: {}
   containers:
   - name: first
@@ -20,7 +20,7 @@ spec:
         memory: "128Mi"
         cpu: "500m"
     volumeMounts:
-    - name: shared-data
+    - name: shared-vol
       mountPath: /usr/share/nginx/html
   - name: second
     image: debian:11.8-slim
@@ -33,7 +33,7 @@ spec:
         memory: "128Mi"
         cpu: "500m"
     volumeMounts:
-    - name: shared-data
+    - name: shared-vol
       mountPath: /pod-data
     command: ["/bin/sh"]
     args:

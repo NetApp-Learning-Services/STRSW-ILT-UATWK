@@ -1,0 +1,1 @@
+kubectl -n mysqlapp get backup mysqlapp-bkup-1 -o "jsonpath={.status.appArchivePath}" ; echo

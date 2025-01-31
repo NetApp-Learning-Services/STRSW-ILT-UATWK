@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: c1-svm0-backend-secret
+  namespace: trident
+type: kubernetes.io/basic-auth
+stringData:
+  username: vsadmin
+  password: Netapp1!
+---
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: c1-svm0-nfs-eco-tbc
+  namespace: trident
+spec:
+  version: 1
+  backendName: c1-svm0-nfs-eco-tbe
+  storageDriverName: change_me
+  managementLIF: 192.168.0.30
+  dataLIF: 192.168.0.31
+  svm: svm0
+  storagePrefix: nas_eco_
+  credentials:
+    name: c1-svm0-backend-secret
+  storage:
+  - defaults:
+      nameTemplate: '{{ .config.StoragePrefix }}_{{.volume.Namespace}}_{{.volume.RequestName}}_{{ .config.BackendName }}'
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: c1-svm0-nfs-eco-sc
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: "ontap-nas-economy"
+  storagePools: "c1-svm0-nfs-eco-tbe:.*"

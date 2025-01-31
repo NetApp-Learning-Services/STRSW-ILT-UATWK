@@ -1,0 +1,42 @@
+tridentctl protect create app mywordpressapp --namespaces mywordpressapp
+
+tridentctl protect get app
+
+tridentctl protect -n trident-protect get appvault
+
+tridentctl protect create snapshot mywordpressapp-snap-1 --appvault c1-svmsrc-s3-av --app mywordpressapp
+
+tridentctl protect get snapshot
+
+tridentctl protect create backup mywordpressapp-bkup-1 --appvault c1-svmsrc-s3-av --app mywordpressapp
+
+tridentctl protect get backup
+
+kubectl create namespace mywordpressapp1
+
+tridentctl protect -n mywordpressapp1 create snapshotrestore mywordpressapp-snapr1 --namespace-mapping  mywordpressapp:mywordpressapp1 --snapshot mywordpressapp/mywordpressapp-snap-1
+
+tridentctl protect -n mywordpressapp1 get snaprestore 
+
+kubectl create namespace mywordpressapp2
+
+tridentctl protect -n mywordpressapp2 create backuprestore mywordpressapp-bkupr1 --namespace-mapping  mywordpressapp:mywordpressapp2 --backup mywordpressapp/mywordpressapp-bkup-1
+
+tridentctl protect -n mywordpressapp2 get backuprestore 
+
+tridentctl protect create backupinplacerestore mywordpressapp-backupipr1 --backup mywordpressapp/mywordpressapp-bkup-1 
+
+tridentctl protect wait backupinplacerestore mywordpressapp-backupipr1
+
+tridentctl protect create schedule mywordpressapp-sched1-hourly --app mywordpressapp --appvault c1-svmsrc-s3-av --granularity Ho
+urly --minute 15 --backup-retention 3
+
+tridentctl protect -n trident-protect get appvaultcontent c1-svmsrc-s3-av --show-paths --app mywordpressapp 
+
+kubectl create namespace mywordpressapp3
+
+tridentctl protect -n mywordpressapp3 create backuprestore mywordpressapp-bkupr2 --namespace-mapping mywordpressapp:mywordpressapp3 --appvault c1-svmsrc-s3-av --path 
+
+tridentctl protect -n mywordpressapp3 get backuprestore 
+
+tridentctl protect wait backuprestore mywordpressapp-bkupr2

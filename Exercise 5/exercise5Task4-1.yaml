@@ -1,0 +1,9 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: Application
+metadata:
+  name: mysqlapp
+  namespace: mysqlapp
+spec:
+  includedNamespaces:
+  - labelSelector: {}
+    namespace: mysqlapp

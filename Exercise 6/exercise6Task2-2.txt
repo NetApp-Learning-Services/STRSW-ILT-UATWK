@@ -1,0 +1,1 @@
+./tridentctl get backend -n trident -o json | jq '[.items[] | {backend: .name, storageClasses: [.storage[].storageClasses]|unique}]'

@@ -1,7 +1,10 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: nfs-basic
+  name: c1-svm0-nfs-pvc-1
+  namespace: default
+  annotations:
+    trident.netapp.io/snapshotDirectory: "true"
 spec:
   accessModes:
     - ReadWriteOnce

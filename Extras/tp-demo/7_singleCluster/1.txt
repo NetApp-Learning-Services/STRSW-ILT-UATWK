@@ -1,0 +1,15 @@
+# snap install aws-cli --channel=v2 --classic
+
+SRC BUCKET:
+aws --endpoint-url https://192.168.0.74 s3api list-objects-v2 --bucket tp-src --no-verify-ssl --profile src
+
+aws --endpoint-url https://192.168.0.74 s3api get-object --bucket tp-src --key appVault.json src-appVault.json --no-verify-ssl --profile src
+
+aws --endpoint-url https://192.168.0.74 s3api delete-objects --delete '{"Objects":[{"Key":"appVault.json"}]}' --bucket tp-src --no-verify-ssl --profile src
+
+DST BUCKET:
+aws --endpoint-url https://192.168.0.84 s3api list-objects-v2 --bucket tp-dst --no-verify-ssl --profile dst
+
+aws --endpoint-url https://192.168.0.84 s3api get-object --key appVault.json --bucket tp-dst --no-verify-ssl dst-appVault.json --profile dst
+
+aws --endpoint-url https://192.168.0.84 s3api delete-objects --delete '{"Objects":[{"Key":"appVault.json"}]}' --bucket tp-dst --no-verify-ssl --profile dst
