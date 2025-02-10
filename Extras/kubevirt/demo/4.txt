@@ -1,1 +1,1 @@
-sudo mv virtctl /usr/local/bin
+sudo cp virtctl /usr/local/bin
