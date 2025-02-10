@@ -1,0 +1,3 @@
+kubectl -n kubevirt get kubevirt
+
+kubectl -n kubevirt get pods 
