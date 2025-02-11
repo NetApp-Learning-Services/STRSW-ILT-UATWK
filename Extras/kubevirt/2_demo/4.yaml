@@ -1,12 +1,37 @@
-apiVersion: v1
-kind: Service
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
 metadata:
-  name: testvm-load
+  name: testvm
   namespace: testvm
 spec:
-  ports:
-  - port: 22
-    targetPort: 22
-  selector:
-    kubevirt.io/vm: vm-cirros
-  type: LoadBalancer
+  runStrategy: Halted
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: vm-cirros
+    spec:
+      domain:
+        devices:
+          disks:
+            - name: containerdisk
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+          interfaces:
+          - name: default
+            masquerade: {}
+        resources:
+          requests:
+            memory: 64M
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+        - name: containerdisk
+          containerDisk:
+            image: quay.io/kubevirt/cirros-container-disk-demo
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userDataBase64: SGkuXG4=

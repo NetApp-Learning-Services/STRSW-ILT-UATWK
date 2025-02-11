@@ -1,11 +1,33 @@
+kubectl -n testvm get vm
+
+kubectl -n testvm get vmi
+
+kubect -n testvm describe vm testvm
+
+virtctl -n testvm start testvm
+
+kubectl -n testvm get vm
+
+kubectl -n testvm get vmi
+
+kubect -n testvm describe vm testvm
+
+kubectl -n testvm patch vm testvm --type merge -p \
+        '{"spec":{"runStrategy":"Halted"}}'
+
+kubectl -n testvm get vm
+
+kubectl -n testvm get vmi
+
+kubect -n testvm describe vm testvm
+
+kubectl -n testvm patch vm testvm --type merge -p \
+        '{"spec":{"runStrategy":"Always"}}'
+
 kubectl -n testvm get vm,vmi,pod,service
 
-ssh cirros@192.168.0.240
+virtctl -n testvm console testvm
 
-gocubsgo
+virtctl -n testvm stop testvm
 
-or
-
-virtctl -n testvm expose vmi testvm --name=testvm-node --port=80 --type=NodePort
-
-kubectl -n testvm get service testvm-node
+kubectl -n testvmdelete vm testvm

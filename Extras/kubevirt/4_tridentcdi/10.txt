@@ -1,0 +1,5 @@
+kubectl -n testvm2 get services
+
+ssh cirros@192.168.0.241
+
+gocubsgo
