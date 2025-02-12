@@ -10,6 +10,6 @@ echo "############################################"
 
 for node in $(kubectl get nodes -o jsonpath='{.items[*].metadata.name}'); do 
   echo "Node: $node"
-  kubectl get node $node -o jsonpath='{.metadata.labels}' | tr ',' '\n' | grep -E "kubevirt.io/size|kubevirt.io/domain"  | sed 's/^[ \t]*//;s/[ \t]*$//' ; 
+  kubectl get node $node -o jsonpath='{.metadata.labels}' | tr ',' '\n' | grep -E "kubevirt"  | sed 's/^[ \t]*//;s/[ \t]*$//' ; 
   echo; 
 done
