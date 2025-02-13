@@ -14,7 +14,7 @@ kubectl -n testvm patch vm testvm --type merge -p '{"spec":{"runStrategy":"Halte
 
 kubectl -n testvm get vm,vmi,pod
 
-kubect -n testvm describe vm testvm
+kubectl -n testvm describe vm testvm
 
 kubectl -n testvm patch vm testvm --type merge -p '{"spec":{"runStrategy":"Always"}}'
 
@@ -25,12 +25,12 @@ virtctl -n testvm console testvm
 virtctl -n testvm pause vm testvm
 
 kubectl -n testvm get vm,vmi,pod
-kubect -n testvm describe vmi testvm
+kubectl -n testvm describe vmi testvm
 
 virtctl -n testvm unpause vm testvm
 
 kubectl -n testvm get vm,vmi,pod
-kubect -n testvm describe vmi testvm
+kubectl -n testvm describe vmi testvm
 
 virtctl -n testvm stop testvm
 
