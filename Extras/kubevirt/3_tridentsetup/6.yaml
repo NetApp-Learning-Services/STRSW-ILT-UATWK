@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: c1-svmsrc-backend-secret
+  name: c1-svmvm-backend-secret
   namespace: trident
 type: kubernetes.io/basic-auth
 stringData:
@@ -11,18 +11,18 @@ stringData:
 apiVersion: trident.netapp.io/v1
 kind: TridentBackendConfig
 metadata:
-  name: c1-svmsrc-nfs-custom-tbc
+  name: c1-svmvm-nfs-custom-tbc
   namespace: trident
 spec:
   version: 1
-  backendName: c1-svmsrc-nfs-custom-tbe
+  backendName: c1-svmvm-nfs-custom-tbe
   storageDriverName: ontap-nas
   replicationPolicy: MirrorAllSnapshots
-  managementLIF: 192.168.0.70
-  dataLIF: 192.168.0.71
-  svm: svmsrc
+  managementLIF: 192.168.0.90
+  dataLIF: 192.168.0.91
+  svm: svmvm
   credentials:
-    name: c1-svmsrc-backend-secret
+    name: c1-svmvm-backend-secret
   storage:
   - defaults:
       nameTemplate: '{{ .labels.cluster }}_{{ .volume.Namespace }}_{{ .volume.RequestName }}_{{ .config.BackendName }}'
@@ -37,5 +37,5 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: csi.trident.netapp.io
 parameters:
-  storagePools: "c1-svmsrc-nfs-custom-tbe:.*"
+  storagePools: "c1-svmvm-nfs-custom-tbe:.*"
   backendType: ontap-nas
