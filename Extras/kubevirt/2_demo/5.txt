@@ -8,7 +8,7 @@ virtctl -n testvm start testvm
 
 kubectl -n testvm get vm,vmi,pod
 
-kubect -n testvm describe vm testvm
+kubectl -n testvm describe vm testvm
 
 kubectl -n testvm patch vm testvm --type merge -p '{"spec":{"runStrategy":"Halted"}}'
 
