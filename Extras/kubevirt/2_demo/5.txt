@@ -2,7 +2,7 @@ kubectl -n testvm get vm
 
 kubectl -n testvm get vmi
 
-kubect -n testvm describe vm testvm
+kubectl -n testvm describe vm testvm
 
 virtctl -n testvm start testvm
 
@@ -27,6 +27,14 @@ kubectl -n testvm patch vm testvm --type merge -p \
 kubectl -n testvm get vm,vmi,pod,service
 
 virtctl -n testvm console testvm
+
+virtctl -n testvm pause vm testvm
+
+kubectl -n testvm get vmi
+
+virtctl -n testvm unpause vm testvm
+
+kubectl -n testvm get vmi
 
 virtctl -n testvm stop testvm
 
