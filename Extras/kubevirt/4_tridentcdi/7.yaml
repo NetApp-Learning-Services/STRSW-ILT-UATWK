@@ -3,7 +3,7 @@ kind: VirtualMachine
 metadata:
   labels:
     kubevirt.io/vm: vm-cirros2
-  name: vm-cirros2
+  name: testvm2
   namespace: testvm2
 spec:
   running: true

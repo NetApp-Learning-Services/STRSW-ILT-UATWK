@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: testvm2-load
   namespace: testvm2
-  labels:
-    kubevirt.io/vm: vm-cirros2
 spec:
   ports:
   - port: 22

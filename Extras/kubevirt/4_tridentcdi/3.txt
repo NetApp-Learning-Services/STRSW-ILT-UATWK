@@ -1,1 +1,3 @@
 kubectl -n cdi get cdi 
+
+kubectl -n cdi get pod
