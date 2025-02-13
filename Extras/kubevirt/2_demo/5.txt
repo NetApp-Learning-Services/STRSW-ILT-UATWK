@@ -36,4 +36,8 @@ virtctl -n testvm stop testvm
 
 kubectl -n testvm get vm,vmi,pod
 
-kubectl -n testvm delete vm testvm
+virtctl -n testvm start testvm
+
+kubectl -n testvm get vm,vmi,pod
+
+#kubectl -n testvm delete vm testvm
