@@ -1,0 +1,3 @@
+kubectl get vmi,pod
+
+virtctl console testvm2a

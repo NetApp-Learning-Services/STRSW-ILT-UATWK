@@ -1,0 +1,6 @@
+apiVersion: upload.cdi.kubevirt.io/v1beta1
+kind: UploadTokenRequest
+metadata:
+  name: dv-upload
+spec:
+  pvcName: dv-upload
