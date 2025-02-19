@@ -1,0 +1,1 @@
+kubectl -n testvm3 get pvc

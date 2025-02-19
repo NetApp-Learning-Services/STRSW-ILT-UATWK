@@ -10,6 +10,7 @@ spec:
     developerConfiguration:
       featureGates: 
       - Snapshot
+      - LiveMigration
       useEmulation: true  #set to false if has direct access to local virtualized hardware
   customizeComponents: {}
   imagePullPolicy: IfNotPresent

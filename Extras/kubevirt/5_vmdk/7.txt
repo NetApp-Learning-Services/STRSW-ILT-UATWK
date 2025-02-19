@@ -1,9 +1,3 @@
-kubectl apply -f 6.yaml -o yaml
-
-TOKEN=$(kubectl apply -f 6.yaml -o="jsonpath={.status.token}")
-
-echo $TOKEN
+TOKEN=$(kubectl apply -f 6.yaml -o="jsonpath={.status.token}"); echo $TOKEN
 
 curl -v --insecure -H "Authorization: Bearer $TOKEN" --data-binary @cirros-0.6.3-x86_64-disk.vmdk https://192.168.0.62:31001/v1beta1/upload
-
-curl -v --insecure -H "Authorization: Bearer $TOKEN" --data-binary '/home/user/repos/STRSW-ILT-UATWK/Extras/kubevirt/5_vmdk/cirros-0.6.3-x86_64-disk.vmdk' https://192.168.0.62:31001/v1beta1/upload
