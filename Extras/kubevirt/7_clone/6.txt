@@ -1,0 +1,3 @@
+kubectl -n testvm3 get vmi
+
+virtctl console testvm3vmdkclone

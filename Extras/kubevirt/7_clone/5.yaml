@@ -1,7 +1,7 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachineInstance
 metadata:
-  name: testvm3uploadclone
+  name: testvm3vmdkclone
   namespace: testvm3
 spec:
   domain:
@@ -11,7 +11,7 @@ spec:
       disks:
       - disk:
           bus: virtio
-        name: pvcdisk
+        name: dvdisk
       - cdrom:
           bus: sata
           readonly: true
@@ -23,9 +23,9 @@ spec:
         memory: 128M
   terminationGracePeriodSeconds: 0
   volumes:
-  - name: pvcdisk
-    persistentVolumeClaim:
-      claimName: dv-upload-clone
+  - name: dvdisk
+    dataVolume:
+      name: dv-vmdkclone
   - name: cloudinitdisk
     cloudInitNoCloud:
       userDataBase64: SGkuXG4=

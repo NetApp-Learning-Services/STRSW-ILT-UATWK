@@ -1,0 +1,9 @@
+kubectl get vmclone
+
+kubectl -n testvm3 get vm,vmi
+
+kubectl -n testvm3 patch vm testvm3clone --type merge -p '{"spec":{"runStrategy":"Always"}}'
+
+kubectl -n testvm3 get vm,vmi
+
+virtctl console testvm3clone
