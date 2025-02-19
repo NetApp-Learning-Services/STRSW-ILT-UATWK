@@ -1,8 +1,8 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachineInstance
 metadata:
-  name: testvm2a
-  namespace: testvm2
+  name: testvm3upload
+  namespace: testvm3
 spec:
   domain:
     cpu:

@@ -2,6 +2,7 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachineInstance
 metadata:
   name: testvm3
+  namespace: testvm3
 spec:
   domain:
     cpu:
