@@ -2,7 +2,7 @@
 apiVersion: clone.kubevirt.io/v1alpha1
 kind: VirtualMachineClone
 metadata:
-  name: testvmclone
+  name: testvm3clone
   namespace: testvm3
 spec:
   source:
