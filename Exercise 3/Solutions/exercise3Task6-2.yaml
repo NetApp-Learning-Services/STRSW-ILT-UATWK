@@ -19,5 +19,6 @@ spec:
   storageDriverName: ontap-san
   managementLIF: 192.168.0.40
   svm: svm1
+  sanType: iscsi
   credentials:
     name: c1-svm1-backend-secret
