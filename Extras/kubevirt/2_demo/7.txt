@@ -1,0 +1,11 @@
+kubectl -n testvm get vm,vmi,pod,service
+
+ssh cirros@192.168.0.240
+
+gocubsgo
+
+or
+
+virtctl -n testvm expose vmi testvm --name=testvm-node --port=80 --type=NodePort
+
+kubectl -n testvm get service testvm-node

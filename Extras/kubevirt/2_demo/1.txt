@@ -1,0 +1,7 @@
+kubectl -n kubevirt get kubevirt
+
+kubectl -n kubevirt get pods 
+
+snap install jq
+
+kubectl -n kubevirt get crds | grep kubevirt
