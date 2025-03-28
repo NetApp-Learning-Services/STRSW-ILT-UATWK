@@ -19,5 +19,6 @@ spec:
   storageDriverName: ontap-san
   managementLIF: change_me
   svm: change_me
+  sanType: iscsi
   credentials:
     name: c1-svm1-backend-secret
