@@ -18,8 +18,8 @@ spec:
   backendName: c1-svm1-iscsi-zone2-tbe
   storageDriverName: ontap-san
   managementLIF: 192.168.0.40
-  dataLIF: 192.168.0.41
   svm: svm1
+  sanType: iscsi
   storagePrefix: zone2_
   credentials:
     name: zone2-nfs-backend-secret
