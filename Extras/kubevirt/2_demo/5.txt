@@ -1,0 +1,43 @@
+kubectl -n testvm get vm
+
+kubectl -n testvm get vmi
+
+kubectl -n testvm describe vm testvm
+
+virtctl -n testvm start testvm
+
+kubectl -n testvm get vm,vmi,pod
+
+kubectl -n testvm describe vm testvm
+
+kubectl -n testvm patch vm testvm --type merge -p '{"spec":{"runStrategy":"Halted"}}'
+
+kubectl -n testvm get vm,vmi,pod
+
+kubectl -n testvm describe vm testvm
+
+kubectl -n testvm patch vm testvm --type merge -p '{"spec":{"runStrategy":"Always"}}'
+
+kubectl -n testvm get vm,vmi,pod
+
+virtctl -n testvm console testvm
+
+virtctl -n testvm pause vm testvm
+
+kubectl -n testvm get vm,vmi,pod
+kubectl -n testvm describe vmi testvm
+
+virtctl -n testvm unpause vm testvm
+
+kubectl -n testvm get vm,vmi,pod
+kubectl -n testvm describe vmi testvm
+
+virtctl -n testvm stop testvm
+
+kubectl -n testvm get vm,vmi,pod
+
+virtctl -n testvm start testvm
+
+kubectl -n testvm get vm,vmi,pod
+
+#kubectl -n testvm delete vm testvm

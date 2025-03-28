@@ -1,0 +1,15 @@
+# Must have Snapshot feature gate enabled
+apiVersion: clone.kubevirt.io/v1alpha1
+kind: VirtualMachineClone
+metadata:
+  name: testvm3clone
+  namespace: testvm3
+spec:
+  source:
+    apiGroup: kubevirt.io
+    kind: VirtualMachine
+    name: testvm3
+  target:
+    apiGroup: kubevirt.io
+    kind: VirtualMachine
+    name: testvm3clone

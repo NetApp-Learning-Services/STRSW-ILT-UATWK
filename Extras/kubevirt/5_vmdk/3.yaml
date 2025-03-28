@@ -1,0 +1,37 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: testvm3
+  namespace: testvm3
+spec:
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: vm-cirros
+    spec:
+      domain:
+        devices:
+          disks:
+            - name: dvdisk
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+          interfaces:
+          - name: default
+            masquerade: {}
+        resources:
+          requests:
+            memory: 128M
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+        - name: dvdisk
+          dataVolume:
+            name: dv-vmdk
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userDataBase64: SGkuXG4=

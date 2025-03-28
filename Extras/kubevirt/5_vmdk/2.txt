@@ -1,0 +1,5 @@
+kubectl create ns testvm3
+
+kubectl config set-context --current --namespace=testvm3
+
+virtctl image-upload dv dv-vmdk --size=200Mi --image-path=cirros-0.6.3-x86_64-disk.qcow2 --uploadproxy-url=https://192.168.0.62:31001 --insecure

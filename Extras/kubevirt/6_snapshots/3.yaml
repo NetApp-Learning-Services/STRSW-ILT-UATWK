@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dv-upload-clone
+  namespace: testvm3
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 250Mi
+  storageClassName: nfs-custom-sc
+  dataSource:
+    name: c1-svmvm-nfs-dv-upload-snap-1
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io

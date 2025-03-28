@@ -1,0 +1,5 @@
+kubectl -n testvm2 get dv,pvc
+
+kubectl -n testvm2 get dv,pvc
+
+kubectl -n testvm2 get dv,pvc

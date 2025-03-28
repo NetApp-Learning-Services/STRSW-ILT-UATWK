@@ -1,0 +1,7 @@
+kubectl -n testvm3 get virtualmachineinstancemigrations
+
+kubectl -n testvm3 get vmi
+
+virtctl console testvm3
+
+kubectl -n testvm3 describe virtualmachineinstancemigrations testvm3-migration

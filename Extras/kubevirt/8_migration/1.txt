@@ -1,0 +1,5 @@
+kubectl -n testvm3 get pvc
+
+kubectl -n testvm3 get vmi
+
+virtctl console testvm3

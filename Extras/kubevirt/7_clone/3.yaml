@@ -1,0 +1,16 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: dv-vmdkclone
+  namespace: testvm3
+spec:
+  source:
+    pvc:
+      namespace: testvm3
+      name: dv-vmdk
+  pvc:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 250Mi

@@ -1,0 +1,1 @@
+kubectl -n testvm2 get dv,pvc,vm,vmi,pod
