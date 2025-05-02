@@ -31,7 +31,7 @@ tridentctl protect get schedule
 
 tridentctl protect -n trident-protect get appvaultcontent c1-svmsrc-s3-av --show-paths --app mywordpressapp 
 
-tridentctl protect -n mywordpressapp2 create backuprestore mywordpressapp-bkupr2 --namespace-mapping mywordpressapp:mywordpressapp3 --appvault c1-svmsrc-s3-av --path 
+tridentctl protect -n mywordpressapp2 create backuprestore mywordpressapp-bkupr2 --namespace-mapping mywordpressapp:mywordpressapp2 --appvault c1-svmsrc-s3-av --path 
 
 tridentctl protect -n mywordpressapp2 get backuprestore 
 
