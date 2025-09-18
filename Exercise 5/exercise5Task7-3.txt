@@ -34,4 +34,4 @@ tridentctl protect -n mywordpressapp2 create backuprestore mywordpressapp-bkupr2
 
 tridentctl protect -n mywordpressapp2 get backuprestore 
 
-tridentctl protect wait backuprestore mywordpressapp-bkupr2
+tridentctl protect -n mywordpressapp2 wait backuprestore mywordpressapp-bkupr2
