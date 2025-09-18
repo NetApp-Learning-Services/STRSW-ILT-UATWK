@@ -24,8 +24,7 @@ tridentctl protect get backupinplacerestore
 
 tridentctl protect wait backupinplacerestore mywordpressapp-backupipr1
 
-tridentctl protect create schedule mywordpressapp-sched1-hourly --app mywordpressapp --appvault c1-svmsrc-s3-av --granularity Ho
-urly --minute 15 --backup-retention 3
+tridentctl protect create schedule mywordpressapp-sched1-hourly --app mywordpressapp --appvault c1-svmsrc-s3-av --granularity Hourly --minute 15 --backup-retention 3
 
 tridentctl protect get schedule
 
