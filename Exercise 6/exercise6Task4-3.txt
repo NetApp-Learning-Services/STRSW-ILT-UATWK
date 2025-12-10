@@ -1,1 +1,1 @@
-kubectl -n trident-protect get applications mywordpressapp -o "jsonpath={.metadata.uid}"
+kubectl -n mywordpressapp get applications mywordpressapp -o "jsonpath={.metadata.uid}"
