@@ -16,5 +16,15 @@ fi
 echo "$konfig" > $DIR/config
 rm config1
 rm config2
-#echo "$konfig" > config
-#$KUBECONFIG=$DIR/config
+
+# This part of the script is used to add the certificate of the registry to the nodes and restart containerd
+# Added becauase the nodes are not able to pull images from the registry due to the certificate not being trusted
+CERT="/tmp/netapp-reg.crt"
+
+NODES="kubmas1-1 kubwor1-1 kubwor1-2 kubwor1-3 kubmas2-1 kubwor2-1 kubwor2-2"
+
+openssl s_client -showcerts -connect dockreg.labs.lod.netapp.com:443 </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > $CERT 
+
+for NODE in $NODES; do sshpass -p 'Netapp1!' scp $CERT root@$NODE:/usr/local/share/ca-certificates/netapp-registry.crt
+sshpass -p 'Netapp1!' ssh root@$NODE "update-ca-certificates && systemctl restart containerd" ;
+done;
