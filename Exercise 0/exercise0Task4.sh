@@ -10,6 +10,8 @@ DIR="/home/user/.kube"
 PASS="Netapp1!"
 CERT="/tmp/netapp-reg.crt"
 REGISTRY_HOST="dockreg.labs.lod.netapp.com:443"
+MASTER1="kubmas1-1"
+MASTER2="kubmas2-1"
 
 SSH_OPTS=(-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null)
 
@@ -24,23 +26,17 @@ ensure_cmd() {
 }
 
 ensure_cmd sshpass sshpass
-ensure_cmd openssl  openssl
-ensure_cmd kubectl  kubectl
+ensure_cmd openssl openssl
+ensure_cmd kubectl kubectl
 
 # --- Pull kubeconfigs from the two masters into temp files ---
 CFG1="$(mktemp)"
 CFG2="$(mktemp)"
 
-sshpass -p "$PASS" scp "${SSH_OPTS[@]}" root@kubmas1-1:/root/.kube/config "$CFG1"
-sshpass -p "$PASS" scp "${SSH_OPTS[@]}" root@kubmas2-1:/root/.kube/config "$CFG2"
+sshpass -p "$PASS" scp "${SSH_OPTS[@]}" root@"$MASTER1":/root/.kube/config "$CFG1"
+sshpass -p "$PASS" scp "${SSH_OPTS[@]}" root@"$MASTER1":/root/.kube/config "$CFG2"
 
 # --- Replace placeholder cluster name strings ---
-# If the kubeconfig literally contains "<kubernetes>", use this:
-# sudo sed -i 's/<kubernetes>/source/g'      "$CFG1"
-# sudo sed -i 's/<kubernetes>/destination/g' "$CFG2"
-
-# If instead the kubeconfig contains the literal text "&lt;kubernetes&gt;",
-# comment the two lines above and use these:
 sudo sed -i 's/\<kubernetes\>/source/g' "$CFG1" 
 sudo sed -i 's/\<kubernetes\>/destination/g' "$CFG2"
 
