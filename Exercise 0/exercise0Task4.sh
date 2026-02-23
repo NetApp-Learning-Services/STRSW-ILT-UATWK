@@ -34,7 +34,7 @@ CFG1="$(mktemp)"
 CFG2="$(mktemp)"
 
 sshpass -p "$PASS" scp "${SSH_OPTS[@]}" root@"$MASTER1":/root/.kube/config "$CFG1"
-sshpass -p "$PASS" scp "${SSH_OPTS[@]}" root@"$MASTER1":/root/.kube/config "$CFG2"
+sshpass -p "$PASS" scp "${SSH_OPTS[@]}" root@"$MASTER2":/root/.kube/config "$CFG2"
 
 # --- Replace placeholder cluster name strings ---
 sudo sed -i 's/\<kubernetes\>/source/g' "$CFG1" 
