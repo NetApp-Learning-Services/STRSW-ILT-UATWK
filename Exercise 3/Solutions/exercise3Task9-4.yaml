@@ -12,7 +12,7 @@ spec:
        claimName: c1-svm1-nvme-pvc-1
   containers:
     - name: nvme-container
-      image: nginx:1.25-alpine-slim
+      image: nginx:1.29-alpine3.23-slim
       resources:
         requests:
           memory: "64Mi"

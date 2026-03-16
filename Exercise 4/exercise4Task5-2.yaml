@@ -12,7 +12,7 @@ spec:
        claimName: c1-svm0-nfs-import-pvc-1
   containers:
     - name: nfs-container
-      image: nginx:1.25-alpine-slim
+      image: nginx:1.29-alpine3.23-slim
       imagePullPolicy: IfNotPresent
       resources:
         requests:

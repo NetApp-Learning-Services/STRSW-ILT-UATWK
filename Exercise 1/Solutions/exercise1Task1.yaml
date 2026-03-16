@@ -4,7 +4,7 @@ metadata:
   name: emptydir-pod
 spec:
   containers:
-  - image: nginx:1.25-alpine-slim
+  - image: nginx:1.29-alpine3.23-slim
     imagePullPolicy: IfNotPresent
     name: web
     resources:
