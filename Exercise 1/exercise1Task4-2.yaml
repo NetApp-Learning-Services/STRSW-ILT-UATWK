@@ -29,13 +29,13 @@ spec:
   clusterHost: 192.168.0.101
   debug: false
   aggregates:
-  - name: Cluster1_01_FC_1
+  - name: cluster1_01_SSD_1
   management:
     name: manage1
     ip: 192.168.0.30
     netmask: 255.255.255.0
     broadcastDomain: Default
-    homeNode: Cluster1-01
+    homeNode: cluster1-01
   vsadminCredentials:
     name: ontap-svm0-admin
     namespace: gateway-system
@@ -52,7 +52,7 @@ spec:
       ip: 192.168.0.31
       netmask: 255.255.255.0
       broadcastDomain: Default
-      homeNode: Cluster1-01
+      homeNode: cluster1-01
     export:
       name: default
       rules:
