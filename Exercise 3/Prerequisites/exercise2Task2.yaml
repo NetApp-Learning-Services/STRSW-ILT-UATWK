@@ -133,6 +133,7 @@ rules:
   - watch
   - update
   - patch
+  - delete
 - apiGroups:
   - storage.k8s.io
   resources:
@@ -177,6 +178,34 @@ rules:
   - delete
   - update
   - patch
+- apiGroups:
+  - groupsnapshot.storage.k8s.io
+  resources:
+  - volumegroupsnapshots
+  verbs:
+  - list
+- apiGroups:
+  - groupsnapshot.storage.k8s.io
+  resources:
+  - volumegroupsnapshotclasses
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - groupsnapshot.storage.k8s.io
+  resources:
+  - volumegroupsnapshotcontents
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups:
+  - groupsnapshot.storage.k8s.io
+  resources:
+  - volumegroupsnapshotcontents/status
+  verbs:
+  - update
 - apiGroups:
   - csi.storage.k8s.io
   resources:
@@ -235,14 +264,24 @@ rules:
   - tridentactionmirrorupdates/status
   - tridentsnapshotinfos
   - tridentsnapshotinfos/status
+  - tridentgroupsnapshots
+  - tridentgroupsnapshots/status
   - tridentactionsnapshotrestores
   - tridentactionsnapshotrestores/status
+  - tridentnoderemediations
+  - tridentnoderemediations/status
+  - tridentnoderemediationtemplates
+  - tridentnoderemediationtemplates/status
   - tridentprovisioners
   - tridentprovisioners/status
   - tridentorchestrators
   - tridentorchestrators/status
   - tridentconfigurators
   - tridentconfigurators/status
+  - tridentautogrowpolicies
+  - tridentautogrowpolicies/status
+  - tridentautogrowrequestinternals
+  - tridentautogrowrequestinternals/status
   verbs:
   - get
   - list
@@ -355,6 +394,7 @@ rules:
   - authorization.openshift.io
   - rbac.authorization.k8s.io
   resourceNames:
+  - trident-node-remediation-access
   - trident-controller
   - trident-node-linux
   - trident-node-windows
@@ -366,6 +406,7 @@ rules:
   - clusterroles
   - clusterrolebindings
   verbs:
+  - get
   - delete
   - update
   - patch
@@ -480,7 +521,7 @@ spec:
               fieldPath: metadata.name
         - name: OPERATOR_NAME
           value: trident-operator
-        image: netapp/trident-operator:24.10.0
+        image: docker.io/netapp/trident-operator:26.02.0
         imagePullPolicy: IfNotPresent
         name: trident-operator
         resources:
