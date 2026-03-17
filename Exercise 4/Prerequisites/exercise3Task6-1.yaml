@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: ontap-cluster1-admin
+  name: ontap-cluster1-admin2
   namespace: gateway-system
 type: kubernetes.io/basic-auth
 stringData:
@@ -29,18 +29,18 @@ spec:
   clusterHost: 192.168.0.101
   debug: false
   aggregates:
-  - name: Cluster1_01_FC_1
+  - name: cluster1_01_SSD_1
   management:
     name: manage1
     ip: 192.168.0.40
     netmask: 255.255.255.0
     broadcastDomain: Default
-    homeNode: Cluster1-01
+    homeNode: cluster1-01
   vsadminCredentials:
     name: ontap-svm1-admin
     namespace: gateway-system
   clusterCredentials:
-    name: ontap-cluster1-admin
+    name: ontap-cluster1-admin2
     namespace: gateway-system
   iscsi:
     enabled: true
@@ -50,12 +50,12 @@ spec:
       ip: 192.168.0.41
       netmask: 255.255.255.0
       broadcastDomain: Default
-      homeNode: Cluster1-01
+      homeNode: cluster1-01
     - name: iscsi2
       ip: 192.168.0.42
       netmask: 255.255.255.0
       broadcastDomain: Default
-      homeNode: Cluster1-01
+      homeNode: cluster1-01
   nvme:
     enabled: true
     interfaces:
@@ -63,9 +63,9 @@ spec:
       ip: 192.168.0.43
       netmask: 255.255.255.0
       broadcastDomain: Default
-      homeNode: Cluster1-01
+      homeNode: cluster1-01
     - name: nvme2
       ip: 192.168.0.44
       netmask: 255.255.255.0
       broadcastDomain: Default
-      homeNode: Cluster1-01
+      homeNode: cluster1-01
