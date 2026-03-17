@@ -1,1 +1,1 @@
-kubectl kustomize deploy/ > deploy/bundle_post_1_25.yaml
+kubectl create -f deploy/bundle.yaml
