@@ -1,179 +1,180 @@
-# https://github.com/kubernetes-csi/external-snapshotter/releases/tag/v8.5.0/client/config/crd/snapshot.storage.k8s.io_volumegroupsnapshotclasses
+# https://github.com/kubernetes-csi/external-snapshotter/releases/tag/v8.5.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+
+# RBAC file for the snapshot controller.
+#
+# The snapshot controller implements the control loop for CSI snapshot functionality.
+# It should be installed as part of the base Kubernetes distribution in an appropriate
+# namespace for components implementing base system functionality. For installing with
+# Vanilla Kubernetes, kube-system makes sense for the namespace.
+
 ---
-apiVersion: apiextensions.k8s.io/v1
-kind: CustomResourceDefinition
+apiVersion: v1
+kind: ServiceAccount
 metadata:
-  annotations:
-    api-approved.kubernetes.io: "https://github.com/kubernetes-csi/external-snapshotter/pull/1337"
-    controller-gen.kubebuilder.io/version: v0.15.0
-  name: volumegroupsnapshotclasses.groupsnapshot.storage.k8s.io
-spec:
-  group: groupsnapshot.storage.k8s.io
-  names:
-    kind: VolumeGroupSnapshotClass
-    listKind: VolumeGroupSnapshotClassList
-    plural: volumegroupsnapshotclasses
-    shortNames:
-    - vgsclass
-    - vgsclasses
-    singular: volumegroupsnapshotclass
-  scope: Cluster
-  versions:
-  - additionalPrinterColumns:
-    - jsonPath: .driver
-      name: Driver
-      type: string
-    - description: Determines whether a VolumeGroupSnapshotContent created through
-        the VolumeGroupSnapshotClass should be deleted when its bound VolumeGroupSnapshot
-        is deleted.
-      jsonPath: .deletionPolicy
-      name: DeletionPolicy
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
-    deprecated: true
-    name: v1beta1
-    schema:
-      openAPIV3Schema:
-        description: |-
-          VolumeGroupSnapshotClass specifies parameters that a underlying storage system
-          uses when creating a volume group snapshot. A specific VolumeGroupSnapshotClass
-          is used by specifying its name in a VolumeGroupSnapshot object.
-          VolumeGroupSnapshotClasses are non-namespaced.
-        properties:
-          apiVersion:
-            description: |-
-              APIVersion defines the versioned schema of this representation of an object.
-              Servers should convert recognized schemas to the latest internal value, and
-              may reject unrecognized values.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-            type: string
-          deletionPolicy:
-            description: |-
-              DeletionPolicy determines whether a VolumeGroupSnapshotContent created
-              through the VolumeGroupSnapshotClass should be deleted when its bound
-              VolumeGroupSnapshot is deleted.
-              Supported values are "Retain" and "Delete".
-              "Retain" means that the VolumeGroupSnapshotContent and its physical group
-              snapshot on underlying storage system are kept.
-              "Delete" means that the VolumeGroupSnapshotContent and its physical group
-              snapshot on underlying storage system are deleted.
-              Required.
-            enum:
-            - Delete
-            - Retain
-            type: string
-          driver:
-            description: |-
-              Driver is the name of the storage driver expected to handle this VolumeGroupSnapshotClass.
-              Required.
-            type: string
-          kind:
-            description: |-
-              Kind is a string value representing the REST resource this object represents.
-              Servers may infer this from the endpoint the client submits requests to.
-              Cannot be updated.
-              In CamelCase.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-            type: string
-          metadata:
-            type: object
-          parameters:
-            additionalProperties:
-              type: string
-            description: |-
-              Parameters is a key-value map with storage driver specific parameters for
-              creating group snapshots.
-              These values are opaque to Kubernetes and are passed directly to the driver.
-            type: object
-        required:
-        - deletionPolicy
-        - driver
-        type: object
-    served: true
-    storage: false
-    subresources: {}
-  - additionalPrinterColumns:
-    - jsonPath: .driver
-      name: Driver
-      type: string
-    - description: Determines whether a VolumeGroupSnapshotContent created through
-        the VolumeGroupSnapshotClass should be deleted when its bound VolumeGroupSnapshot
-        is deleted.
-      jsonPath: .deletionPolicy
-      name: DeletionPolicy
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
-    name: v1beta2
-    schema:
-      openAPIV3Schema:
-        description: |-
-          VolumeGroupSnapshotClass specifies parameters that a underlying storage system
-          uses when creating a volume group snapshot. A specific VolumeGroupSnapshotClass
-          is used by specifying its name in a VolumeGroupSnapshot object.
-          VolumeGroupSnapshotClasses are non-namespaced.
-        properties:
-          apiVersion:
-            description: |-
-              APIVersion defines the versioned schema of this representation of an object.
-              Servers should convert recognized schemas to the latest internal value, and
-              may reject unrecognized values.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-            type: string
-          deletionPolicy:
-            description: |-
-              DeletionPolicy determines whether a VolumeGroupSnapshotContent created
-              through the VolumeGroupSnapshotClass should be deleted when its bound
-              VolumeGroupSnapshot is deleted.
-              Supported values are "Retain" and "Delete".
-              "Retain" means that the VolumeGroupSnapshotContent and its physical group
-              snapshot on underlying storage system are kept.
-              "Delete" means that the VolumeGroupSnapshotContent and its physical group
-              snapshot on underlying storage system are deleted.
-              Required.
-            enum:
-            - Delete
-            - Retain
-            type: string
-            x-kubernetes-validations:
-            - message: deletionPolicy is immutable once set
-              rule: self == oldSelf
-          driver:
-            description: |-
-              Driver is the name of the storage driver expected to handle this VolumeGroupSnapshotClass.
-              Required.
-            type: string
-            x-kubernetes-validations:
-            - message: driver is immutable once set
-              rule: self == oldSelf
-          kind:
-            description: |-
-              Kind is a string value representing the REST resource this object represents.
-              Servers may infer this from the endpoint the client submits requests to.
-              Cannot be updated.
-              In CamelCase.
-              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-            type: string
-          metadata:
-            type: object
-          parameters:
-            additionalProperties:
-              type: string
-            description: |-
-              Parameters is a key-value map with storage driver specific parameters for
-              creating group snapshots.
-              These values are opaque to Kubernetes and are passed directly to the driver.
-            type: object
-            x-kubernetes-validations:
-            - message: parameters are immutable once set
-              rule: self == oldSelf
-        required:
-        - deletionPolicy
-        - driver
-        type: object
-    served: true
-    storage: true
-    subresources: {}
+  name: snapshot-controller
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: snapshot-controller-leaderelection
+  namespace: kube-system
+rules:
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - watch
+  - list
+  - delete
+  - update
+  - create
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: snapshot-controller-runner
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - persistentvolumes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - persistentvolumeclaims
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - list
+  - watch
+  - create
+  - update
+  - patch
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshotclasses
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshotcontents
+  verbs:
+  - create
+  - get
+  - list
+  - watch
+  - update
+  - delete
+  - patch
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshotcontents/status
+  verbs:
+  - patch
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshots
+  verbs:
+  - create
+  - get
+  - list
+  - watch
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshots/status
+  verbs:
+  - update
+  - patch
+- apiGroups:
+  - groupsnapshot.storage.k8s.io
+  resources:
+  - volumegroupsnapshotclasses
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - groupsnapshot.storage.k8s.io
+  resources:
+  - volumegroupsnapshotcontents
+  verbs:
+  - create
+  - get
+  - list
+  - watch
+  - update
+  - delete
+  - patch
+- apiGroups:
+  - groupsnapshot.storage.k8s.io
+  resources:
+  - volumegroupsnapshotcontents/status
+  verbs:
+  - patch
+- apiGroups:
+  - groupsnapshot.storage.k8s.io
+  resources:
+  - volumegroupsnapshots
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups:
+  - groupsnapshot.storage.k8s.io
+  resources:
+  - volumegroupsnapshots/status
+  verbs:
+  - update
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: snapshot-controller-leaderelection
+  namespace: kube-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: snapshot-controller-leaderelection
+subjects:
+- kind: ServiceAccount
+  name: snapshot-controller
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: snapshot-controller-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: snapshot-controller-runner
+subjects:
+- kind: ServiceAccount
+  name: snapshot-controller
+  namespace: kube-system

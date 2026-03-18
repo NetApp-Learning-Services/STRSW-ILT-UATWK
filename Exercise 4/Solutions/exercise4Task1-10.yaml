@@ -1,9 +1,12 @@
-apiVersion: snapshot.storage.k8s.io/v1
-kind: VolumeSnapshot
+apiVersion: v1
+kind: Service
 metadata:
-  name: c1-svm0-nfs-pvc-1-snap-1
+  name: nfs-snap-web
   namespace: default
 spec:
-  volumeSnapshotClassName: csi-snap-class
-  source:
-    persistentVolumeClaimName: c1-svm0-nfs-pvc-1
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: nfs-snap-web

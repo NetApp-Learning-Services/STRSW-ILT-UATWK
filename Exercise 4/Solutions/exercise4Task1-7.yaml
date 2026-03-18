@@ -4,6 +4,6 @@ metadata:
   name: c1-svm0-nfs-pvc-1-snap-1
   namespace: default
 spec:
-  volumeSnapshotClassName: change_me
+  volumeSnapshotClassName: csi-snap-class
   source:
-    persistentVolumeClaimName: change_me
+    persistentVolumeClaimName: c1-svm0-nfs-pvc-1

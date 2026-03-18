@@ -1,9 +1,8 @@
 apiVersion: snapshot.storage.k8s.io/v1
-kind: VolumeSnapshot
+kind: VolumeGroupSnapshotClass
 metadata:
-  name: c1-svm0-nfs-pvc-1-snap-1
-  namespace: default
-spec:
-  volumeSnapshotClassName: change_me
-  source:
-    persistentVolumeClaimName: change_me
+  name: csi-group-snap-class
+  annotations:
+    kubernetes.io/description: "Trident group snapshot class"
+driver: csi.trident.netapp.io
+deletionPolicy: Delete
