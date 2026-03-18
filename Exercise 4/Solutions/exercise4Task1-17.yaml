@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nfs-snap-web
+  name: san-snap-web
   namespace: default
 spec:
   type: NodePort
@@ -9,4 +9,4 @@ spec:
     - port: 80
       targetPort: 80
   selector:
-    app: nfs-snap-web
+    app: san-snap-web
