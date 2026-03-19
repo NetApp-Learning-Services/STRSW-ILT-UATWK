@@ -2,15 +2,14 @@ echo "############################################"
 echo "###      Trident Protect install         ###"
 echo "############################################"
 
-kubectl create ns trident-protect
-
-PROTECTVERSION=100.2410.1
+CLUSTERNAME=source
+PROTECTNS=trident-protect
+PROTECTVERSION=100.2602.0
 
 helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
 
-helm install trident-protect-crds netapp-trident-protect/trident-protect-crds --version $PROTECTVERSION
-
 helm install trident-protect netapp-trident-protect/trident-protect \
+    --set clusterName=$CLUSTERNAME \
     --version $PROTECTVERSION      \
-    --namespace trident-protect    \
+    --namespace $PROTECTNS         \
     --create-namespace  
