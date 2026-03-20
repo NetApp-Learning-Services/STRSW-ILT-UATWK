@@ -11,6 +11,8 @@ spec:
       featureGates: 
       - Snapshot
       - LiveMigration
+      - HotplugVolumes
+      - DeclarativeHotplugVolumess
       useEmulation: true  #set to false if has direct access to local virtualized hardware
     imagePullPolicy: IfNotPresent
   customizeComponents: {}
