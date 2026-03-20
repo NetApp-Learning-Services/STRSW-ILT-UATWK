@@ -1,0 +1,1 @@
+kubectl -n trident auth can-i get pods --as=system:serviceaccount:monitoring:prometheus-k8s
