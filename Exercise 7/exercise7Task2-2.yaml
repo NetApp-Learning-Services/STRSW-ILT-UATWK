@@ -2,8 +2,9 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
+  namespace: monitoring
   labels:
-    team: frontend
+    team: example-app
 spec:
   selector:
     matchLabels:
