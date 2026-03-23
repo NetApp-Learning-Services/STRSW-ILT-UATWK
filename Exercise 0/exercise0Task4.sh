@@ -63,24 +63,25 @@ rm -f "$CFG1" "$CFG2"
 
 # --- Suggestion 2: print the discovered node list ---
 echo "Discovered nodes (deduplicated):"
-echo "$ALL_NODES"
+echo "$NODES1"
+echo "$NODES2"
 echo
 
-# --- Fetch the TLS certificate chain presented by the registry proxy ---
-openssl s_client -showcerts -connect "$REGISTRY_HOST" </dev/null \
-  | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > "$CERT"
+# # --- Fetch the TLS certificate chain presented by the registry proxy ---
+# openssl s_client -showcerts -connect "$REGISTRY_HOST" </dev/null \
+#   | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > "$CERT"
 
-# --- Copy cert to each node, update CA store, restart containerd ---
-for NODE in $ALL_NODES; do
-  echo "Updating trust + restarting containerd on: $NODE"
+# # --- Copy cert to each node, update CA store, restart containerd ---
+# for NODE in $ALL_NODES; do
+#   echo "Updating trust + restarting containerd on: $NODE"
 
-  sshpass -p "$PASS" scp "${SSH_OPTS[@]}" \
-    "$CERT" "root@${NODE}:/usr/local/share/ca-certificates/netapp-registry.crt"
+#   sshpass -p "$PASS" scp "${SSH_OPTS[@]}" \
+#     "$CERT" "root@${NODE}:/usr/local/share/ca-certificates/netapp-registry.crt"
 
-  sshpass -p "$PASS" ssh "${SSH_OPTS[@]}" "root@${NODE}" \
-    "update-ca-certificates && systemctl restart containerd"
-done
+#   sshpass -p "$PASS" ssh "${SSH_OPTS[@]}" "root@${NODE}" \
+#     "update-ca-certificates && systemctl restart containerd"
+# done
 
-echo
-echo "Done. Registry certificate installed and containerd restarted on all discovered nodes."
+# echo
+# echo "Done. Registry certificate installed and containerd restarted on all discovered nodes."
 
