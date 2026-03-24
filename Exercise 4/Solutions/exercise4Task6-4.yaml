@@ -1,4 +1,4 @@
-# https://github.com/kubernetes-csi/external-snapshotter/releases/tag/v7.0.1/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+# https://github.com/kubernetes-csi/external-snapshotter/releases/tag/v8.4.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 
 # This YAML file shows how to deploy the snapshot controller
 
