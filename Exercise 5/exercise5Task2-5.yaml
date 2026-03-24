@@ -1,41 +1,28 @@
-apiVersion: v1
-kind: Secret
+apiVersion: protect.trident.netapp.io/v1
+kind: AppVault
 metadata:
-  name: c1-svmsrc-backend-secret
-  namespace: trident
-type: kubernetes.io/basic-auth
-stringData:
-  username: vsadmin
-  password: Netapp1!
----
-apiVersion: trident.netapp.io/v1
-kind: TridentBackendConfig
-metadata:
-  name: c1-svmsrc-nfs-custom-tbc
-  namespace: trident
+  name: c1-svmsrc-s3-av
+  namespace: trident-protect
 spec:
-  version: 1
-  backendName: c1-svmsrc-nfs-custom-tbe
-  storageDriverName: ontap-nas
-  replicationPolicy: MirrorAllSnapshots
-  managementLIF: 192.168.0.70
-  dataLIF: 192.168.0.71
-  svm: svmsrc
-  credentials:
-    name: c1-svmsrc-backend-secret
-  storage:
-  - defaults:
-      nameTemplate: '{{ .labels.cluster }}_{{ .volume.Namespace }}_{{ .volume.RequestName }}_{{ .config.BackendName }}'
-    labels:
-      cluster: Cluster1
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: nfs-custom-sc
-  annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
-provisioner: csi.trident.netapp.io
-parameters:
-  storagePools: "c1-svmsrc-nfs-custom-tbe:.*"
-  backendType: ontap-nas
+  providerConfig:
+    azure:
+      accountName: ""
+      bucketName: ""
+      endpoint: ""
+    gcp:
+      bucketName: ""
+      projectID: ""
+    s3:
+      bucketName: tp-src
+      endpoint: 192.168.0.74
+      skipCertValidation: "true"
+  providerCredentials:
+    accessKeyID:
+      valueFromSecret:
+        key: accessKeyID
+        name: gateway-s3-src
+    secretAccessKey:
+      valueFromSecret:
+        key: secretAccessKey
+        name: gateway-s3-src
+  providerType: OntapS3
