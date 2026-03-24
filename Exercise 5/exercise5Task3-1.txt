@@ -1,1 +1,1 @@
-helm install mysqlapp oci://registry-1.docker.io/bitnamicharts/mysql --version 12.0.0 --namespace mysqlapp --create-namespace
+helm install mysqlapp oci://ghcr.io/kubelauncher/charts/mysql --set auth.rootPassword=secret --namespace mysqlapp --create-namespace
