@@ -30,7 +30,7 @@ tridentctl protect get schedule
 
 tridentctl protect get appvaultcontent c1-svmsrc-s3-av --show-paths --app myredisapp -n trident-protect
 
-tridentctl protect create backuprestore myredisapp-bkupr2 --namespace-mapping myredisapp:myredisapp2 --appvault c1-svmsrc-s3-av --path -n myredisapp2
+tridentctl protect create backuprestore myredisapp-bkupr2 --namespace-mapping myredisapp:myredisapp2 --appvault c1-svmsrc-s3-av -n myredisapp2 --path 
 
 tridentctl protect get backuprestore -n myredisapp2
 
