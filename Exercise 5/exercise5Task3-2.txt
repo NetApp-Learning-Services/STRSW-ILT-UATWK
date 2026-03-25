@@ -1,1 +1,1 @@
-helm install my-redis oci://ghcr.io/kubelauncher/charts/redis --set auth.password=mysecret --namespace myredis --create-namespace
+helm install myredisapp oci://ghcr.io/kubelauncher/charts/redis --set auth.password=mysecret --namespace myredisapp --create-namespace
