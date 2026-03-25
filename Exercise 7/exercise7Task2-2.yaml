@@ -5,6 +5,7 @@ metadata:
   namespace: monitoring
   labels:
     team: example-app
+    release: prometheus
 spec:
   selector:
     matchLabels:
