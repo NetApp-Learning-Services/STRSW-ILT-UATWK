@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: mywordpressapp-dst
+  name: myredisapp-dst

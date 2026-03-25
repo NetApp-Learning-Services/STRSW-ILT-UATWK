@@ -1,9 +1,9 @@
 apiVersion: protect.trident.netapp.io/v1
 kind: Application
 metadata:
-  name: mywordpressapp-dst
-  namespace: mywordpressapp-dst
+  name: myredisapp-dst
+  namespace: myredisapp-dst
 spec:
   includedNamespaces:
   - labelSelector: {}
-    namespace: mywordpressapp-dst
+    namespace: myredisapp-dst
