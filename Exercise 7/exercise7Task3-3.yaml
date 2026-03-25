@@ -4,7 +4,7 @@ metadata:
   name: trident-sm
   namespace: monitoring
   labels:
-      release: prom-operator
+    release: prometheus
 spec:
   jobLabel: trident
   selector:
