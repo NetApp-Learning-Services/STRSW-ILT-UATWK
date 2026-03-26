@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: testvm2-load
+  namespace: testvm2
+spec:
+  ports:
+  - port: 22
+    targetPort: 22
+  selector:
+    kubevirt.io/vm: vm-cirros2
+  type: LoadBalancer

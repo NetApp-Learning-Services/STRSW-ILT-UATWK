@@ -1,0 +1,7 @@
+kubectl wait vmsnapshot testvm3-snap --for condition=Ready
+
+kubectl -n testvm3 get vmsnapshot
+
+kubectl -n testvm3 patch vm testvm3 --type merge -p '{"spec":{"runStrategy":"Halted"}}'
+
+kubectl -n testvm3 get vm,vmi

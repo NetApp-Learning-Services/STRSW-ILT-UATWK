@@ -1,0 +1,1 @@
+sudo cp virtctl-v1.7.2-linux-amd64 /usr/local/bin/virtctl

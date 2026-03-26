@@ -1,0 +1,10 @@
+apiVersion: snapshot.kubevirt.io/v1beta1
+kind: VirtualMachineSnapshot
+metadata:
+  name: testvm3-snap
+  namespace: testvm3
+spec:
+  source:
+    apiGroup: kubevirt.io
+    kind: VirtualMachine
+    name: testvm3

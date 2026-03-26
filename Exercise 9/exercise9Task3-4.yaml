@@ -1,0 +1,18 @@
+# This example assumes you are using a default storage class
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: dv-cirros
+  labels:
+    kubevirt.io/vm: vm-cirros2
+  namespace: testvm2
+spec:
+  source:
+    http:
+      url: "https://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img" # S3 or GCS
+  pvc:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: "64Mi"

@@ -1,0 +1,31 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachineInstance
+metadata:
+  name: testvm3upload
+  namespace: testvm3
+spec:
+  domain:
+    cpu:
+      cores: 1
+    devices:
+      disks:
+      - disk:
+          bus: virtio
+        name: dvdisk
+      - cdrom:
+          bus: sata
+          readonly: true
+        name: cloudinitdisk
+    machine:
+      type: ""
+    resources:
+      requests:
+        memory: 128M
+  terminationGracePeriodSeconds: 0
+  volumes:
+  - name: dvdisk
+    dataVolume:
+      name: dv-upload
+  - name: cloudinitdisk
+    cloudInitNoCloud:
+      userDataBase64: SGkuXG4=

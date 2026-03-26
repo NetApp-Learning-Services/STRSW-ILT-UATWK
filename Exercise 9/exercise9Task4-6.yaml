@@ -1,0 +1,10 @@
+apiVersion: snapshot.kubevirt.io/v1beta1
+kind: VirtualMachineRestore
+metadata:
+  name: testvm3-snap-restore
+spec:
+  target:
+    apiGroup: kubevirt.io
+    kind: VirtualMachine
+    name: testvm3
+  virtualMachineSnapshotName: testvm3-snap

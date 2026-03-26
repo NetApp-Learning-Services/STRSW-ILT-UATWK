@@ -1,0 +1,9 @@
+kubectl wait vmrestore testvm3-snap-restore --for condition=Ready
+
+kubectl -n testvm3 get vmrestore
+
+kubectl -n testvm3 patch vm testvm3 --type merge -p '{"spec":{"runStrategy":"Always"}}'
+
+kubectl -n testvm3 get vm,vmi
+
+virtctl console testvm3
