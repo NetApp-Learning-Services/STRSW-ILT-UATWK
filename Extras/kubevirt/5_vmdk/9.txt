@@ -1,3 +1,0 @@
-kubectl -n testvm3 get vmi,pod
-
-virtctl console testvm3upload
