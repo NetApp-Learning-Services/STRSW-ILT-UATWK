@@ -1,0 +1,1 @@
+kubectl annotate storageclass c1-svm0-nfs-sc trident.netapp.io/autogrowPolicy="c1-svm0-nfs-autogrow" --overwrite

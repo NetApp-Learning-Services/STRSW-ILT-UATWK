@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: c1-svm0-nfs-pvc-autogrow
+  namespace: default
+  annotations:
+    trident.netapp.io/autogrowPolicy: change_me
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: c1-svm0-nfs-sc

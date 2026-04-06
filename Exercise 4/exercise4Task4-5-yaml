@@ -1,0 +1,8 @@
+apiVersion: trident.netapp.io/v1
+kind: TridentAutogrowPolicy
+metadata:
+  name: c1-svm0-nfs-autogrow
+spec:
+  usedThreshold: "80%"
+  growthAmount: "200Mi"
+  maxSize: "2Gi"
