@@ -1,17 +1,15 @@
 echo "############################################"
-echo "###     tridentctl-protect install       ###"
+echo "###      Trident Protect install         ###"
 echo "############################################"
 
-VERSION=24.10.1
+CLUSTERNAME=source
+PROTECTNS=trident-protect
+PROTECTVERSION=100.2602.0
 
-curl -L -o tridentctl-protect https://github.com/NetApp/tridentctl-protect/releases/download/$VERSION/tridentctl-protect-linux-amd64
-chmod +x tridentctl-protect
-sudo mv ./tridentctl-protect /usr/local/bin/
+helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
 
-mkdir -p ~/.trident-protect
-
-
-curl -L -O https://github.com/NetApp/tridentctl-protect/releases/download/$VERSION/tridentctl-completion.bash
-mkdir -p ~/.bash/completions
-mv tridentctl-completion.bash ~/.bash/completions/
-source ~/.bash/completions/tridentctl-completion.bash
+helm install trident-protect netapp-trident-protect/trident-protect \
+    --set clusterName=$CLUSTERNAME \
+    --version $PROTECTVERSION      \
+    --namespace $PROTECTNS         \
+    --create-namespace  
