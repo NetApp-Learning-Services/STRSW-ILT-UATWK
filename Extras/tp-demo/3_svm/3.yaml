@@ -29,14 +29,13 @@ spec:
   clusterHost: 192.168.0.102
   debug: false
   aggregates:
-  - name: Cluster2_01_FC_1
-  - name: Cluster2_01_FC_2
+  - name: cluster2_01_SSD_1
   management:
     name: manage1
     ip: 192.168.0.80
     netmask: 255.255.255.0
     broadcastDomain: Default
-    homeNode: Cluster2-01
+    homeNode: cluster2-01
   vsadminCredentials:
     name: ontap-svmdst-admin
     namespace: gateway-system
@@ -45,7 +44,7 @@ spec:
     namespace: gateway-system
   s3:
     enabled: true
-    name: svmdst
+    name: svmdst.demo.netapp.com
     http:
       enabled: true
       port: 80
@@ -64,28 +63,11 @@ spec:
       ip: 192.168.0.84   
       netmask: 255.255.255.0
       broadcastDomain: Default
-      homeNode: Cluster2-01
+      homeNode: cluster2-01
     buckets:
     - name: tp-dst
       size: 102005473280
       type: s3
-  iscsi:
-    enabled: true
-    alias: svmdst
-    interfaces:
-    - name: iscsi1
-      ip: 192.168.0.82
-      netmask: 255.255.255.0
-      broadcastDomain: Default
-      homeNode: Cluster2-01
-  nvme:
-    enabled: true
-    interfaces:
-    - name: nvme1
-      ip: 192.168.0.83
-      netmask: 255.255.255.0
-      broadcastDomain: Default
-      homeNode: Cluster2-01
   nfs:
     enabled: true
     v3: true
@@ -96,9 +78,9 @@ spec:
       ip: 192.168.0.81
       netmask: 255.255.255.0
       broadcastDomain: Default
-      homeNode: Cluster2-01
+      homeNode: cluster2-01
     export:
-      name: default
+      name: Default-1
       rules:
       - clients: 0.0.0.0/0
         protocols: any
@@ -120,11 +102,11 @@ spec:
       ip: 192.168.0.135
       netmask: 255.255.255.0
       broadcastDomain: Default
-      homeNode: Cluster2-01
+      homeNode: cluster2-01
       ipspace: Default
     - name: intercluster2
       ip: 192.168.0.136
       netmask: 255.255.255.0
       broadcastDomain: Default
-      homeNode: Cluster2-01
+      homeNode: cluster2-01
       ipspace: Default

@@ -2,6 +2,7 @@ apiVersion: trident.netapp.io/v1
 kind: TridentOrchestrator
 metadata:
   name: trident
+  namespace: trident
 spec:
   debug: true
   namespace: trident
