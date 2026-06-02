@@ -16,7 +16,6 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  creationTimestamp: null
   labels:
     app: operator.trident.netapp.io
   name: trident-operator
