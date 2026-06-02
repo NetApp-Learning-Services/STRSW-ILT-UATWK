@@ -9,13 +9,4 @@ spec:
   namespaceMapping:
   - source: mysqlapp
     destination: mysqlapp1
----
-apiVersion: protect.trident.netapp.io/v1
-kind: Application
-metadata:
-  name: mysqlapp1
-  namespace: mysqlapp1
-spec:
-  includedNamespaces:
-  - labelSelector: {}
-    namespace: mysqlapp1
+  destinationApplicationName: mysqlapp1
