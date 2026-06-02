@@ -4,7 +4,7 @@ echo "############################################"
 
 CLUSTERNAME=source
 PROTECTNS=trident-protect
-PROTECTVERSION=100.2602.0
+PROTECTVERSION=100.2602.1
 
 helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
 
