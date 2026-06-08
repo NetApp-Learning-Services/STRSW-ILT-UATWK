@@ -1,0 +1,3 @@
+kubectl create ns testvm1
+
+kubectl -n testvm get snapshots testvm-snap-1 -o "jsonpath={.status.appArchivePath}" ; echo

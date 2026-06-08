@@ -1,0 +1,9 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: Application
+metadata:
+  name: testvm
+  namespace: testvm
+spec:
+  includedNamespaces:
+  - labelSelector: {}
+    namespace: testvm
