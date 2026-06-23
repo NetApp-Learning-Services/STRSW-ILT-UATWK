@@ -1,0 +1,5 @@
+kubectl -n testvm get applications testvm -o "jsonpath={.metadata.uid}" ; echo
+
+kubectl config use-context source-admin@source
+
+kubectl create ns testvm-dst

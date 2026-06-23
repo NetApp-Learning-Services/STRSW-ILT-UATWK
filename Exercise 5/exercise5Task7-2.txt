@@ -1,1 +1,1 @@
-echo 'namespace: mywordpressapp' > ~/.trident-protect/protectctl.yaml
+echo 'namespace: myredisapp' > ~/.trident-protect/protectctl.yaml

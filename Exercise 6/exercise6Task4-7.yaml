@@ -1,8 +1,8 @@
 apiVersion: protect.trident.netapp.io/v1
 kind: AppMirrorRelationship
 metadata:
-  name: mywordpressapp-dst-amr
-  namespace: mywordpressapp-dst
+  name: myredisapp-dst-amr
+  namespace: myredisapp-dst
 spec:
   desiredState: change_me
   destinationAppVaultRef: change_me

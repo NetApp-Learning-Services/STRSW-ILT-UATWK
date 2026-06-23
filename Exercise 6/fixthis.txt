@@ -1,0 +1,5 @@
+
+POST /api/svm/peers { "applications": [ "snapmirror", "flexcache" ], "peer": { "cluster": { "name": "c2" }, "svm": { "name": "svmdst" } }, "svm": { "name": "svmsrc" } }(0.068s)
+GET /api/cluster/jobs/2b3c80ac-2871-11f1-b8c9-005056b0aaaf?fields=code%2Cdescription%2Cend_time%2Cerror%2C_links%2Cmessage%2Cstart_time%2Cstate%2Csvm%2Cuuid%2Carguments&return_timeout=120(0.055s)
+GET /api/cluster/jobs/2b3c80ac-2871-11f1-b8c9-005056b0aaaf?fields=code%2Cdescription%2Cend_time%2Cerror%2C_links%2Cmessage%2Cstart_time%2Cstate%2Csvm%2Cuuid%2Carguments&return_timeout=120(0.038s)
+GET /api/cluster/jobs/2b3c80ac-2871-11f1-b8c9-005056b0aaaf?fields=code%2Cdescription%2Cend_time%2Cerror%2C_links%2Cmessage%2Cstart_time%2Cstate%2Csvm%2Cuuid%2Carguments&return_timeout=120(0.03s)

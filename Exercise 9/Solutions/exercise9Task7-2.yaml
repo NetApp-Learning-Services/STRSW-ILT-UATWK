@@ -1,0 +1,11 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: Snapshot
+metadata:
+  name: testvm-snap-1
+  namespace: testvm
+spec:
+  appVaultRef: c1-svmsrc-s3-av
+  applicationRef: testvm
+  completionTimeout: 0s
+  volumeSnapshotsCreatedTimeout: 0s
+  volumeSnapshotsReadyToUseTimeout: 0s

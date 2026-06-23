@@ -1,0 +1,27 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nfs-autogrow-pod
+  namespace: default
+  labels:
+    app: nfs-autogrow-web
+spec:
+  volumes:
+    - name: nfs-autogrow-storage
+      persistentVolumeClaim:
+       claimName: c1-svm0-nfs-pvc-autogrow
+  containers:
+    - name: busybox
+      image: busybox:1.35.0
+      imagePullPolicy: IfNotPresent
+      command: ['sleep', '3600'] 
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      volumeMounts:
+        - mountPath: "/data"
+          name: nfs-autogrow-storage

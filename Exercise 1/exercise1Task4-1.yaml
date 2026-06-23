@@ -2932,7 +2932,7 @@ spec:
         - --health-probe-bind-address=:8081
         command:
         - /manager
-        image: curtisab/gateway:v1beta3
+        image: curtisab/gateway:v1beta3-18  #changed for v1beta3-18 branch
         livenessProbe:
           httpGet:
             path: /healthz

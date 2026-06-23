@@ -1,12 +1,29 @@
-apiVersion: v1
 kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
-  name: c1-svm1-iscsi-zone2-pvc-1
-  namespace: topology
+  name: c1-svm1-iscsi-groupa-pvc-1
+  namespace: default
+  labels:
+    consistentGroupSnapshot: groupA
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  storageClassName: c1-svm1-iscsi-zone2-sc
+  storageClassName: c1-svm1-iscsi-sc
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: c1-svm1-iscsi-groupa-pvc-2
+  namespace: default
+  labels:
+    consistentGroupSnapshot: groupA
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: c1-svm1-iscsi-sc

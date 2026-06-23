@@ -1,0 +1,1 @@
+/usr/bin/qemu-img convert -f vmdk -O qcow2 cirros-0.6.3-x86_64-disk.vmdk cirros-0.6.3-x86_64-disk.qcow2

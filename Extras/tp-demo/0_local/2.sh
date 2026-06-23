@@ -6,9 +6,14 @@ echo "############################################"
 
 # Define the tar file, file location within the tar, and destination directory
 DEST_DIR="/usr/local/bin"
-TAR_FILE="../../../Exercise 2/trident-installer-24.10.0.tar.gz"
+TAR_FILE="../../../Exercise 2/trident-installer-26.02.1.tar.gz"
 FILE_LOCATION="trident-installer/"
 FILE_TO_EXTRACT="tridentctl"
+
+# install large file support for git
+sudo apt-get install git-lfs
+git lfs install
+git lfs pull
 
 # Extract the specific file from the tar archive
 tar --strip-components=1 -xvf "$TAR_FILE" -C "." "$FILE_LOCATION$FILE_TO_EXTRACT" 

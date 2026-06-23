@@ -1,0 +1,12 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: SnapshotRestore
+metadata:
+  name: testvm-snaprestore1
+  namespace: testvm1
+spec:
+  appArchivePath: change_me
+  appVaultRef: c1-svmsrc-s3-av
+  namespaceMapping:
+  - source: testvm
+    destination: testvm1
+  destinationApplicationName: testvm1

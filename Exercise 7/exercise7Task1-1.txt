@@ -1,0 +1,5 @@
+ kubectl config use-context source-admin@source
+
+ kubectl -n monitoring port-forward svc/prometheus-k8s 9090
+
+ kubectl -n monitoring port-forward svc/grafana 3000

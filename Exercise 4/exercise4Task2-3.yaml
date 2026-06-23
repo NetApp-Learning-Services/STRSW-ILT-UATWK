@@ -1,0 +1,8 @@
+apiVersion: trident.netapp.io/v1
+kind: TridentActionSnapshotRestore
+metadata:
+  name: c1-svm0-nfs-custom-pvc-1-snap-1-restore
+  namespace: default
+spec:
+  pvcName: c1-svm0-nfs-custom-pvc-1
+  volumeSnapshotName: c1-svm0-nfs-custom-pvc-1-snap-1

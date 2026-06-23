@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dv-vmdk-snap
+  namespace: testvm3
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200Mi
+  storageClassName: nfs-custom-sc
+  dataSource:
+    name: c2-svmdst-nfs-dv-vmdk-snap-1
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io

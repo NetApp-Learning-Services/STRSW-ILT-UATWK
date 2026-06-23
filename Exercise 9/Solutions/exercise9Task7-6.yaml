@@ -1,0 +1,15 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: Schedule
+metadata:
+  name: testvm-sched-5min
+  namespace: testvm
+spec:
+  appVaultRef: c1-svmsrc-s3-av
+  applicationRef: testvm
+  backupRetention: "0"
+  enabled: true
+  granularity: Custom
+  recurrenceRule: |-
+    DTSTART:20220101T000200Z
+    RRULE:FREQ=MINUTELY;INTERVAL=5
+  snapshotRetention: "5"
