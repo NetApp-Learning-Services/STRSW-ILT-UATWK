@@ -89,7 +89,7 @@ spec:
         superuser: any
         anon:  "65534"
   peer:
-    name: c1
+    name: cluster1
     passphrase: specialphrase
     encryption: tls-psk
     applications: 
